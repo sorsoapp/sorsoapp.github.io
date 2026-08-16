@@ -297,14 +297,14 @@
        che stira i figli — e la sottolineatura diventa un filo che attraversa
        tutto lo schermo, indistinguibile da un separatore. */
     display:inline-block;align-self:center;max-width:100%;
-    margin-top:10px;font-size:14px;
-    color:rgba(234,251,255,.62);
+    margin-top:14px;font-size:15.5px;font-weight:600;
+    color:rgba(123,240,255,.9);
     /* Sottolineatura del testo, non del riquadro: andando a capo, un bordo
        inferiore finirebbe sotto la seconda riga e sembrerebbe un separatore. */
-    text-decoration:underline;text-decoration-color:rgba(123,240,255,.3);
+    text-decoration:underline;text-decoration-color:rgba(123,240,255,.45);
     text-underline-offset:5px;transition:color .2s,text-decoration-color .2s
   }
-  .come-si-installa:hover{color:var(--glow);text-decoration-color:var(--glow)}
+  .come-si-installa:hover{color:var(--schiuma);text-decoration-color:var(--schiuma)}
 
   /* Il segnale che si può scorrere: un puntino che scende e torna su. */
   .scorri-giu{
@@ -596,8 +596,8 @@
       </a>
       <a class="btn vuoto magnete" href="#cosa-fa">Cosa fa</a>
     </div>
-    <p class="dettaglio-download rivela d4" id="dettaglio">Ultima versione su GitHub · Android 8 o superiore</p>
-    <a class="come-si-installa rivela d4" href="installa.html">Non sai come si installa un file .apk? Te lo spiego qui →</a>
+    <p class="dettaglio-download rivela d4" id="dettaglio">Ultima versione</p>
+    <a class="come-si-installa rivela d4" href="installa.html">Come si installa →</a>
 
     <div class="scorri-giu rivela d4">
       <div class="tubo"></div>
@@ -765,7 +765,7 @@
         <span class="freccia">⬇</span> Scarica Sorso
       </a>
     </div>
-    <p class="dettaglio-download rivela d3" id="dettaglio2" style="text-align:center">Gratis · Android 8 o superiore</p>
+    <p class="dettaglio-download rivela d3" id="dettaglio2" style="text-align:center">Ultima versione</p>
   </div>
 </main>
 
@@ -975,15 +975,15 @@ fetch('https://api.github.com/repos/sorsoapp/sorso-releases/releases/latest')
     const apk = (rel.assets || []).find(a => a.name.toLowerCase().endsWith('.apk'));
     if (!apk || !scaricoAttendibile(apk.browser_download_url)) return;
     const mb = (apk.size / 1048576).toFixed(1).replace('.', ',');
-    const data = new Date(rel.published_at).toLocaleDateString('it-IT',
-      { day: 'numeric', month: 'long', year: 'numeric' });
     for (const id of ['scarica', 'scarica2']) {
       document.getElementById(id).href = apk.browser_download_url;
     }
-    document.getElementById('dettaglio').textContent =
-      `Versione ${rel.tag_name.split('-').pop()} · ${mb} MB · ${data} · Android 8 o superiore`;
-    document.getElementById('dettaglio2').textContent =
-      `Versione ${rel.tag_name.split('-').pop()} · gratis · Android 8 o superiore`;
+    // Due sole informazioni. La data di pubblicazione e «Android 8 o superiore»
+    // c'erano, ma nessuno le sta cercando in quel punto: mandavano la riga a capo
+    // e facevano sembrare complicato il gesto più semplice della pagina.
+    const riga = `Versione ${rel.tag_name.split('-').pop()} · ${mb} MB`;
+    document.getElementById('dettaglio').textContent = riga;
+    document.getElementById('dettaglio2').textContent = riga;
   })
   .catch(() => { /* senza rete restano i link alla pagina delle versioni */ });
 </script>
