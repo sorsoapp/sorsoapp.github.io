@@ -1,12 +1,7 @@
-/* Lo stile delle pagine di testo — privacy e condizioni.
-   La prima pagina (index.html) ha il suo, perché sta tutta in un file solo:
-   qui invece le pagine sono due e uguali, e tenere il foglio separato evita di
-   dover cambiare un colore in due posti. */
+/* Lo stile delle pagine di testo — privacy, condizioni e installazione.
+   Va letto dopo comune.css, che porta i colori, l'acqua, le bollicine e
+   l'ingresso dei blocchi: qui c'è solo quello che riguarda il testo lungo. */
 
-:root{
-  --abisso:#04222B; --abisso2:#0A3A48; --fondo:#02161C;
-  --schiuma:#EAFBFF; --glow:#7BF0FF;
-}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
@@ -15,22 +10,13 @@ body{
   line-height:1.65;overflow-x:hidden;
 }
 a{color:inherit}
-.wrap{max-width:720px;margin:0 auto;padding:0 24px}
+/* Solo i fianchi, mai la forma breve: la forma breve vincerebbe sul padding
+   verticale di quello che sta dentro. È lo stesso inciampo già pagato altrove. */
+.wrap{max-width:720px;margin:0 auto;padding-left:24px;padding-right:24px}
 
-/* Il mare resta anche qui: è la firma dell'app, e una pagina legale scritta su
-   fondo bianco sembrerebbe scritta da qualcun altro. */
-.mare{position:fixed;left:0;right:0;bottom:0;height:26vh;z-index:0;pointer-events:none}
-.mare .corpo{
-  position:absolute;left:0;right:0;bottom:0;top:22px;
-  background:linear-gradient(180deg,rgba(123,240,255,.16) 0%,rgba(10,58,72,.45) 40%,rgba(2,22,28,.85) 100%);
-}
-.onda{position:absolute;left:0;bottom:calc(100% - 24px);width:200%;height:26px}
-.onda svg{display:block;width:50%;height:26px;float:left}
-.onda.a{animation:scorri 14s linear infinite;opacity:.5}
-.onda.b{animation:scorri 21s linear infinite reverse;opacity:.3;bottom:calc(100% - 32px)}
-@keyframes scorri{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-main{position:relative;z-index:1;padding:0 0 34vh}
+/* Lo spazio in fondo serve all'acqua: senza, l'ultima riga di testo finirebbe
+   sotto il pelo dell'acqua proprio quando è salito al massimo. */
+main{position:relative;z-index:1;padding-bottom:30vh}
 
 /* ---- testata ---- */
 .testata{padding:36px 0 0}
@@ -56,12 +42,36 @@ li{margin-bottom:9px}
 strong{color:var(--schiuma);font-weight:650}
 
 /* Il riquadro serve per la riga che, se uno legge una cosa sola, deve leggere
-   quella: la salute e dove scaricare l'app vera. */
+   quella: la salute e dove scaricare l'app vera.
+   Sotto il puntatore si riempie d'acqua come le carte della prima pagina: è il
+   dettaglio che fa capire che si è ancora dentro lo stesso sito, e non su una
+   pagina legale incollata da un'altra parte. */
 .rilievo{
+  position:relative;overflow:hidden;
   background:rgba(123,240,255,.06);border:1px solid rgba(123,240,255,.16);
-  border-radius:20px;padding:22px 24px;margin:26px 0
+  border-radius:20px;padding:22px 24px;margin:26px 0;
+  transition:border-color .3s, transform .3s cubic-bezier(.2,.8,.3,1)
 }
+.rilievo::after{
+  content:'';position:absolute;left:-12%;right:-12%;bottom:-105%;height:105%;
+  pointer-events:none;
+  background:linear-gradient(180deg,rgba(123,240,255,.16),rgba(123,240,255,.03));
+  border-radius:44% 46% 0 0 / 14% 13% 0 0;
+  transition:bottom .75s cubic-bezier(.25,.9,.35,1)
+}
+.rilievo:hover{border-color:rgba(123,240,255,.34);transform:translateY(-3px)}
+.rilievo:hover::after{bottom:-64%}
+.rilievo > *{position:relative;z-index:1}
 .rilievo p:last-child{margin-bottom:0}
+
+/* I titoli di sezione si accendono come quelli della prima pagina. */
+h2{position:relative}
+h2::after{
+  content:'';display:inline-block;vertical-align:middle;margin-left:12px;
+  height:1px;width:0;background:linear-gradient(90deg,rgba(123,240,255,.5),transparent);
+  transition:width .9s cubic-bezier(.2,.7,.3,1) .15s
+}
+h2.dentro::after{width:90px}
 
 /* ---- piede ---- */
 footer{

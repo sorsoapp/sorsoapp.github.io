@@ -24,7 +24,7 @@
 -->
 <meta http-equiv="Content-Security-Policy" content="
   default-src 'none';
-  script-src 'unsafe-inline';
+  script-src 'self' 'unsafe-inline';
   style-src 'self' 'unsafe-inline';
   img-src 'self' data:;
   connect-src https://api.github.com;
@@ -50,6 +50,7 @@
 
 <meta name="theme-color" content="#02161C">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💧</text></svg>">
+<link rel="stylesheet" href="comune.css">
 <style>
   :root{
     --abisso:#04222B; --abisso2:#0A3A48; --fondo:#02161C;
@@ -74,78 +75,7 @@
      margine automatico. */
   .wrap{max-width:1080px;margin:0 auto;padding-left:24px;padding-right:24px}
 
-  /* ============ LA BARRA CHE SI RIEMPIE ============
-     In cima, sottile: dice quanto manca alla fine della pagina, e lo dice
-     riempiendosi d'acqua invece che con una percentuale. */
-  .avanzamento{position:fixed;top:0;left:0;right:0;height:3px;z-index:20;pointer-events:none}
-  .avanzamento i{
-    display:block;height:100%;width:calc(var(--salita) * 100%);
-    background:linear-gradient(90deg,#12586B,var(--glow));
-    box-shadow:0 0 14px rgba(123,240,255,.55)
-  }
-
-  /* ============ ACQUA ANIMATA ============
-     Il mare non è un fondale fermo: sale mentre scorri, come nell'app sale
-     mentre bevi. È la stessa idea, ed è il motivo per cui non c'è nessuna
-     barra di avanzamento da guardare. */
-  /* Parte bassa e arriva a coprire quasi tutto: scorrere la pagina fino in fondo è
-     come finire la giornata nell'app, dove l'acqua sale a ogni bicchiere fino a
-     riempire lo schermo. Il testo resta sopra e leggibile perché il mare è
-     trasparente e `main` sta su un piano più alto. */
-  .mare{
-    position:fixed;left:0;right:0;bottom:0;z-index:0;pointer-events:none;
-    height:calc(30vh + var(--salita) * 54vh);
-    transition:height .25s linear
-  }
-  /* Il respiro: tutta la massa d'acqua sale e scende di pochi pixel, lentamente.
-     Da solo non si nota — è quello che fa sembrare vivo il resto. */
-  .mare .respiro{position:absolute;inset:0;animation:respira 11s ease-in-out infinite}
-  @keyframes respira{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
-  .mare .corpo{
-    position:absolute;left:0;right:0;bottom:0;top:22px;
-    background:linear-gradient(180deg,rgba(123,240,255,.22) 0%,rgba(10,58,72,.55) 40%,rgba(2,22,28,.85) 100%);
-  }
-  .onda{position:absolute;left:0;bottom:calc(100% - 24px);width:200%;height:26px}
-  .onda svg{display:block;width:50%;height:26px;float:left}
-  .onda.a{animation:scorri 14s linear infinite;opacity:.55}
-  .onda.b{animation:scorri 21s linear infinite reverse;opacity:.35;bottom:calc(100% - 32px)}
-  .onda.c{animation:scorri 30s linear infinite;opacity:.2;bottom:calc(100% - 40px)}
-  @keyframes scorri{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-  .bolla{
-    position:absolute;bottom:-20px;border-radius:50%;
-    background:rgba(234,251,255,.14);animation:sali linear infinite
-  }
-  @keyframes sali{
-    0%{transform:translateY(0) translateX(0);opacity:0}
-    10%{opacity:.8}
-    50%{transform:translateY(-20vh) translateX(10px)}
-    100%{transform:translateY(-44vh) translateX(-6px);opacity:0}
-  }
-
   main{position:relative;z-index:1}
-
-  /* ============ SOTT'ACQUA, DAPPERTUTTO ============
-     Le bollicine non stanno solo dentro il mare in fondo: salgono per tutta la
-     pagina, piano, con una deriva laterale. È il dettaglio che fa capire in un
-     istante che non si sta guardando l'ennesimo sito scuro, ma qualcosa di
-     immerso. Poche e grandi diverse, altrimenti diventa una nevicata. */
-  .bolle-ambiente{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-  .bolla-a{
-    position:absolute;bottom:-60px;border-radius:50%;
-    background:radial-gradient(circle at 32% 27%,
-      rgba(234,251,255,.42), rgba(123,240,255,.10) 55%, rgba(123,240,255,.02) 100%);
-    border:1px solid rgba(234,251,255,.10);
-    animation:risali linear infinite
-  }
-  @keyframes risali{
-    0%{transform:translate3d(0,0,0) scale(.8);opacity:0}
-    9%{opacity:.6}
-    35%{transform:translate3d(16px,-34vh,0) scale(1)}
-    65%{transform:translate3d(-14px,-68vh,0) scale(1.04)}
-    90%{opacity:.3}
-    100%{transform:translate3d(8px,-112vh,0) scale(1.12);opacity:0}
-  }
 
   /* Il cerchio che si allarga dove la goccia tocca: l'unico modo per far capire
      che quella non è un'icona, ma acqua che cade. */
@@ -165,39 +95,6 @@
     70%{opacity:.1}
     100%{transform:scale(2.6) scaleY(.26);opacity:0}
   }
-
-  /* Il tocco lascia un cerchio, come un dito nell'acqua. */
-  .tocco{
-    position:fixed;width:12px;height:12px;margin:-6px 0 0 -6px;
-    border:1.5px solid rgba(123,240,255,.65);border-radius:50%;
-    pointer-events:none;z-index:30;animation:tocco-onda .75s ease-out forwards
-  }
-  @keyframes tocco-onda{to{transform:scale(10) scaleY(.85);opacity:0}}
-
-  /* La bollicina che sfugge da un pulsante quando ci passi sopra. */
-  .sfiato{
-    position:fixed;border-radius:50%;pointer-events:none;z-index:25;
-    background:radial-gradient(circle at 32% 27%,rgba(234,251,255,.75),rgba(123,240,255,.2) 60%,transparent);
-    animation:sfiata 1.25s ease-out forwards
-  }
-  @keyframes sfiata{
-    0%{transform:translate(0,0) scale(.5);opacity:0}
-    18%{opacity:.9}
-    100%{transform:translate(var(--dx,0),-86px) scale(1.15);opacity:0}
-  }
-
-  /* ============ RIVELAZIONE ALLO SCORRIMENTO ============
-     Ogni blocco entra quando arriva il suo turno. Serve a dare un ritmo alla
-     lettura: senza, la pagina è un muro che compare tutto insieme.
-     I blocchi non scivolano: **risalgono**, con un filo di rimbalzo alla fine, come
-     una cosa leggera che torna a galla. È la stessa curva dei pulsanti dell'app. */
-  .rivela{
-    opacity:0;transform:translateY(38px) scale(.985);
-    transition:opacity .8s cubic-bezier(.22,1.12,.36,1), transform .8s cubic-bezier(.22,1.12,.36,1)
-  }
-  .rivela.dentro{opacity:1;transform:none}
-  .rivela.d1{transition-delay:.08s} .rivela.d2{transition-delay:.16s}
-  .rivela.d3{transition-delay:.24s} .rivela.d4{transition-delay:.32s}
 
   /* ============ APERTURA ============ */
   /* Tutto in mezzo. Allineata a sinistra, su uno schermo da 27 pollici l'apertura
@@ -524,9 +421,6 @@
     .btn{justify-content:center}
     .scorri-giu{display:none}
     .vetrina{gap:34px}
-    /* Sullo schermo stretto l'apertura è più corta e il mare arrivava a
-       tagliare in due il pulsante: qui parte più basso, ma sale lo stesso. */
-    .mare{height:calc(22vh + var(--salita) * 48vh)}
     .chiusura{padding-top:80px;padding-bottom:70px}
     .carta{padding:24px}
     /* Il piede in colonna: affiancati, i cinque link finivano a capo a metà
@@ -540,7 +434,6 @@
      animazioni danno la nausea. */
   @media (prefers-reduced-motion:reduce){
     *,*::before,*::after{animation:none !important;transition:none !important}
-    .rivela{opacity:1;transform:none}
     .bicchiere i{height:var(--h,0)}
     .colonne i{height:var(--h,0)}
     h1 span{opacity:1;transform:none}
@@ -741,7 +634,7 @@
   <!-- ============ PRIVACY ============ -->
   <section class="wrap centrata">
     <p class="titolo rivela">I tuoi dati</p>
-    <h2 class="rivela d1">Non esce niente da questo telefono</h2>
+    <h2 class="rivela d1">Niente esce dal tuo telefono</h2>
     <p class="testo rivela d2">
       Sorso non ha un server. Non ha un account. Non sa chi sei e non vuole saperlo.
       I sorsi che segni, l'obiettivo, lo storico dei giorni: tutto resta nella memoria del
@@ -778,14 +671,16 @@
       <a href="https://github.com/sorsoapp/sorso-releases/releases">Tutte le versioni</a>
       <a href="https://github.com/sorsoapp">GitHub</a>
       <a href="privacy.html">Privacy</a>
-      <a href="privacy.html#cookie">Cookie</a>
+      <a href="privacy.html#cookie" data-cookie>Gestisci i cookie</a>
       <a href="condizioni.html">Condizioni</a>
     </div>
   </div>
 </footer>
 
 <script>
-const fermo = matchMedia('(prefers-reduced-motion: reduce)').matches;
+// `menoMoto` è la copia locale della stessa domanda che fa comune.js: due file
+// diversi non possono dichiarare la stessa costante globale.
+const menoMoto = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // ---- il nome, lettera per lettera ----------------------------------------
 const nome = document.getElementById('nome');
@@ -799,85 +694,7 @@ nome.textContent = '';
 });
 // Il riflesso parte solo quando l'ultima lettera è atterrata: prima si
 // accavallerebbe con la caduta e sembrerebbe un disturbo del video.
-if (!fermo) setTimeout(() => nome.classList.add('lucido'), 350 + parola.length * 90 + 800);
-
-// ---- le bollicine che attraversano tutta la pagina -----------------------
-// Diciotto, non di più: contate a occhio su uno schermo grande sono già tante da
-// far sembrare l'aria densa, e poche abbastanza da non pesare sullo scorrimento.
-if (!fermo) {
-  const ambiente = document.getElementById('bolle-ambiente');
-  for (let i = 0; i < 18; i++) {
-    const b = document.createElement('div');
-    const d = 5 + Math.random() * 18;
-    b.className = 'bolla-a';
-    b.style.width = b.style.height = d + 'px';
-    b.style.left = Math.random() * 100 + '%';
-    // Le grandi salgono più lente: è il contrario dell'intuito, ma è come si
-    // muovono davvero, e a occhio la differenza si sente.
-    b.style.animationDuration = (16 + d * 0.9 + Math.random() * 10) + 's';
-    b.style.animationDelay = (-Math.random() * 26) + 's';
-    ambiente.appendChild(b);
-  }
-}
-
-// ---- il cerchio che si allarga dove tocchi -------------------------------
-if (!fermo) {
-  addEventListener('pointerdown', e => {
-    const c = document.createElement('span');
-    c.className = 'tocco';
-    c.style.left = e.clientX + 'px';
-    c.style.top = e.clientY + 'px';
-    document.body.appendChild(c);
-    c.addEventListener('animationend', () => c.remove());
-  }, { passive: true });
-}
-
-// ---- i pulsanti perdono bollicine quando ci passi sopra ------------------
-if (!fermo && matchMedia('(hover: hover)').matches) {
-  document.querySelectorAll('.btn').forEach(b => {
-    let ultimo = 0;
-    b.addEventListener('pointermove', e => {
-      // Una ogni 120 ms: senza freno, muovendo il mouse ne uscirebbero centinaia.
-      const ora = performance.now();
-      if (ora - ultimo < 120) return;
-      ultimo = ora;
-      const r = b.getBoundingClientRect();
-      const s = document.createElement('span');
-      const d = 4 + Math.random() * 7;
-      s.className = 'sfiato';
-      s.style.width = s.style.height = d + 'px';
-      s.style.left = (r.left + Math.random() * r.width) + 'px';
-      s.style.top = (r.top + r.height * 0.65) + 'px';
-      s.style.setProperty('--dx', (Math.random() * 26 - 13) + 'px');
-      document.body.appendChild(s);
-      s.addEventListener('animationend', () => s.remove());
-    });
-  });
-}
-
-// ---- bollicine che salgono dal fondo -------------------------------------
-const contenitore = document.getElementById('bolle');
-for (let i = 0; i < 20; i++) {
-  const b = document.createElement('div');
-  const d = 4 + Math.random() * 9;
-  b.className = 'bolla';
-  b.style.width = b.style.height = d + 'px';
-  b.style.left = Math.random() * 100 + '%';
-  b.style.animationDuration = (7 + Math.random() * 9) + 's';
-  b.style.animationDelay = (Math.random() * 9) + 's';
-  contenitore.appendChild(b);
-}
-
-// ---- ogni blocco entra quando arriva il suo turno -------------------------
-const osservatore = new IntersectionObserver((voci) => {
-  for (const v of voci) {
-    if (!v.isIntersecting) continue;
-    v.target.classList.add('dentro');
-    osservatore.unobserve(v.target);          // una volta sola: non deve lampeggiare
-    if (v.target.id === 'telefono') accendiTelefono();
-  }
-}, { threshold: 0.18, rootMargin: '0px 0px -60px 0px' });
-document.querySelectorAll('.rivela').forEach(e => osservatore.observe(e));
+if (!menoMoto) setTimeout(() => nome.classList.add('lucido'), 350 + parola.length * 90 + 800);
 
 // ---- il telefono si accende quando lo si guarda --------------------------
 // Il numero sale da zero e l'acqua dentro lo schermo si alza insieme: è la
@@ -885,7 +702,7 @@ document.querySelectorAll('.rivela').forEach(e => osservatore.observe(e));
 function accendiTelefono() {
   const acqua = document.getElementById('acqua-tel');
   const cifra = document.getElementById('conteggio');
-  if (fermo) { cifra.textContent = '900'; return; }
+  if (menoMoto) { cifra.textContent = '900'; return; }
   acqua.style.height = '20%';
   requestAnimationFrame(() => { acqua.style.height = '42%'; });
 
@@ -898,21 +715,6 @@ function accendiTelefono() {
   })(inizio);
 }
 
-// ---- l'acqua sale mentre si scorre ---------------------------------------
-let inCoda = false;
-function suScorrimento() {
-  const max = document.documentElement.scrollHeight - innerHeight;
-  const p = max > 0 ? Math.min(1, scrollY / max) : 0;
-  document.documentElement.style.setProperty('--salita', p.toFixed(4));
-  inCoda = false;
-}
-addEventListener('scroll', () => {
-  if (inCoda) return;
-  inCoda = true;
-  requestAnimationFrame(suScorrimento);
-}, { passive: true });
-suScorrimento();
-
 // ---- la torcia che segue il puntatore sulle carte ------------------------
 document.querySelectorAll('.carta').forEach(c => {
   c.addEventListener('pointermove', e => {
@@ -924,8 +726,9 @@ document.querySelectorAll('.carta').forEach(c => {
 
 // ---- il telefono si gira verso di te -------------------------------------
 const tel = document.getElementById('telefono');
+tel.addEventListener('entrato', accendiTelefono);
 const vetrina = document.querySelector('.vetrina');
-if (!fermo) {
+if (!menoMoto) {
   vetrina.addEventListener('pointermove', e => {
     const r = vetrina.getBoundingClientRect();
     const x = (e.clientX - r.left) / r.width - 0.5;
@@ -933,21 +736,6 @@ if (!fermo) {
     tel.style.transform = `rotateY(${x * 15}deg) rotateX(${-y * 12}deg) scale(1.02)`;
   });
   vetrina.addEventListener('pointerleave', () => { tel.style.transform = ''; });
-}
-
-// ---- i pulsanti si lasciano attrarre -------------------------------------
-// Pochi pixel, non di più: abbastanza da sentirlo, non tanto da far mancare il
-// bersaglio a chi punta col mouse.
-if (!fermo && matchMedia('(hover: hover)').matches) {
-  document.querySelectorAll('.magnete').forEach(b => {
-    b.addEventListener('pointermove', e => {
-      const r = b.getBoundingClientRect();
-      const x = (e.clientX - r.left - r.width / 2) * 0.18;
-      const y = (e.clientY - r.top - r.height / 2) * 0.28;
-      b.style.transform = `translate(${x}px, ${y - 3}px)`;
-    });
-    b.addEventListener('pointerleave', () => { b.style.transform = ''; });
-  });
 }
 
 // ---- il pulsante scarica punta sempre all'ultima versione ----------------
@@ -987,5 +775,6 @@ fetch('https://api.github.com/repos/sorsoapp/sorso-releases/releases/latest')
   })
   .catch(() => { /* senza rete restano i link alla pagina delle versioni */ });
 </script>
+<script src="comune.js"></script>
 </body>
 </html>

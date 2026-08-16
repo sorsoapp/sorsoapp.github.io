@@ -1,0 +1,228 @@
+/* Quello che tutte le pagine hanno in comune: l'acqua, le bollicine, il cerchio
+   del tocco, l'ingresso dei blocchi e il pannello dei cookie.
+   Stava dentro index.html. Portarlo qui è ciò che rende le pagine di testo
+   indistinguibili dalla prima: una regola sola, quattro pagine. */
+
+:root{
+  --abisso:#04222B; --abisso2:#0A3A48; --fondo:#02161C;
+  --schiuma:#EAFBFF; --glow:#7BF0FF; --ink:#04303D;
+  /* Quanto è salita l'acqua: 0 in cima alla pagina, 1 in fondo. */
+  --salita:0;
+}
+
+/* ============ LA BARRA CHE SI RIEMPIE ============ */
+.avanzamento{position:fixed;top:0;left:0;right:0;height:3px;z-index:20;pointer-events:none}
+.avanzamento i{
+  display:block;height:100%;width:calc(var(--salita) * 100%);
+  background:linear-gradient(90deg,#12586B,var(--glow));
+  box-shadow:0 0 14px rgba(123,240,255,.55)
+}
+
+/* ============ IL MARE ============
+   Parte basso e arriva quasi in cima: chi finisce di leggere una pagina di Sorso
+   è sott'acqua, esattamente come nell'app quando la giornata è completa. Il testo
+   resta leggibile perché il mare è trasparente e i contenuti stanno su un piano
+   più alto. */
+.mare{
+  /* Più larga dello schermo: la spinta la fa inclinare di una frazione di grado,
+     e senza il margine si vedrebbero gli angoli scoperti. */
+  position:fixed;left:-6%;right:-6%;width:112%;bottom:0;z-index:0;pointer-events:none;
+  height:calc(28vh + var(--salita) * 66vh);
+  transition:height .25s linear, transform .45s cubic-bezier(.2,.9,.3,1);
+  /* --spinta arriva da comune.js: è quanto forte stai scorrendo, con segno.
+     L'acqua se ne accorge e si sbilancia, come in un bicchiere che si muove. */
+  transform:translateY(calc(var(--spinta,0) * -14px)) rotate(calc(var(--spinta,0) * .45deg))
+}
+.mare .respiro{position:absolute;inset:0;animation:respira 11s ease-in-out infinite}
+@keyframes respira{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.mare .corpo{
+  position:absolute;left:0;right:0;bottom:0;top:22px;overflow:hidden;
+  background:linear-gradient(180deg,rgba(123,240,255,.2) 0%,rgba(10,58,72,.5) 38%,rgba(2,22,28,.86) 100%);
+}
+/* I riflessi sotto il pelo dell'acqua: due chiazze di luce che vanno e vengono
+   piano. Sono la ragione per cui, da fermo, il fondo non sembra una figura. */
+.mare .corpo::after{
+  content:'';position:absolute;inset:-10% -20%;pointer-events:none;
+  background:
+    radial-gradient(55% 42% at 22% 0%, rgba(123,240,255,.20), transparent 70%),
+    radial-gradient(42% 34% at 74% 8%, rgba(234,251,255,.13), transparent 72%),
+    radial-gradient(38% 30% at 50% 22%, rgba(123,240,255,.10), transparent 74%);
+  animation:luccichio 17s ease-in-out infinite alternate
+}
+@keyframes luccichio{
+  0%{transform:translateX(-5%) scaleY(1)}
+  50%{transform:translateX(2%) scaleY(1.12)}
+  100%{transform:translateX(6%) scaleY(.94)}
+}
+
+.onda{position:absolute;left:0;bottom:calc(100% - 24px);width:200%;height:26px}
+.onda svg{display:block;width:50%;height:26px;float:left}
+/* Due animazioni per onda: `scorri` muove in orizzontale con `transform`,
+   `dondola` alza e abbassa con `translate`. Sono proprietà distinte, quindi si
+   sommano invece di annullarsi — con due `transform` la seconda avrebbe vinto. */
+.onda.a{animation:scorri 14s linear infinite, dondola 5.5s ease-in-out infinite;opacity:.55}
+.onda.b{animation:scorri 21s linear infinite reverse, dondola 7.5s ease-in-out -2s infinite;opacity:.35;bottom:calc(100% - 32px)}
+.onda.c{animation:scorri 30s linear infinite, dondola 9.5s ease-in-out -4s infinite;opacity:.2;bottom:calc(100% - 40px)}
+@keyframes scorri{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes dondola{0%,100%{translate:0 0}50%{translate:0 -6px}}
+
+.bolla{
+  position:absolute;bottom:-20px;border-radius:50%;
+  background:rgba(234,251,255,.14);animation:sali linear infinite
+}
+@keyframes sali{
+  0%{transform:translateY(0) translateX(0);opacity:0}
+  10%{opacity:.8}
+  50%{transform:translateY(-20vh) translateX(10px)}
+  100%{transform:translateY(-44vh) translateX(-6px);opacity:0}
+}
+
+/* ============ BOLLICINE SU TUTTA LA PAGINA ============ */
+.bolle-ambiente{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.bolla-a{
+  position:absolute;bottom:-60px;border-radius:50%;
+  background:radial-gradient(circle at 32% 27%,
+    rgba(234,251,255,.42), rgba(123,240,255,.10) 55%, rgba(123,240,255,.02) 100%);
+  border:1px solid rgba(234,251,255,.10);
+  animation:risali linear infinite
+}
+@keyframes risali{
+  0%{transform:translate3d(0,0,0) scale(.8);opacity:0}
+  9%{opacity:.6}
+  35%{transform:translate3d(16px,-34vh,0) scale(1)}
+  65%{transform:translate3d(-14px,-68vh,0) scale(1.04)}
+  90%{opacity:.3}
+  100%{transform:translate3d(8px,-112vh,0) scale(1.12);opacity:0}
+}
+
+/* ============ IL TOCCO ============ */
+.tocco{
+  position:fixed;width:12px;height:12px;margin:-6px 0 0 -6px;
+  border:1.5px solid rgba(123,240,255,.65);border-radius:50%;
+  pointer-events:none;z-index:30;animation:tocco-onda .75s ease-out forwards
+}
+@keyframes tocco-onda{to{transform:scale(10) scaleY(.85);opacity:0}}
+
+/* La bollicina che sfugge da un pulsante quando ci passi sopra. */
+.sfiato{
+  position:fixed;border-radius:50%;pointer-events:none;z-index:25;
+  background:radial-gradient(circle at 32% 27%,rgba(234,251,255,.75),rgba(123,240,255,.2) 60%,transparent);
+  animation:sfiata 1.25s ease-out forwards
+}
+@keyframes sfiata{
+  0%{transform:translate(0,0) scale(.5);opacity:0}
+  18%{opacity:.9}
+  100%{transform:translate(var(--dx,0),-86px) scale(1.15);opacity:0}
+}
+
+/* ============ INGRESSO DEI BLOCCHI ============
+   Non scivolano: risalgono, con un filo di rimbalzo, come cose leggere che
+   tornano a galla. */
+.rivela{
+  opacity:0;transform:translateY(38px) scale(.985);
+  transition:opacity .8s cubic-bezier(.22,1.12,.36,1), transform .8s cubic-bezier(.22,1.12,.36,1)
+}
+.rivela.dentro{opacity:1;transform:none}
+.rivela.d1{transition-delay:.08s} .rivela.d2{transition-delay:.16s}
+.rivela.d3{transition-delay:.24s} .rivela.d4{transition-delay:.32s}
+
+/* ============ IL PANNELLO DEI COOKIE ============
+   Sale dal basso, non copre la lettura, e la scelta che offre è vera: vedi il
+   commento in comune.js sul perché i due pulsanti fanno davvero due cose
+   diverse invece di essere due modi di dire «va bene». */
+.biscotti{
+  position:fixed;left:50%;bottom:0;z-index:40;
+  width:min(560px, calc(100% - 32px));
+  transform:translate(-50%, 130%);
+  transition:transform .55s cubic-bezier(.22,1.05,.36,1);
+  background:rgba(4,34,43,.93);
+  border:1px solid rgba(123,240,255,.24);
+  border-radius:24px 24px 0 0;
+  box-shadow:0 -18px 60px rgba(0,0,0,.55);
+  backdrop-filter:blur(14px);
+  padding:24px 26px 26px
+}
+.biscotti.su{transform:translate(-50%, 0)}
+.biscotti h3{
+  font-size:12px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--glow);font-weight:700;margin-bottom:10px
+}
+.biscotti p{color:rgba(234,251,255,.82);font-size:15px;line-height:1.55;margin-bottom:8px}
+.biscotti p:last-of-type{margin-bottom:18px}
+.biscotti a{color:var(--glow);text-decoration:underline;text-underline-offset:3px}
+.biscotti{max-height:88vh;overflow-y:auto}
+
+/* ---- le categorie, con l'interruttore ---- */
+.categorie{margin:4px 0 18px;display:none}
+.categorie.aperte{display:block}
+.categoria{
+  display:flex;gap:16px;align-items:flex-start;
+  padding:14px 0;border-top:1px solid rgba(123,240,255,.12)
+}
+.categoria .voce{flex:1;min-width:0}
+.categoria b{display:block;font-size:14.5px;color:var(--schiuma);margin-bottom:3px;font-weight:650}
+.categoria small{display:block;color:rgba(234,251,255,.62);font-size:13px;line-height:1.5}
+.inattiva{
+  display:inline-block;margin-top:6px;padding:1px 9px;
+  font-size:10.5px;letter-spacing:1.4px;text-transform:uppercase;font-weight:700;
+  color:var(--glow);border:1px solid rgba(123,240,255,.32);border-radius:20px
+}
+
+.interruttore{
+  position:relative;flex:0 0 48px;width:48px;height:27px;margin-top:2px;
+  border-radius:15px;cursor:pointer;padding:0;
+  background:rgba(234,251,255,.13);border:1px solid rgba(123,240,255,.22);
+  transition:background .28s, border-color .28s
+}
+.interruttore::after{
+  content:'';position:absolute;top:2px;left:2px;width:21px;height:21px;
+  border-radius:50%;background:var(--schiuma);
+  transition:transform .3s cubic-bezier(.34,1.56,.64,1), background .28s
+}
+.interruttore[aria-checked="true"]{background:rgba(123,240,255,.5);border-color:var(--glow)}
+.interruttore[aria-checked="true"]::after{transform:translateX(21px);background:#04222B}
+.interruttore[aria-disabled="true"]{opacity:.5;cursor:default}
+.interruttore:focus-visible{outline:2px solid var(--glow);outline-offset:3px}
+
+.biscotti .scelte{display:flex;gap:10px;flex-wrap:wrap}
+.biscotti .scegli{
+  flex:0 0 100%;background:none;border:none;color:rgba(234,251,255,.7);
+  font-size:14px;font-weight:600;text-decoration:underline;text-underline-offset:4px;
+  padding:6px 0;min-width:0;box-shadow:none
+}
+.biscotti .scegli:hover{color:var(--glow);transform:none}
+/* Solo i pulsanti della pulsantiera: senza questo, la regola prendeva anche gli
+   interruttori delle categorie e li stirava per mezza larghezza del pannello. */
+.biscotti .scelte button{
+  flex:1 1 auto;min-width:150px;font:inherit;cursor:pointer;
+  padding:13px 22px;border-radius:26px;font-weight:700;font-size:15px;
+  border:1.5px solid transparent;
+  transition:transform .18s cubic-bezier(.34,1.56,.64,1), box-shadow .25s, background .25s
+}
+.biscotti .si{background:var(--schiuma);color:var(--ink);box-shadow:0 8px 26px rgba(123,240,255,.18)}
+.biscotti .si:hover{transform:translateY(-2px);box-shadow:0 14px 38px rgba(123,240,255,.32)}
+.biscotti .no{background:transparent;color:var(--schiuma);border-color:rgba(123,240,255,.35)}
+.biscotti .no:hover{transform:translateY(-2px);background:rgba(123,240,255,.09)}
+.biscotti .scelte button:active{transform:scale(.97)}
+
+@media (max-width:560px){
+  .biscotti{width:100%;border-radius:22px 22px 0 0;padding:20px 20px 22px}
+  .biscotti .scelte{flex-direction:column}
+}
+
+/* Sullo schermo stretto l'acqua parte più in basso — le aperture sono più corte
+   e il mare arrivava a tagliare in due i pulsanti — ma alla fine della pagina
+   arriva su come altrove. */
+@media (max-width:640px){
+  .mare{height:calc(20vh + var(--salita) * 72vh)}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .bolle-ambiente{display:none}
+  .rivela{opacity:1;transform:none}
+  .biscotti{transition:none}
+  /* Niente sbandate né riflessi: resta il livello, fermo. */
+  .mare{transform:none;transition:height .25s linear}
+  .mare .corpo::after{animation:none}
+  .onda{animation:none !important}
+}

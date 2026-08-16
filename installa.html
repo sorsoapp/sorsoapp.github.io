@@ -6,7 +6,7 @@
 <title>Come si installa — Sorso</title>
 <meta http-equiv="Content-Security-Policy" content="
   default-src 'none';
-  script-src 'unsafe-inline';
+  script-src 'self' 'unsafe-inline';
   style-src 'self' 'unsafe-inline';
   img-src 'self' data:;
   connect-src https://api.github.com;
@@ -22,17 +22,13 @@
 <meta property="og:image" content="https://sorsoapp.it/anteprima.png">
 <meta name="theme-color" content="#02161C">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💧</text></svg>">
+<link rel="stylesheet" href="comune.css">
 <link rel="stylesheet" href="stile.css">
 <style>
   /* Questa pagina è più larga delle altre due: i passi hanno bisogno di spazio,
      e leggerli in colonna stretta li fa sembrare più di quanti sono. */
   .wrap{max-width:800px}
 
-  .rivela{
-    opacity:0;transform:translateY(26px);
-    transition:opacity .7s cubic-bezier(.2,.7,.3,1), transform .7s cubic-bezier(.2,.7,.3,1)
-  }
-  .rivela.dentro{opacity:1;transform:none}
 
   /* ---- i passi ---- */
   .passi{counter-reset:passo;margin-top:10px}
@@ -120,16 +116,16 @@
 </head>
 <body>
 
+<div class="avanzamento" aria-hidden="true"><i></i></div>
+<div class="bolle-ambiente" id="bolle-ambiente" aria-hidden="true"></div>
+
 <div class="mare" aria-hidden="true">
-  <div class="onda b">
-    <svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 14 Q 150 0 300 13 T 600 13 T 900 13 T 1200 13 V26 H0Z" fill="#0A3A48"/></svg>
-    <svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 14 Q 150 0 300 13 T 600 13 T 900 13 T 1200 13 V26 H0Z" fill="#0A3A48"/></svg>
-  </div>
-  <div class="onda a">
-    <svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 13 Q 150 26 300 13 T 600 13 T 900 13 T 1200 13 V26 H0Z" fill="#12586B"/></svg>
-    <svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 13 Q 150 26 300 13 T 600 13 T 900 13 T 1200 13 V26 H0Z" fill="#12586B"/></svg>
-  </div>
-  <div class="corpo"></div>
+ <div class="respiro">
+  <div class="onda c"><svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 15 Q 150 4 300 14 T 600 14 T 900 14 T 1200 14 V26 H0Z" fill="#0A3A48"/></svg><svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 15 Q 150 4 300 14 T 600 14 T 900 14 T 1200 14 V26 H0Z" fill="#0A3A48"/></svg></div>
+  <div class="onda b"><svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 14 Q 150 0 300 13 T 600 13 T 900 13 T 1200 13 V26 H0Z" fill="#0A3A48"/></svg><svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 14 Q 150 0 300 13 T 600 13 T 900 13 T 1200 13 V26 H0Z" fill="#0A3A48"/></svg></div>
+  <div class="onda a"><svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 13 Q 150 26 300 13 T 600 13 T 900 13 T 1200 13 V26 H0Z" fill="#12586B"/></svg><svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 13 Q 150 26 300 13 T 600 13 T 900 13 T 1200 13 V26 H0Z" fill="#12586B"/></svg></div>
+  <div class="corpo" id="bolle"></div>
+ </div>
 </div>
 
 <main>
@@ -283,7 +279,7 @@
       <a href="./">Home</a>
       <a href="privacy.html">Privacy</a>
       <a href="condizioni.html">Condizioni</a>
-      <a href="privacy.html#cookie">Cookie</a>
+      <a href="privacy.html#cookie" data-cookie>Gestisci i cookie</a>
       <a href="mailto:sorsoapp@gmail.com">Scrivimi</a>
       <a href="https://github.com/sorsoapp/sorso-releases/releases">Tutte le versioni</a>
     </div>
@@ -291,15 +287,6 @@
 </footer>
 
 <script>
-const osservatore = new IntersectionObserver((voci) => {
-  for (const v of voci) {
-    if (!v.isIntersecting) continue;
-    v.target.classList.add('dentro');
-    osservatore.unobserve(v.target);
-  }
-}, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
-document.querySelectorAll('.rivela').forEach(e => osservatore.observe(e));
-
 document.querySelectorAll('.passo').forEach(p => {
   p.addEventListener('pointermove', e => {
     const r = p.getBoundingClientRect();
@@ -335,5 +322,6 @@ fetch('https://api.github.com/repos/sorsoapp/sorso-releases/releases/latest')
   })
   .catch(() => {});
 </script>
+<script src="comune.js"></script>
 </body>
 </html>
