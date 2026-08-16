@@ -93,19 +93,46 @@
     </p>
 
     <h2>I permessi che l'app chiede, e perché</h2>
+    <p>
+      Sono nove, e li elenco <strong>tutti</strong> — anche quelli che non ho scelto io.
+      Se apri il file dell'app con uno strumento che li legge, questa lista deve
+      coincidere con quello che vedi, altrimenti non varrebbe la pena scriverla.
+    </p>
+    <p>Quelli che servono a Sorso per funzionare:</p>
     <ul>
       <li><strong>Notifiche</strong> — per mandarti i promemoria. Senza questo, l'app non
           può fare la sola cosa per cui esiste.</li>
-      <li><strong>Sveglie precise</strong> — perché il promemoria arrivi all'ora esatta che
-          hai scelto invece che «più o meno» quando il sistema decide.</li>
+      <li><strong>Sveglie precise</strong> (due voci, perché Android ha cambiato le regole
+          a metà strada) — perché il promemoria arrivi all'ora esatta che hai scelto
+          invece che «più o meno» quando il sistema decide.</li>
       <li><strong>Avvio del telefono</strong> — per rimettere i promemoria in agenda dopo un
-          riavvio, senza che tu debba riaprire l'app.</li>
-      <li><strong>Internet</strong> — solo per il controllo degli aggiornamenti descritto
-          qui sopra.</li>
+          riavvio, che altrimenti li cancella tutti.</li>
+      <li><strong>Internet</strong> — solo per chiedere a GitHub se c'è una versione nuova.</li>
+      <li><strong>Installare applicazioni</strong> — è quello dall'aria più minacciosa, e
+          merita una spiegazione: serve <em>soltanto</em> perché Sorso possa installare il
+          proprio aggiornamento, e il sistema lo permette unicamente per il pacchetto
+          <code>com.giovanni.sorso</code>. Non può installare nient'altro. In più l'app controlla da
+          sé che il file scaricato sia firmato con la stessa chiave di quello che stai
+          usando: se non lo è, lo butta senza nemmeno passarlo al sistema.</li>
     </ul>
     <p>
-      Nessuno di questi permessi dà accesso ai tuoi contatti, alla posizione, alla
-      fotocamera, ai file o alla salute: Sorso non li chiede e non saprebbe cosa farsene.
+      E quelli che arrivano dalle librerie di Google usate per programmare i promemoria,
+      non richiesti direttamente dall'app:
+    </p>
+    <ul>
+      <li><strong>Tenere sveglio il processore</strong> e <strong>servizio in primo
+          piano</strong> — per portare a termine un compito già iniziato senza che il
+          telefono si addormenti a metà.</li>
+      <li><strong>Stato della rete</strong> — per sapere se c'è connessione prima di
+          provare a usarla.</li>
+      <li><strong>Un permesso interno</strong> con un nome lunghissimo che finisce per
+          <code>NOT_EXPORTED_PERMISSION</code>: lo genera Android da solo, e serve a impedire che
+          altre app parlino con i pezzi interni di Sorso.</li>
+    </ul>
+    <p>
+      Nessuno di questi dà accesso a contatti, posizione, fotocamera, microfono, file
+      personali o dati sanitari. Sorso non li chiede, non li avrebbe, e non saprebbe cosa
+      farsene.
     </p>
 
     <h2>Questo sito</h2>
