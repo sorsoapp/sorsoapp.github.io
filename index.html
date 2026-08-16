@@ -3,7 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sorso — ti ricorda di bere</title>
+<!-- Sulla linguetta del browser c'è spazio per poche lettere: il nome, e basta.
+     L'aggiunta «— ti ricorda di bere» restava sempre tagliata a metà. La frase
+     completa vive più sotto, in og:title, dove serve davvero: nelle anteprime dei
+     link. -->
+<title>Sorso</title>
 
 <!--
   Cosa può fare questa pagina, e niente di più.
@@ -84,11 +88,19 @@
      Il mare non è un fondale fermo: sale mentre scorri, come nell'app sale
      mentre bevi. È la stessa idea, ed è il motivo per cui non c'è nessuna
      barra di avanzamento da guardare. */
+  /* Parte bassa e arriva a coprire quasi tutto: scorrere la pagina fino in fondo è
+     come finire la giornata nell'app, dove l'acqua sale a ogni bicchiere fino a
+     riempire lo schermo. Il testo resta sopra e leggibile perché il mare è
+     trasparente e `main` sta su un piano più alto. */
   .mare{
     position:fixed;left:0;right:0;bottom:0;z-index:0;pointer-events:none;
-    height:calc(32vh + var(--salita) * 16vh);
+    height:calc(30vh + var(--salita) * 54vh);
     transition:height .25s linear
   }
+  /* Il respiro: tutta la massa d'acqua sale e scende di pochi pixel, lentamente.
+     Da solo non si nota — è quello che fa sembrare vivo il resto. */
+  .mare .respiro{position:absolute;inset:0;animation:respira 11s ease-in-out infinite}
+  @keyframes respira{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
   .mare .corpo{
     position:absolute;left:0;right:0;bottom:0;top:22px;
     background:linear-gradient(180deg,rgba(123,240,255,.22) 0%,rgba(10,58,72,.55) 40%,rgba(2,22,28,.85) 100%);
@@ -113,22 +125,99 @@
 
   main{position:relative;z-index:1}
 
+  /* ============ SOTT'ACQUA, DAPPERTUTTO ============
+     Le bollicine non stanno solo dentro il mare in fondo: salgono per tutta la
+     pagina, piano, con una deriva laterale. È il dettaglio che fa capire in un
+     istante che non si sta guardando l'ennesimo sito scuro, ma qualcosa di
+     immerso. Poche e grandi diverse, altrimenti diventa una nevicata. */
+  .bolle-ambiente{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+  .bolla-a{
+    position:absolute;bottom:-60px;border-radius:50%;
+    background:radial-gradient(circle at 32% 27%,
+      rgba(234,251,255,.42), rgba(123,240,255,.10) 55%, rgba(123,240,255,.02) 100%);
+    border:1px solid rgba(234,251,255,.10);
+    animation:risali linear infinite
+  }
+  @keyframes risali{
+    0%{transform:translate3d(0,0,0) scale(.8);opacity:0}
+    9%{opacity:.6}
+    35%{transform:translate3d(16px,-34vh,0) scale(1)}
+    65%{transform:translate3d(-14px,-68vh,0) scale(1.04)}
+    90%{opacity:.3}
+    100%{transform:translate3d(8px,-112vh,0) scale(1.12);opacity:0}
+  }
+
+  /* Il cerchio che si allarga dove la goccia tocca: l'unico modo per far capire
+     che quella non è un'icona, ma acqua che cade. */
+  .tuffo{position:relative;display:flex;flex-direction:column;align-items:center}
+  /* Schiacciato e sotto la goccia, non attorno: un cerchio pieno che si allarga
+     davanti al nome sembrava un anello scuro disegnato per sbaglio. Un'increspatura
+     si guarda di sbieco, quindi resta un'ellisse bassa per tutta la sua corsa, e
+     smette prima di arrivare al titolo. */
+  .cerchio{
+    position:absolute;left:50%;top:98%;width:22px;height:22px;margin-left:-11px;
+    border:1.5px solid rgba(123,240,255,.4);border-radius:50%;
+    opacity:0;animation:cerchio-onda 4.4s ease-out 1.25s infinite
+  }
+  .cerchio.due{animation-delay:3.45s}
+  @keyframes cerchio-onda{
+    0%{transform:scale(.3) scaleY(.26);opacity:.5}
+    70%{opacity:.1}
+    100%{transform:scale(2.6) scaleY(.26);opacity:0}
+  }
+
+  /* Il tocco lascia un cerchio, come un dito nell'acqua. */
+  .tocco{
+    position:fixed;width:12px;height:12px;margin:-6px 0 0 -6px;
+    border:1.5px solid rgba(123,240,255,.65);border-radius:50%;
+    pointer-events:none;z-index:30;animation:tocco-onda .75s ease-out forwards
+  }
+  @keyframes tocco-onda{to{transform:scale(10) scaleY(.85);opacity:0}}
+
+  /* La bollicina che sfugge da un pulsante quando ci passi sopra. */
+  .sfiato{
+    position:fixed;border-radius:50%;pointer-events:none;z-index:25;
+    background:radial-gradient(circle at 32% 27%,rgba(234,251,255,.75),rgba(123,240,255,.2) 60%,transparent);
+    animation:sfiata 1.25s ease-out forwards
+  }
+  @keyframes sfiata{
+    0%{transform:translate(0,0) scale(.5);opacity:0}
+    18%{opacity:.9}
+    100%{transform:translate(var(--dx,0),-86px) scale(1.15);opacity:0}
+  }
+
   /* ============ RIVELAZIONE ALLO SCORRIMENTO ============
      Ogni blocco entra quando arriva il suo turno. Serve a dare un ritmo alla
-     lettura: senza, la pagina è un muro che compare tutto insieme. */
+     lettura: senza, la pagina è un muro che compare tutto insieme.
+     I blocchi non scivolano: **risalgono**, con un filo di rimbalzo alla fine, come
+     una cosa leggera che torna a galla. È la stessa curva dei pulsanti dell'app. */
   .rivela{
-    opacity:0;transform:translateY(30px);
-    transition:opacity .75s cubic-bezier(.2,.7,.3,1), transform .75s cubic-bezier(.2,.7,.3,1)
+    opacity:0;transform:translateY(38px) scale(.985);
+    transition:opacity .8s cubic-bezier(.22,1.12,.36,1), transform .8s cubic-bezier(.22,1.12,.36,1)
   }
   .rivela.dentro{opacity:1;transform:none}
   .rivela.d1{transition-delay:.08s} .rivela.d2{transition-delay:.16s}
   .rivela.d3{transition-delay:.24s} .rivela.d4{transition-delay:.32s}
 
   /* ============ APERTURA ============ */
+  /* Tutto in mezzo. Allineata a sinistra, su uno schermo da 27 pollici l'apertura
+     lasciava vuota metà pagina e sembrava un foglio con il testo scivolato in un
+     angolo: al centro il vuoto diventa aria attorno alle parole invece che spazio
+     avanzato. */
   .apertura{
     min-height:92vh;display:flex;flex-direction:column;justify-content:center;
+    align-items:center;text-align:center;
     padding-top:80px;padding-bottom:40px
   }
+  .apertura .claim, .apertura .sotto-claim{margin-left:auto;margin-right:auto}
+
+  /* Le sezioni che sono testo e basta stanno in mezzo; quelle con una figura di
+     fianco restano affiancate. */
+  .centrata{text-align:center}
+  .centrata .titolo{justify-content:center}
+  .centrata .testo{margin-left:auto;margin-right:auto}
+  .centrata .azioni{justify-content:center}
+  .centrata h2{max-width:720px;margin-left:auto;margin-right:auto}
 
   .goccia{
     font-size:64px;margin-bottom:22px;width:70px;
@@ -207,7 +296,7 @@
     /* Senza questo la riga si allarga quanto la colonna — l'apertura è un flex
        che stira i figli — e la sottolineatura diventa un filo che attraversa
        tutto lo schermo, indistinguibile da un separatore. */
-    display:inline-block;align-self:flex-start;max-width:100%;
+    display:inline-block;align-self:center;max-width:100%;
     margin-top:10px;font-size:14px;
     color:rgba(234,251,255,.62);
     /* Sottolineatura del testo, non del riquadro: andando a capo, un bordo
@@ -249,7 +338,8 @@
 
   /* Due per due, non «quante ce ne stanno»: con quattro carte l'incolonnamento
      automatico ne metteva tre in fila e una sola sotto, spaiata. */
-  .griglia{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:44px}
+  .griglia{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px}
+  @media (max-width:980px){ .griglia{grid-template-columns:repeat(2,1fr)} }
 
   /* ---- carte ----
      Sotto il puntatore si accende un alone che lo segue: la carta sembra
@@ -259,13 +349,24 @@
     position:relative;overflow:hidden;
     background:rgba(123,240,255,.05);border:1px solid rgba(123,240,255,.14);
     border-radius:24px;padding:28px;
-    transition:transform .28s cubic-bezier(.2,.8,.3,1), border-color .28s, box-shadow .28s
+    transition:transform .28s cubic-bezier(.2,.8,.3,1), border-color .28s, box-shadow .28s;
+    text-align:left   /* dentro la carta si legge, quindi si allinea a sinistra */
   }
   .carta::before{
     content:'';position:absolute;inset:0;pointer-events:none;opacity:0;
     transition:opacity .35s;
     background:radial-gradient(320px circle at var(--mx,50%) var(--my,50%),rgba(123,240,255,.16),transparent 62%)
   }
+  /* La carta si riempie d'acqua sotto il puntatore: il bordo superiore è curvo,
+     così sale come un livello vero invece che come una barra. */
+  .carta::after{
+    content:'';position:absolute;left:-12%;right:-12%;bottom:-105%;height:105%;
+    pointer-events:none;
+    background:linear-gradient(180deg,rgba(123,240,255,.17),rgba(123,240,255,.03));
+    border-radius:44% 46% 0 0 / 14% 13% 0 0;
+    transition:bottom .75s cubic-bezier(.25,.9,.35,1)
+  }
+  .carta:hover::after{bottom:-62%}
   .carta:hover::before{opacity:1}
   .carta:hover{
     transform:translateY(-7px);border-color:rgba(123,240,255,.42);
@@ -319,6 +420,67 @@
     transition:height 1.4s cubic-bezier(.3,.9,.4,1)
   }
 
+  /* ============ STATISTICHE ============
+     I quattro riquadri e le colonne sono gli stessi che l'app mostra davvero: serie
+     di giorni, media, obiettivi centrati, giorno migliore e l'andamento della
+     settimana. Meglio far vedere i numeri che scrivere «ci sono le statistiche». */
+  .numeri{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:44px}
+  .numero{
+    position:relative;overflow:hidden;
+    background:rgba(123,240,255,.05);border:1px solid rgba(123,240,255,.14);
+    border-radius:20px;padding:22px 18px;text-align:left;
+    transition:transform .28s cubic-bezier(.2,.8,.3,1), border-color .28s
+  }
+  .numero::after{
+    content:'';position:absolute;left:-14%;right:-14%;bottom:-105%;height:105%;
+    pointer-events:none;
+    background:linear-gradient(180deg,rgba(123,240,255,.2),rgba(123,240,255,.04));
+    border-radius:44% 46% 0 0 / 16% 15% 0 0;
+    transition:bottom .7s cubic-bezier(.25,.9,.35,1)
+  }
+  .numero:hover::after{bottom:-55%}
+  .numero:hover{transform:translateY(-5px);border-color:rgba(123,240,255,.38)}
+  .numero > *{position:relative;z-index:1}
+  .numero .etichetta{
+    font-size:11px;letter-spacing:2px;text-transform:uppercase;
+    color:rgba(234,251,255,.55);margin-bottom:12px
+  }
+  .numero .cifra{font-size:38px;font-weight:200;letter-spacing:-1.5px;line-height:1}
+  .numero .cifra b{font-size:15px;font-weight:400;color:rgba(234,251,255,.55)}
+  .numero .nota{font-size:13px;color:rgba(234,251,255,.5);margin-top:8px}
+
+  .andamento{
+    margin-top:16px;background:rgba(123,240,255,.05);
+    border:1px solid rgba(123,240,255,.14);border-radius:20px;padding:24px 26px;
+    text-align:left
+  }
+  .colonne{display:flex;align-items:flex-end;gap:10px;height:150px;margin-top:18px}
+  .colonne i{
+    position:relative;flex:1;border-radius:7px 7px 3px 3px;height:0;
+    background:linear-gradient(180deg,var(--glow),rgba(123,240,255,.22));
+    transition:height 1s cubic-bezier(.2,.8,.3,1)
+  }
+  /* Il pelo dell'acqua in cima a ogni colonna, che ondeggia sfalsato: da fermo un
+     istogramma è un istogramma, in movimento sono sette provette piene. */
+  .colonne i::after{
+    content:'';position:absolute;left:-1px;right:-1px;top:-5px;height:11px;
+    background:var(--glow);border-radius:50%;opacity:.9;
+    animation:pelo 3.2s ease-in-out infinite
+  }
+  .colonne i:nth-child(2)::after{animation-delay:-.4s}
+  .colonne i:nth-child(3)::after{animation-delay:-.8s}
+  .colonne i:nth-child(4)::after{animation-delay:-1.2s}
+  .colonne i:nth-child(5)::after{animation-delay:-1.6s}
+  .colonne i:nth-child(6)::after{animation-delay:-2s}
+  .colonne i:nth-child(7)::after{animation-delay:-2.4s}
+  @keyframes pelo{
+    0%,100%{transform:translateY(0) scaleX(1)}
+    50%{transform:translateY(-3px) scaleX(1.07)}
+  }
+  .dentro .colonne i{height:var(--h)}
+  .giorni{display:flex;gap:10px;margin-top:10px}
+  .giorni span{flex:1;text-align:center;font-size:11.5px;color:rgba(234,251,255,.5)}
+
   /* ============ CHIUSURA ============ */
   .chiusura{text-align:center;padding-top:110px;padding-bottom:90px}
   .chiusura h2{max-width:640px;margin:0 auto 26px}
@@ -343,8 +505,16 @@
   .link-piede a:hover{color:var(--glow)}
   .link-piede a:hover::after{width:100%}
 
+  @media (max-width:980px){
+    .numeri{grid-template-columns:repeat(2,1fr)}
+  }
   @media (max-width:760px){
     .griglia{grid-template-columns:1fr}
+  }
+  @media (max-width:520px){
+    .numeri{grid-template-columns:1fr}
+    .colonne{height:120px;gap:7px}
+    .giorni{gap:7px}
   }
 
   @media (max-width:640px){
@@ -355,8 +525,8 @@
     .scorri-giu{display:none}
     .vetrina{gap:34px}
     /* Sullo schermo stretto l'apertura è più corta e il mare arrivava a
-       tagliare in due il pulsante: qui sta più basso. */
-    .mare{height:calc(24vh + var(--salita) * 14vh)}
+       tagliare in due il pulsante: qui parte più basso, ma sale lo stesso. */
+    .mare{height:calc(22vh + var(--salita) * 48vh)}
     .chiusura{padding-top:80px;padding-bottom:70px}
     .carta{padding:24px}
     /* Il piede in colonna: affiancati, i cinque link finivano a capo a metà
@@ -372,7 +542,9 @@
     *,*::before,*::after{animation:none !important;transition:none !important}
     .rivela{opacity:1;transform:none}
     .bicchiere i{height:var(--h,0)}
+    .colonne i{height:var(--h,0)}
     h1 span{opacity:1;transform:none}
+    .bolle-ambiente,.cerchio{display:none}
     html{scroll-behavior:auto}
   }
 </style>
@@ -381,8 +553,12 @@
 
 <div class="avanzamento" aria-hidden="true"><i></i></div>
 
+<!-- le bollicine che attraversano tutta la pagina, non solo il mare -->
+<div class="bolle-ambiente" id="bolle-ambiente" aria-hidden="true"></div>
+
 <!-- il mare, sempre in fondo alla pagina -->
 <div class="mare" aria-hidden="true">
+ <div class="respiro">
   <div class="onda c">
     <svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 15 Q 150 4 300 14 T 600 14 T 900 14 T 1200 14 V26 H0Z" fill="#0A3A48"/></svg>
     <svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 15 Q 150 4 300 14 T 600 14 T 900 14 T 1200 14 V26 H0Z" fill="#0A3A48"/></svg>
@@ -396,14 +572,19 @@
     <svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 13 Q 150 26 300 13 T 600 13 T 900 13 T 1200 13 V26 H0Z" fill="#12586B"/></svg>
   </div>
   <div class="corpo" id="bolle"></div>
+ </div>
 </div>
 
 <main>
   <!-- ============ APERTURA ============ -->
   <div class="wrap apertura">
-    <div class="goccia">💧</div>
+    <div class="tuffo">
+      <div class="goccia">💧</div>
+      <span class="cerchio"></span>
+      <span class="cerchio due"></span>
+    </div>
     <h1 id="nome">SORSO</h1>
-    <p class="claim rivela d1">Ti ricorda di bere durante la giornata. <b>All'ora giusta</b>, anche quando l'app è chiusa.</p>
+    <p class="claim rivela d1">Ti ricorda di bere durante la giornata.<br><b>All'ora giusta</b>, senza che tu ci debba pensare.</p>
     <p class="sotto-claim rivela d2">
       Niente account, niente pubblicità, niente che esca dal tuo telefono.
       Gratis, per Android.
@@ -425,38 +606,47 @@
   </div>
 
   <!-- ============ COSA FA ============ -->
-  <section id="cosa-fa" class="wrap">
+  <section id="cosa-fa" class="wrap centrata">
     <p class="titolo rivela">Cosa fa</p>
     <h2 class="rivela d1">Una cosa sola, fatta bene</h2>
     <p class="testo rivela d2">
-      Non tiene diari, non calcola punteggi, non ti manda notifiche di marketing.
-      Ti ricorda di bere e conta quanto hai bevuto. Fine.
+      Niente diari, niente punteggi, niente notifiche di marketing.
     </p>
 
     <div class="griglia">
       <div class="carta rivela d1">
         <div class="icona">⏰</div>
         <h3>Promemoria puntuali</h3>
-        <p>Se scegli mezz'ora, arriva ogni mezz'ora. Anche a telefono in tasca, anche con
-           l'app chiusa, anche dopo un riavvio.</p>
+        <p>Ogni ora, ogni mezz'ora, come decidi tu. Arrivano al minuto esatto, anche a
+           telefono in tasca e dopo un riavvio.</p>
       </div>
       <div class="carta rivela d2">
         <div class="icona">🥛</div>
-        <h3>Contati in bicchieri</h3>
-        <p>«4 bicchieri finiti su 12» dice molto più di «800 ml». I millilitri restano,
-           per chi li vuole.</p>
+        <h3>Conta in bicchieri</h3>
+        <p>«4 bicchieri finiti su 12». I millilitri restano, per chi li vuole.</p>
       </div>
       <div class="carta rivela d3">
+        <div class="icona">📊</div>
+        <h3>Statistiche</h3>
+        <p>Giorni di fila, media giornaliera, obiettivi centrati, giorno migliore e le
+           colonne degli ultimi sette giorni.</p>
+      </div>
+      <div class="carta rivela d1">
         <div class="icona">📱</div>
         <h3>Due widget</h3>
-        <p>Il livello di oggi sulla schermata home, e un tocco per segnare un bicchiere
+        <p>Il livello di oggi sulla schermata home. Un tocco per segnare un bicchiere
            senza aprire niente.</p>
       </div>
-      <div class="carta rivela d4">
+      <div class="carta rivela d2">
         <div class="icona">🎯</div>
-        <h3>Un obiettivo tuo</h3>
-        <p>Sei domande all'avvio — peso, età, quanto ti alleni — e Sorso calcola quanto ti
-           serve. Oppure lo scegli a mano.</p>
+        <h3>Obiettivo su misura</h3>
+        <p>Peso, età, quanto ti alleni, il clima. Sorso calcola quanto ti serve — oppure
+           lo scegli a mano.</p>
+      </div>
+      <div class="carta rivela d3">
+        <div class="icona">✈️</div>
+        <h3>Funziona senza rete</h3>
+        <p>Nessun account, nessuna registrazione, nessuna pubblicità. Anche in aereo.</p>
       </div>
     </div>
   </section>
@@ -502,8 +692,54 @@
     </div>
   </section>
 
+  <!-- ============ STATISTICHE ============ -->
+  <section class="wrap centrata">
+    <p class="titolo rivela">Statistiche</p>
+    <h2 class="rivela d1">Vedi se è diventata un'abitudine</h2>
+    <p class="testo rivela d2">
+      Non serve aprire niente per bere. Ma dopo qualche giorno qualcosa da guardare c'è,
+      ed è la parte che fa venire voglia di non interrompere la serie.
+    </p>
+
+    <div class="numeri rivela d2">
+      <div class="numero">
+        <div class="etichetta">Serie in corso</div>
+        <div class="cifra">12</div>
+        <div class="nota">giorni di fila</div>
+      </div>
+      <div class="numero">
+        <div class="etichetta">Media al giorno</div>
+        <div class="cifra">2,10<b> L</b></div>
+        <div class="nota">su 34 giorni</div>
+      </div>
+      <div class="numero">
+        <div class="etichetta">Obiettivi centrati</div>
+        <div class="cifra">24</div>
+        <div class="nota">negli ultimi 30 giorni</div>
+      </div>
+      <div class="numero">
+        <div class="etichetta">Giorno migliore</div>
+        <div class="cifra">3,20<b> L</b></div>
+        <div class="nota">il tuo record</div>
+      </div>
+    </div>
+
+    <div class="andamento rivela d3">
+      <div class="etichetta" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(234,251,255,.55)">Ultimi 7 giorni</div>
+      <div class="colonne">
+        <i style="--h:62%"></i><i style="--h:88%"></i><i style="--h:74%"></i>
+        <i style="--h:100%"></i><i style="--h:55%"></i><i style="--h:81%"></i>
+        <i style="--h:93%"></i>
+      </div>
+      <div class="giorni">
+        <span>lun</span><span>mar</span><span>mer</span><span>gio</span>
+        <span>ven</span><span>sab</span><span>dom</span>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ PRIVACY ============ -->
-  <section class="wrap">
+  <section class="wrap centrata">
     <p class="titolo rivela">I tuoi dati</p>
     <h2 class="rivela d1">Non esce niente da questo telefono</h2>
     <p class="testo rivela d2">
@@ -512,9 +748,8 @@
       tuo telefono, e se disinstalli l'app spariscono con lei.
     </p>
     <p class="testo rivela d3" style="margin-top:16px">
-      L'unica volta che l'app esce su internet è per chiedere a GitHub se esiste una
-      versione più recente. In quella richiesta non c'è niente di tuo: solo il numero
-      della versione che hai installata.
+      L'unica volta che l'app si collega a internet è per controllare se è uscito un
+      aggiornamento. Nient'altro.
     </p>
     <div class="azioni rivela d4" style="margin-top:32px">
       <a class="btn vuoto magnete" href="privacy.html">Leggi la privacy</a>
@@ -543,6 +778,7 @@
       <a href="https://github.com/sorsoapp/sorso-releases/releases">Tutte le versioni</a>
       <a href="https://github.com/sorsoapp">GitHub</a>
       <a href="privacy.html">Privacy</a>
+      <a href="privacy.html#cookie">Cookie</a>
       <a href="condizioni.html">Condizioni</a>
     </div>
   </div>
@@ -564,6 +800,60 @@ nome.textContent = '';
 // Il riflesso parte solo quando l'ultima lettera è atterrata: prima si
 // accavallerebbe con la caduta e sembrerebbe un disturbo del video.
 if (!fermo) setTimeout(() => nome.classList.add('lucido'), 350 + parola.length * 90 + 800);
+
+// ---- le bollicine che attraversano tutta la pagina -----------------------
+// Diciotto, non di più: contate a occhio su uno schermo grande sono già tante da
+// far sembrare l'aria densa, e poche abbastanza da non pesare sullo scorrimento.
+if (!fermo) {
+  const ambiente = document.getElementById('bolle-ambiente');
+  for (let i = 0; i < 18; i++) {
+    const b = document.createElement('div');
+    const d = 5 + Math.random() * 18;
+    b.className = 'bolla-a';
+    b.style.width = b.style.height = d + 'px';
+    b.style.left = Math.random() * 100 + '%';
+    // Le grandi salgono più lente: è il contrario dell'intuito, ma è come si
+    // muovono davvero, e a occhio la differenza si sente.
+    b.style.animationDuration = (16 + d * 0.9 + Math.random() * 10) + 's';
+    b.style.animationDelay = (-Math.random() * 26) + 's';
+    ambiente.appendChild(b);
+  }
+}
+
+// ---- il cerchio che si allarga dove tocchi -------------------------------
+if (!fermo) {
+  addEventListener('pointerdown', e => {
+    const c = document.createElement('span');
+    c.className = 'tocco';
+    c.style.left = e.clientX + 'px';
+    c.style.top = e.clientY + 'px';
+    document.body.appendChild(c);
+    c.addEventListener('animationend', () => c.remove());
+  }, { passive: true });
+}
+
+// ---- i pulsanti perdono bollicine quando ci passi sopra ------------------
+if (!fermo && matchMedia('(hover: hover)').matches) {
+  document.querySelectorAll('.btn').forEach(b => {
+    let ultimo = 0;
+    b.addEventListener('pointermove', e => {
+      // Una ogni 120 ms: senza freno, muovendo il mouse ne uscirebbero centinaia.
+      const ora = performance.now();
+      if (ora - ultimo < 120) return;
+      ultimo = ora;
+      const r = b.getBoundingClientRect();
+      const s = document.createElement('span');
+      const d = 4 + Math.random() * 7;
+      s.className = 'sfiato';
+      s.style.width = s.style.height = d + 'px';
+      s.style.left = (r.left + Math.random() * r.width) + 'px';
+      s.style.top = (r.top + r.height * 0.65) + 'px';
+      s.style.setProperty('--dx', (Math.random() * 26 - 13) + 'px');
+      document.body.appendChild(s);
+      s.addEventListener('animationend', () => s.remove());
+    });
+  });
+}
 
 // ---- bollicine che salgono dal fondo -------------------------------------
 const contenitore = document.getElementById('bolle');
