@@ -27,7 +27,14 @@
   /* Più larga dello schermo: la spinta la fa inclinare di una frazione di grado,
      e senza il margine si vedrebbero gli angoli scoperti. */
   position:fixed;left:-6%;right:-6%;width:112%;bottom:0;z-index:0;pointer-events:none;
-  height:calc(28vh + var(--salita) * 66vh);
+  /* In fondo alla pagina l'acqua deve arrivare in cima, come nell'app quando la
+     giornata è completa. Il conto sfora apposta il 100%, e il tetto lo riporta a
+     schermo pieno: così ci arriva davvero anche dove `vh` e altezza visibile non
+     coincidono — sui telefoni, con la barra dell'indirizzo che va e viene, non
+     coincidono quasi mai. */
+  height:calc(26vh + var(--salita) * 82vh);
+  max-height:100vh;
+  max-height:100dvh;
   transition:height .25s linear, transform .45s cubic-bezier(.2,.9,.3,1);
   /* --spinta arriva da comune.js: è quanto forte stai scorrendo, con segno.
      L'acqua se ne accorge e si sbilancia, come in un bicchiere che si muove. */
@@ -214,7 +221,7 @@
    e il mare arrivava a tagliare in due i pulsanti — ma alla fine della pagina
    arriva su come altrove. */
 @media (max-width:640px){
-  .mare{height:calc(20vh + var(--salita) * 72vh)}
+  .mare{height:calc(20vh + var(--salita) * 90vh)}
 }
 
 @media (prefers-reduced-motion:reduce){
