@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy — Sorso</title>
+<meta http-equiv="Content-Security-Policy" content="
+  default-src 'none';
+  script-src 'unsafe-inline';
+  style-src 'self' 'unsafe-inline';
+  img-src 'self' data:;
+  connect-src https://api.github.com;
+  base-uri 'none';
+  form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="description" content="Sorso non raccoglie niente. I sorsi, l'obiettivo e lo storico restano sul tuo telefono: non esiste un server di Sorso e non c'è nessun account.">
+<link rel="canonical" href="https://sorsoapp.it/privacy.html">
+<meta name="theme-color" content="#02161C">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💧</text></svg>">
+<link rel="stylesheet" href="stile.css">
+</head>
+<body>
+
+<div class="mare" aria-hidden="true">
+  <div class="onda b">
+    <svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 14 Q 150 0 300 13 T 600 13 T 900 13 T 1200 13 V26 H0Z" fill="#0A3A48"/></svg>
+    <svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 14 Q 150 0 300 13 T 600 13 T 900 13 T 1200 13 V26 H0Z" fill="#0A3A48"/></svg>
+  </div>
+  <div class="onda a">
+    <svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 13 Q 150 26 300 13 T 600 13 T 900 13 T 1200 13 V26 H0Z" fill="#12586B"/></svg>
+    <svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 13 Q 150 26 300 13 T 600 13 T 900 13 T 1200 13 V26 H0Z" fill="#12586B"/></svg>
+  </div>
+  <div class="corpo"></div>
+</div>
+
+<main>
+  <div class="wrap">
+    <div class="testata">
+      <a class="torna" href="./">← Torna a Sorso</a>
+      <h1>Privacy</h1>
+      <p class="data-agg">In vigore dal 16 agosto 2026</p>
+    </div>
+
+    <div class="rilievo">
+      <p><strong>In una riga:</strong> Sorso non raccoglie niente. Non c'è un server,
+         non c'è un account, nessuno può vedere quanto bevi — nemmeno io.</p>
+    </div>
+
+    <h2>Cosa resta sul tuo telefono</h2>
+    <p>
+      Tutto quello che l'app sa di te sta nella memoria del tuo telefono, dentro l'app, e
+      non esce da lì:
+    </p>
+    <ul>
+      <li>i sorsi che segni e il totale di oggi;</li>
+      <li>lo storico dei giorni passati;</li>
+      <li>l'obiettivo giornaliero e la dimensione del bicchiere;</li>
+      <li>le ore in cui vuoi i promemoria e ogni quanto;</li>
+      <li>le risposte del benvenuto: peso, età, sesso, quanto ti alleni, il clima.</li>
+    </ul>
+    <p>
+      Peso ed età sono i dati più personali che Sorso ti abbia chiesto. Servono solo a
+      calcolare quanto ti conviene bere, li puoi saltare, e restano lì dentro come tutto
+      il resto. Se disinstalli l'app spariscono con lei: non ne esiste una copia altrove
+      da cui recuperarli, e non ne esiste una da cui qualcun altro possa leggerli.
+    </p>
+    <p>
+      Vale anche per il backup automatico di Android: Sorso è <strong>esclusa</strong>.
+      Molte app lasciano che il sistema copi i propri dati nel Google Drive di chi le usa;
+      qui è spento apposta, perché altrimenti la frase qui sopra non sarebbe vera.
+      L'unica copia prevista è quella diretta da vecchio a nuovo telefono quando cambi
+      dispositivo — non passa da internet, e la avvii tu con entrambi i telefoni in mano.
+    </p>
+
+    <h2>L'unica volta che l'app esce su internet</h2>
+    <p>
+      Sorso si collega a internet per una cosa sola: chiedere a GitHub se è uscita una
+      versione più recente di quella che hai installata. In quella richiesta non c'è
+      niente di tuo — nessun dato del tuo profilo, nessun conteggio, nessun
+      identificatore: solo il numero della versione in esecuzione.
+    </p>
+    <p>
+      Come in qualunque collegamento a internet, GitHub vede l'indirizzo IP da cui arriva
+      la richiesta: è il funzionamento della rete, non una scelta dell'app, e vale la
+      <a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">informativa di GitHub</a>.
+    </p>
+
+    <h2>Nessun tracciamento, nessuna pubblicità</h2>
+    <p>
+      Nell'app non c'è nessuno strumento di statistica o di analisi del comportamento, non
+      ci sono librerie pubblicitarie, non ci sono componenti di terze parti che riferiscano
+      a qualcuno cosa fai. Non c'è niente da disattivare perché non c'è niente di acceso.
+    </p>
+
+    <h2>I permessi che l'app chiede, e perché</h2>
+    <ul>
+      <li><strong>Notifiche</strong> — per mandarti i promemoria. Senza questo, l'app non
+          può fare la sola cosa per cui esiste.</li>
+      <li><strong>Sveglie precise</strong> — perché il promemoria arrivi all'ora esatta che
+          hai scelto invece che «più o meno» quando il sistema decide.</li>
+      <li><strong>Avvio del telefono</strong> — per rimettere i promemoria in agenda dopo un
+          riavvio, senza che tu debba riaprire l'app.</li>
+      <li><strong>Internet</strong> — solo per il controllo degli aggiornamenti descritto
+          qui sopra.</li>
+    </ul>
+    <p>
+      Nessuno di questi permessi dà accesso ai tuoi contatti, alla posizione, alla
+      fotocamera, ai file o alla salute: Sorso non li chiede e non saprebbe cosa farsene.
+    </p>
+
+    <h2>Questo sito</h2>
+    <p>
+      Il sito non usa cookie, non ha statistiche, non ha pulsanti social che ti seguono.
+      All'apertura della pagina il tuo browser chiede a GitHub qual è l'ultima versione
+      pubblicata, per tenere aggiornato il pulsante «Scarica»: come sopra, GitHub vede
+      l'indirizzo IP da cui arriva la richiesta e nient'altro.
+    </p>
+    <p>
+      Il sito è ospitato su GitHub Pages, che come ogni servizio di hosting tiene i propri
+      registri di accesso. Non ho modo di collegarli a una persona e non li consulto.
+    </p>
+
+    <h2>Se cambia qualcosa</h2>
+    <p>
+      Se in futuro una versione di Sorso dovesse trattare i dati in modo diverso, sarà
+      scritto qui e nelle note di quella versione, prima che accada — non dopo. La data in
+      cima a questa pagina dice sempre da quando vale il testo che stai leggendo.
+    </p>
+
+    <h2>Chi c'è dietro, e come si scrive</h2>
+    <p>
+      Sorso è fatta da <strong>Giovanni Romito</strong>. Per qualunque domanda su questa
+      pagina — compresa la richiesta di sapere quali dati ci sono su di te, che è presto
+      detto: nessuno — l'indirizzo è
+      <a href="mailto:sorsoapp@gmail.com">sorsoapp@gmail.com</a>.
+    </p>
+    <p>
+      Per segnalare un difetto dell'app va bene anche
+      <a href="https://github.com/sorsoapp/sorso-releases/issues" rel="noopener">aprire una segnalazione su GitHub</a>,
+      se hai un account: resta scritta, e chi ha lo stesso problema la trova.
+    </p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap piede">
+    <div class="firma">Sorso · di <b>Giovanni Romito</b></div>
+    <div class="link-piede">
+      <a href="./">Home</a>
+      <a href="condizioni.html">Condizioni</a>
+      <a href="mailto:sorsoapp@gmail.com">Scrivimi</a>
+      <a href="https://github.com/sorsoapp/sorso-releases/releases">Tutte le versioni</a>
+      <a href="https://github.com/sorsoapp">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

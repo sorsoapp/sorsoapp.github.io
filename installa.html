@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Come si installa — Sorso</title>
+<meta http-equiv="Content-Security-Policy" content="
+  default-src 'none';
+  script-src 'unsafe-inline';
+  style-src 'self' 'unsafe-inline';
+  img-src 'self' data:;
+  connect-src https://api.github.com;
+  base-uri 'none';
+  form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="description" content="Sorso non è sul Play Store, quindi Android mette qualche avviso prima di installarla. Ecco cosa dicono, perché compaiono e come si passa oltre.">
+<link rel="canonical" href="https://sorsoapp.it/installa.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sorsoapp.it/installa.html">
+<meta property="og:title" content="Come si installa Sorso">
+<meta property="og:description" content="Tre avvisi di Android, spiegati uno per uno. Due minuti e l'app è sul telefono.">
+<meta property="og:image" content="https://sorsoapp.it/anteprima.png">
+<meta name="theme-color" content="#02161C">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💧</text></svg>">
+<link rel="stylesheet" href="stile.css">
+<style>
+  /* Questa pagina è più larga delle altre due: i passi hanno bisogno di spazio,
+     e leggerli in colonna stretta li fa sembrare più di quanti sono. */
+  .wrap{max-width:800px}
+
+  .rivela{
+    opacity:0;transform:translateY(26px);
+    transition:opacity .7s cubic-bezier(.2,.7,.3,1), transform .7s cubic-bezier(.2,.7,.3,1)
+  }
+  .rivela.dentro{opacity:1;transform:none}
+
+  /* ---- i passi ---- */
+  .passi{counter-reset:passo;margin-top:10px}
+  .passo{
+    position:relative;overflow:hidden;
+    border:1px solid rgba(123,240,255,.14);background:rgba(123,240,255,.04);
+    border-radius:22px;padding:26px 28px 24px 78px;margin-bottom:16px;
+    transition:transform .28s cubic-bezier(.2,.8,.3,1), border-color .28s, box-shadow .28s
+  }
+  .passo::before{
+    counter-increment:passo;content:counter(passo);
+    position:absolute;left:24px;top:24px;
+    width:34px;height:34px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(123,240,255,.12);border:1px solid rgba(123,240,255,.35);
+    color:var(--glow);font-size:15px;font-weight:700;
+    transition:background .3s,transform .35s cubic-bezier(.34,1.56,.64,1)
+  }
+  .passo::after{
+    content:'';position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .35s;
+    background:radial-gradient(300px circle at var(--mx,50%) var(--my,50%),rgba(123,240,255,.13),transparent 62%)
+  }
+  .passo:hover{transform:translateY(-4px);border-color:rgba(123,240,255,.4);box-shadow:0 18px 44px rgba(0,0,0,.38)}
+  .passo:hover::before{background:var(--glow);color:#04222B;transform:scale(1.12) rotate(-8deg)}
+  .passo:hover::after{opacity:1}
+  .passo h3{font-size:19px;font-weight:700;margin-bottom:9px;color:var(--schiuma)}
+  .passo p{font-size:16px;margin-bottom:10px}
+  .passo p:last-child{margin-bottom:0}
+
+  /* Quello che c'è scritto sullo schermo del telefono, riportato uguale: è
+     l'unico modo per riconoscerlo mentre lo si ha davanti. */
+  .schermata{
+    display:block;border-left:2px solid rgba(123,240,255,.4);
+    background:rgba(2,22,28,.55);border-radius:0 12px 12px 0;
+    padding:12px 16px;margin:12px 0;font-size:15px;
+    color:rgba(234,251,255,.75);font-style:italic
+  }
+  .tocca{
+    display:inline-block;background:rgba(123,240,255,.14);
+    border:1px solid rgba(123,240,255,.3);border-radius:9px;
+    padding:1px 9px;font-size:14.5px;font-style:normal;font-weight:600;
+    color:var(--glow);white-space:nowrap
+  }
+
+  .bottoniera{display:flex;gap:14px;flex-wrap:wrap;margin:34px 0 6px}
+  .btn{
+    position:relative;overflow:hidden;isolation:isolate;
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--schiuma);color:#04303D;
+    padding:16px 28px;border-radius:30px;font-weight:700;font-size:16.5px;
+    text-decoration:none;
+    transition:transform .18s cubic-bezier(.34,1.56,.64,1), box-shadow .25s;
+    box-shadow:0 8px 30px rgba(123,240,255,.18)
+  }
+  .btn::after{
+    content:'';position:absolute;top:-20%;left:-140%;width:55%;height:140%;
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.6),transparent);
+    transform:skewX(-18deg);z-index:-1
+  }
+  .btn:hover::after{animation:lampo .85s ease-out}
+  @keyframes lampo{to{left:150%}}
+  .btn:hover{transform:translateY(-3px);box-shadow:0 16px 46px rgba(123,240,255,.34)}
+  .btn:active{transform:scale(.96)}
+  .btn.vuoto{
+    background:transparent;color:var(--schiuma);
+    border:1.5px solid rgba(123,240,255,.35);box-shadow:none;font-weight:600
+  }
+  .btn.vuoto::after{background:linear-gradient(100deg,transparent,rgba(123,240,255,.28),transparent)}
+  .btn.vuoto:hover{background:rgba(123,240,255,.09);box-shadow:0 10px 34px rgba(123,240,255,.14)}
+  .btn .freccia{display:inline-block;transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
+  .btn:hover .freccia{transform:translateY(3px)}
+  .sotto-bottone{font-size:13.5px;color:rgba(234,251,255,.55);margin-top:2px}
+
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none !important;transition:none !important}
+    .rivela{opacity:1;transform:none}
+  }
+  @media (max-width:560px){
+    .passo{padding:24px 20px 22px 20px}
+    .passo::before{position:static;margin-bottom:14px}
+    .bottoniera{flex-direction:column}
+    .btn{justify-content:center}
+  }
+</style>
+</head>
+<body>
+
+<div class="mare" aria-hidden="true">
+  <div class="onda b">
+    <svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 14 Q 150 0 300 13 T 600 13 T 900 13 T 1200 13 V26 H0Z" fill="#0A3A48"/></svg>
+    <svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 14 Q 150 0 300 13 T 600 13 T 900 13 T 1200 13 V26 H0Z" fill="#0A3A48"/></svg>
+  </div>
+  <div class="onda a">
+    <svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 13 Q 150 26 300 13 T 600 13 T 900 13 T 1200 13 V26 H0Z" fill="#12586B"/></svg>
+    <svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 13 Q 150 26 300 13 T 600 13 T 900 13 T 1200 13 V26 H0Z" fill="#12586B"/></svg>
+  </div>
+  <div class="corpo"></div>
+</div>
+
+<main>
+  <div class="wrap">
+    <div class="testata">
+      <a class="torna" href="./">← Torna a Sorso</a>
+      <h1>Come si installa</h1>
+      <p class="data-agg">Due minuti, e la maggior parte del tempo è Android che chiede conferma</p>
+    </div>
+
+    <div class="rilievo rivela">
+      <p>
+        Sorso non è sul Play Store, quindi si installa scaricando il file direttamente.
+        È una cosa che Android permette da sempre — ma <strong>prima ti mette davanti due
+        o tre avvisi</strong> scritti in modo da spaventare. Qui sotto c'è cosa dicono,
+        perché compaiono e cosa toccare.
+      </p>
+    </div>
+
+    <h2 class="rivela">I passi, uno per uno</h2>
+
+    <div class="passi">
+      <div class="passo rivela">
+        <h3>Scarica il file dal telefono</h3>
+        <p>
+          Apri questo sito <strong>dal telefono Android</strong> (non dal computer) e tocca
+          «Scarica Sorso». Il browser quasi certamente dirà qualcosa del genere:
+        </p>
+        <span class="schermata">«Questo tipo di file può danneggiare il dispositivo. Vuoi conservare <span class="nome-file">Sorso-1.10.apk</span>?»</span>
+        <p>Tocca <span class="tocca">Scarica comunque</span> — oppure <span class="tocca">OK</span>, dipende dal browser.</p>
+      </div>
+
+      <div class="passo rivela">
+        <h3>Aprilo</h3>
+        <p>
+          Quando il download finisce, tocca la notifica che compare in alto. Se l'hai già
+          chiusa, il file sta nell'app <strong>File</strong> o <strong>Download</strong>,
+          e si chiama <em class="nome-file">Sorso-1.10.apk</em>: toccalo per aprirlo.
+        </p>
+      </div>
+
+      <div class="passo rivela">
+        <h3>Dai il permesso al browser, una volta sola</h3>
+        <p>Qui Android si ferma e dice:</p>
+        <span class="schermata">«Per motivi di sicurezza il telefono non può installare app sconosciute da questa origine»</span>
+        <p>
+          Tocca <span class="tocca">Impostazioni</span>, attiva l'interruttore
+          <span class="tocca">Consenti da questa origine</span>, poi torna indietro con il
+          gesto o il tasto indietro: l'installazione riprende da sola.
+        </p>
+        <p>
+          Non stai abbassando la sicurezza del telefono in generale — stai dicendo
+          «di questo browser mi fido». Vale solo per lui, e solo finché non lo togli.
+        </p>
+      </div>
+
+      <div class="passo rivela">
+        <h3>Passa oltre Play Protect</h3>
+        <p>È l'avviso che ferma più gente, perché è scritto in rosso:</p>
+        <span class="schermata">«App sconosciuta bloccata — Play Protect non riconosce lo sviluppatore di questa app»</span>
+        <p>
+          Tocca <span class="tocca">Altri dettagli</span> e poi
+          <span class="tocca">Installa comunque</span>. Su alcuni telefoni prima compare
+          «Analisi dell'app in corso»: lascialo finire, sono pochi secondi.
+        </p>
+      </div>
+
+      <div class="passo rivela">
+        <h3>Installa e apri</h3>
+        <p>
+          Tocca <span class="tocca">Installa</span>, aspetta la barra, poi
+          <span class="tocca">Apri</span>. Fatto: il file .apk non serve più e puoi
+          cancellarlo dai download.
+        </p>
+      </div>
+
+      <div class="passo rivela">
+        <h3>Al primo avvio, tre sì</h3>
+        <p>
+          Sorso ti chiederà il permesso di mandarti <strong>notifiche</strong> (senza, non
+          può ricordarti niente) e di usare le <strong>sveglie precise</strong> (senza, i
+          promemoria arrivano quando capita invece che all'ora giusta).
+        </p>
+        <p>
+          Se il telefono sta limitando l'app per risparmiare batteria, l'app te lo dice e
+          ti porta alla schermata giusta con un tocco. Su Xiaomi, Huawei, Oppo e simili
+          quel passaggio conta più che altrove: sono i telefoni che chiudono le app in
+          background con più zelo.
+        </p>
+      </div>
+    </div>
+
+    <h2 class="rivela">Perché tutti questi avvisi?</h2>
+    <p class="rivela">
+      Perché Sorso non passa dal Play Store, e Android tratta allo stesso modo tutto quello
+      che arriva da fuori: non sa distinguere un'app scritta bene da una scritta male, e
+      quindi avvisa sempre. Il messaggio dice «non riconosco lo sviluppatore», non
+      «ho trovato qualcosa di pericoloso» — sono due cose diverse, ma sono scritte con lo
+      stesso colore.
+    </p>
+    <p class="rivela">
+      È lo stesso motivo per cui vale la pena essere prudenti in generale: quegli avvisi
+      esistono perché <strong>fuori dai negozi c'è anche roba brutta</strong>, e nessuno la
+      controlla al posto tuo. La regola sensata non è ignorarli, è sapere da dove stai
+      scaricando.
+    </p>
+
+    <h2 class="rivela">Come faccio a sapere che è quella vera?</h2>
+    <p class="rivela">
+      L'unica copia autentica di Sorso è quella pubblicata su
+      <a href="https://github.com/sorsoapp/sorso-releases/releases" rel="noopener">github.com/sorsoapp/sorso-releases</a>,
+      firmata con la chiave dell'autore. Il pulsante «Scarica» di questo sito porta sempre
+      lì: se guardi l'indirizzo mentre scarichi, il file arriva da
+      <strong>github.com</strong>.
+    </p>
+    <p class="rivela">
+      Un file con lo stesso nome preso altrove può contenere qualunque cosa, e nessuno può
+      garantirti il contrario. Se ti arriva Sorso via WhatsApp da un amico, meglio
+      scaricarla da qui.
+    </p>
+
+    <h2 class="rivela">E gli aggiornamenti?</h2>
+    <p class="rivela">
+      Non devi tornare qui a controllare: quando esce una versione nuova, l'app te lo dice
+      da sola all'avvio e ti porta al download. Gli avvisi dei passi 3 e 4 non ricompaiono
+      — il permesso l'hai già dato — quindi dalla seconda volta in poi sono due tocchi.
+    </p>
+
+    <h2 class="rivela">Se ti sei bloccato</h2>
+    <p class="rivela">
+      I telefoni non sono tutti uguali e le schermate cambiano nome da una marca all'altra:
+      se a un certo punto ti trovi davanti qualcosa che qui non c'è, scrivi a
+      <a href="mailto:sorsoapp@gmail.com">sorsoapp@gmail.com</a> dicendo che telefono hai e
+      cosa dice lo schermo. Rispondo, e se il passaggio manca lo aggiungo a questa pagina.
+    </p>
+
+    <div class="bottoniera rivela">
+      <a class="btn" id="scarica" href="https://github.com/sorsoapp/sorso-releases/releases/latest">
+        <span class="freccia">⬇</span> Scarica Sorso
+      </a>
+      <a class="btn vuoto" href="./">Torna alla home</a>
+    </div>
+    <p class="sotto-bottone rivela" id="dettaglio">Ultima versione su GitHub · Android 8 o superiore</p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap piede">
+    <div class="firma">Sorso · di <b>Giovanni Romito</b></div>
+    <div class="link-piede">
+      <a href="./">Home</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="condizioni.html">Condizioni</a>
+      <a href="mailto:sorsoapp@gmail.com">Scrivimi</a>
+      <a href="https://github.com/sorsoapp/sorso-releases/releases">Tutte le versioni</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const osservatore = new IntersectionObserver((voci) => {
+  for (const v of voci) {
+    if (!v.isIntersecting) continue;
+    v.target.classList.add('dentro');
+    osservatore.unobserve(v.target);
+  }
+}, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+document.querySelectorAll('.rivela').forEach(e => osservatore.observe(e));
+
+document.querySelectorAll('.passo').forEach(p => {
+  p.addEventListener('pointermove', e => {
+    const r = p.getBoundingClientRect();
+    p.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+    p.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  });
+});
+
+// Il nome del file negli esempi deve essere quello vero della versione in corso,
+// altrimenti chi legge cerca sul telefono un file che non esiste.
+// Come nella prima pagina: l'indirizzo arriva da fuori, e prima di diventare un
+// pulsante da premere deve dimostrare di essere di GitHub e in https.
+function scaricoAttendibile(indirizzo) {
+  try {
+    const u = new URL(indirizzo);
+    return u.protocol === 'https:' &&
+      (u.hostname === 'github.com' || u.hostname.endsWith('.githubusercontent.com'));
+  } catch {
+    return false;
+  }
+}
+
+fetch('https://api.github.com/repos/sorsoapp/sorso-releases/releases/latest')
+  .then(r => r.ok ? r.json() : Promise.reject())
+  .then(rel => {
+    const apk = (rel.assets || []).find(a => a.name.toLowerCase().endsWith('.apk'));
+    if (!apk || !scaricoAttendibile(apk.browser_download_url)) return;
+    document.getElementById('scarica').href = apk.browser_download_url;
+    const mb = (apk.size / 1048576).toFixed(1).replace('.', ',');
+    document.getElementById('dettaglio').textContent =
+      `Versione ${rel.tag_name.split('-').pop()} · ${mb} MB · Android 8 o superiore`;
+    document.querySelectorAll('.nome-file').forEach(n => { n.textContent = apk.name; });
+  })
+  .catch(() => {});
+</script>
+</body>
+</html>

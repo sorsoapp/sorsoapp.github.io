@@ -1,0 +1,76 @@
+/* Lo stile delle pagine di testo — privacy e condizioni.
+   La prima pagina (index.html) ha il suo, perché sta tutta in un file solo:
+   qui invece le pagine sono due e uguali, e tenere il foglio separato evita di
+   dover cambiare un colore in due posti. */
+
+:root{
+  --abisso:#04222B; --abisso2:#0A3A48; --fondo:#02161C;
+  --schiuma:#EAFBFF; --glow:#7BF0FF;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--fondo);color:var(--schiuma);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  line-height:1.65;overflow-x:hidden;
+}
+a{color:inherit}
+.wrap{max-width:720px;margin:0 auto;padding:0 24px}
+
+/* Il mare resta anche qui: è la firma dell'app, e una pagina legale scritta su
+   fondo bianco sembrerebbe scritta da qualcun altro. */
+.mare{position:fixed;left:0;right:0;bottom:0;height:26vh;z-index:0;pointer-events:none}
+.mare .corpo{
+  position:absolute;left:0;right:0;bottom:0;top:22px;
+  background:linear-gradient(180deg,rgba(123,240,255,.16) 0%,rgba(10,58,72,.45) 40%,rgba(2,22,28,.85) 100%);
+}
+.onda{position:absolute;left:0;bottom:calc(100% - 24px);width:200%;height:26px}
+.onda svg{display:block;width:50%;height:26px;float:left}
+.onda.a{animation:scorri 14s linear infinite;opacity:.5}
+.onda.b{animation:scorri 21s linear infinite reverse;opacity:.3;bottom:calc(100% - 32px)}
+@keyframes scorri{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+main{position:relative;z-index:1;padding:0 0 34vh}
+
+/* ---- testata ---- */
+.testata{padding:36px 0 0}
+.torna{
+  display:inline-flex;align-items:center;gap:9px;
+  color:rgba(234,251,255,.6);font-size:14px;text-decoration:none;
+  transition:color .2s
+}
+.torna:hover{color:var(--glow)}
+h1{font-size:clamp(30px,6vw,42px);font-weight:700;letter-spacing:-.5px;margin:30px 0 10px;line-height:1.15}
+.data-agg{color:rgba(234,251,255,.55);font-size:14px;margin-bottom:44px}
+
+/* ---- corpo ---- */
+h2{
+  font-size:19px;font-weight:700;color:var(--glow);
+  margin:44px 0 14px;letter-spacing:-.2px
+}
+p{color:rgba(234,251,255,.82);font-size:16.5px;margin-bottom:16px}
+p a{color:var(--glow);text-decoration:none;border-bottom:1px solid rgba(123,240,255,.35)}
+p a:hover{border-bottom-color:var(--glow)}
+ul{margin:0 0 16px 22px;color:rgba(234,251,255,.82);font-size:16.5px}
+li{margin-bottom:9px}
+strong{color:var(--schiuma);font-weight:650}
+
+/* Il riquadro serve per la riga che, se uno legge una cosa sola, deve leggere
+   quella: la salute e dove scaricare l'app vera. */
+.rilievo{
+  background:rgba(123,240,255,.06);border:1px solid rgba(123,240,255,.16);
+  border-radius:20px;padding:22px 24px;margin:26px 0
+}
+.rilievo p:last-child{margin-bottom:0}
+
+/* ---- piede ---- */
+footer{
+  border-top:1px solid rgba(123,240,255,.14);padding:34px 0 44px;margin-top:60px;
+  position:relative;z-index:1;background:rgba(2,22,28,.7);backdrop-filter:blur(8px)
+}
+.piede{display:flex;justify-content:space-between;gap:22px;flex-wrap:wrap;align-items:center}
+.piede .firma{color:rgba(234,251,255,.6);font-size:14px}
+.piede .firma b{color:var(--schiuma);font-weight:600}
+.link-piede{display:flex;gap:22px;flex-wrap:wrap}
+.link-piede a{color:rgba(234,251,255,.6);font-size:14px;text-decoration:none;transition:color .2s}
+.link-piede a:hover{color:var(--glow)}
