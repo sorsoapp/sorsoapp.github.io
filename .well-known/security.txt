@@ -1,0 +1,12 @@
+# Come segnalare un problema di sicurezza in Sorso.
+# Formato standard RFC 9116 — è il primo posto dove guarda chi trova un buco.
+
+Contact: mailto:sorsoapp@gmail.com
+Expires: 2027-08-16T00:00:00.000Z
+Preferred-Languages: it, en
+Canonical: https://sorsoapp.it/.well-known/security.txt
+Policy: https://sorsoapp.it/condizioni.html
+
+# Sorso è fatta da una persona sola, nel tempo libero, e non c'è un premio in denaro.
+# C'è però la garanzia di una risposta e del credito nelle note di rilascio, se vuoi.
+# Il codice degli APK pubblicati sta su https://github.com/sorsoapp/sorso-releases
