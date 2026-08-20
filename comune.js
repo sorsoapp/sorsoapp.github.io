@@ -34,7 +34,7 @@ function applicaTema(idTema) {
   // Aggiorna l'etichetta del pulsante rapido tema se presente
   const btnTema = document.getElementById('btn-tema-corrente');
   if (btnTema) {
-    btnTema.textContent = `🎨 ${tema.nome}`;
+    btnTema.innerHTML = `<i class="fa-solid fa-palette"></i> <span>${tema.nome}</span>`;
   }
 
   // Se birra o monster, ricrea più bollicine effervescenti
