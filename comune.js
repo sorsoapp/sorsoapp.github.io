@@ -1009,17 +1009,9 @@ function costruisciPannelloCookie() {
   return p;
 }
 
-let pannelloAperto = null;
-function apriPannelloCookie() {
-  if (pannelloAperto && document.body.contains(pannelloAperto)) return;
-  pannelloAperto = costruisciPannelloCookie();
-}
-
-if (!consensoSalvato()) setTimeout(apriPannelloCookie, 900);
-
-document.querySelectorAll('[data-cookie]').forEach(a => {
-  a.addEventListener('click', e => { e.preventDefault(); apriPannelloCookie(); });
-});
+// Popup cookie temporaneamente disattivato (nessuna pubblicità né tracciamento presente)
+function apriPannelloCookie() {}
+window.apriPannelloCookie = apriPannelloCookie;
 
 /* ==========================================================================
    5. INIZIALIZZAZIONE ALL'AVVIO
