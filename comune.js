@@ -1047,13 +1047,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Torcia interattiva che segue il cursore su tutte le carte, changelog e rilievi
-  document.querySelectorAll('.carta, .scheda-changelog, .scheda-tema, .numero, .rilievo, .passo').forEach(c => {
+  // Torcia interattiva che segue il cursore con requestAnimationFrame ad alte prestazioni
+  const elementiTorcia = document.querySelectorAll('.carta, .scheda-changelog, .scheda-tema, .numero, .rilievo, .passo, .andamento');
+  elementiTorcia.forEach(c => {
+    let ticking = false;
     c.addEventListener('pointermove', e => {
-      const r = c.getBoundingClientRect();
-      c.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-      c.style.setProperty('--my', (e.clientY - r.top) + 'px');
-    });
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const r = c.getBoundingClientRect();
+        c.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        c.style.setProperty('--my', (e.clientY - r.top) + 'px');
+        ticking = false;
+      });
+    }, { passive: true });
   });
 });
 

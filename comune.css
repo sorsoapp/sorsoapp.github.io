@@ -178,7 +178,10 @@ body, main, header, footer,
 /* ============ BARRA DI AVANZAMENTO ============ */
 .avanzamento { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 50; pointer-events: none; }
 .avanzamento i {
-  display: block; height: 100%; width: calc(var(--salita) * 100%);
+  display: block; height: 100%; width: 100%;
+  transform: scaleX(var(--salita, 0));
+  transform-origin: left center;
+  will-change: transform;
   background: linear-gradient(90deg, var(--onda-a), var(--glow));
   box-shadow: 0 0 14px var(--onda-accent);
 }
@@ -211,10 +214,11 @@ body, main, header, footer,
 /* ============ IL MARE ============ */
 .mare {
   position: fixed; left: -6%; right: -6%; width: 112%; bottom: 0; z-index: 0; pointer-events: none;
-  height: calc(26vh + var(--salita) * 82vh);
+  height: calc(26vh + var(--salita, 0) * 82vh);
   max-height: 100vh; max-height: 100dvh;
-  transition: height .25s linear, transform .45s cubic-bezier(.2,.9,.3,1);
+  will-change: transform, height;
   transform: translateY(calc(var(--spinta,0) * -14px)) rotate(calc(var(--spinta,0) * .45deg));
+  transition: transform .35s cubic-bezier(.2,.9,.3,1);
 }
 .mare .respiro { position: absolute; inset: 0; animation: respira 11s ease-in-out infinite; }
 @keyframes respira { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
