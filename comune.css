@@ -131,8 +131,15 @@
 }
 
 /* Transizione morbida al cambio tema */
-body, .mare .corpo, .carta, .numero, .andamento, .biscotti, .btn, .scheda-tema, .scheda-changelog, .avviso-temi, .rilievo, .passo, footer {
-  transition: background-color .4s ease, border-color .4s ease, color .3s ease;
+body, main, header, footer,
+.carta, .numero, .andamento, .biscotti, .btn, .scheda-tema, .scheda-changelog,
+.avviso-temi, .rilievo, .passo, .sezione-scheda,
+.mare, .mare .corpo, .tel-schermo, .tel-bevuta, .tel-bottombar, .tel-pill-btn, .tel-btn-grande {
+  transition: background-color .45s ease, border-color .45s ease, color .35s ease, box-shadow .45s ease;
+}
+
+.onda path, .onda-tel path {
+  transition: fill .45s ease;
 }
 
 /* Stili comuni per tutti i box con blur e opacità ottimizzata */
@@ -236,8 +243,7 @@ body, .mare .corpo, .carta, .numero, .andamento, .biscotti, .btn, .scheda-tema, 
 
 /* Bollicine gassate per Birra e Monster */
 [data-tema="birra"] .bolla, [data-tema="monster"] .bolla {
-  opacity: .35;
-  animation-duration: 3.5s !important;
+  opacity: .32;
 }
 
 /* ============ BOLLICINE AMBIENTALI ============ */

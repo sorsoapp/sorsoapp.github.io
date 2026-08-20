@@ -37,8 +37,8 @@ function applicaTema(idTema) {
     btnTema.innerHTML = `<i class="fa-solid fa-palette"></i> <span>${tema.nome}</span>`;
   }
 
-  // Se birra o monster, ricrea più bollicine effervescenti
-  ricreaBollePerTema(tema.id);
+  // Inizializza le bolle al primo avvio senza ricrearle continuamente
+  inizializzaBolleMare();
 }
 window.applicaTema = applicaTema;
 
@@ -755,22 +755,17 @@ addEventListener('resize', suScorrimento, { passive: true });
 suScorrimento();
 
 /* ---- Bollicine nel mare e ambientali ------------------------------------- */
-function ricreaBollePerTema(idTema) {
+function inizializzaBolleMare() {
   const dentroIlMare = document.getElementById('bolle');
-  if (!dentroIlMare || fermo) return;
-  dentroIlMare.innerHTML = '';
+  if (!dentroIlMare || fermo || dentroIlMare.children.length > 0) return;
 
-  const numBolle = (idTema === 'birra' || idTema === 'monster') ? 45 : 20;
-  const durMin = (idTema === 'birra' || idTema === 'monster') ? 3 : 7;
-  const durMax = (idTema === 'birra' || idTema === 'monster') ? 6 : 16;
-
-  for (let i = 0; i < numBolle; i++) {
+  for (let i = 0; i < 35; i++) {
     const b = document.createElement('div');
-    const d = (idTema === 'birra' || idTema === 'monster') ? (3 + Math.random() * 6) : (4 + Math.random() * 9);
+    const d = 3 + Math.random() * 8;
     b.className = 'bolla';
     b.style.width = b.style.height = d + 'px';
     b.style.left = Math.random() * 100 + '%';
-    b.style.animationDuration = (durMin + Math.random() * (durMax - durMin)) + 's';
+    b.style.animationDuration = (4 + Math.random() * 8) + 's';
     b.style.animationDelay = (Math.random() * 8) + 's';
     dentroIlMare.appendChild(b);
   }
