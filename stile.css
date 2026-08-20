@@ -10,77 +10,102 @@ body{
   line-height:1.65;overflow-x:hidden;
 }
 a{color:inherit}
-/* Solo i fianchi, mai la forma breve: la forma breve vincerebbe sul padding
-   verticale di quello che sta dentro. È lo stesso inciampo già pagato altrove. */
 .wrap{max-width:720px;margin:0 auto;padding-left:24px;padding-right:24px}
 
-/* Lo spazio in fondo serve all'acqua: senza, l'ultima riga di testo finirebbe
-   sotto il pelo dell'acqua proprio quando è salito al massimo. */
 main{position:relative;z-index:1;padding-bottom:30vh}
 
 /* ---- testata ---- */
 .testata{padding:36px 0 0}
 .torna{
   display:inline-flex;align-items:center;gap:9px;
-  color:rgba(234,251,255,.6);font-size:14px;text-decoration:none;
-  transition:color .2s
+  color:var(--mist);font-size:14.5px;text-decoration:none;
+  font-weight:600;transition:color .2s, transform .2s;
 }
-.torna:hover{color:var(--glow)}
-h1{font-size:clamp(30px,6vw,42px);font-weight:700;letter-spacing:-.5px;margin:30px 0 10px;line-height:1.15}
-.data-agg{color:rgba(234,251,255,.55);font-size:14px;margin-bottom:44px}
+.torna:hover{color:var(--glow);transform:translateX(-3px)}
+h1{font-size:clamp(30px,6vw,42px);font-weight:700;letter-spacing:-.5px;margin:28px 0 10px;line-height:1.15;color:var(--schiuma)}
+.data-agg{color:var(--mist-soft);font-size:14px;margin-bottom:40px}
 
 /* ---- corpo ---- */
 h2{
-  font-size:19px;font-weight:700;color:var(--glow);
-  margin:44px 0 14px;letter-spacing:-.2px
+  font-size:20px;font-weight:700;color:var(--glow);
+  margin:44px 0 14px;letter-spacing:-.2px;position:relative;
 }
-p{color:rgba(234,251,255,.82);font-size:16.5px;margin-bottom:16px}
-p a{color:var(--glow);text-decoration:none;border-bottom:1px solid rgba(123,240,255,.35)}
-p a:hover{border-bottom-color:var(--glow)}
-ul{margin:0 0 16px 22px;color:rgba(234,251,255,.82);font-size:16.5px}
+h2::after{
+  content:'';display:inline-block;vertical-align:middle;margin-left:12px;
+  height:1px;width:0;background:linear-gradient(90deg,var(--glow),transparent);
+  transition:width .9s cubic-bezier(.2,.7,.3,1) .15s;
+}
+h2.dentro::after{width:90px}
+
+p{color:var(--mist);font-size:16.5px;margin-bottom:16px;line-height:1.68}
+p a{color:var(--glow);text-decoration:none;border-bottom:1px solid rgba(123,240,255,.35);font-weight:600}
+p a:hover{border-bottom-color:var(--glow);color:var(--schiuma)}
+ul{margin:0 0 16px 22px;color:var(--mist);font-size:16.5px;line-height:1.68}
 li{margin-bottom:9px}
 strong{color:var(--schiuma);font-weight:650}
+code{
+  background:var(--card-bg);border:1px solid var(--card-border);
+  padding:2px 7px;border-radius:6px;font-size:14.5px;color:var(--glow);
+}
 
-/* Il riquadro serve per la riga che, se uno legge una cosa sola, deve leggere
-   quella: la salute e dove scaricare l'app vera.
-   Sotto il puntatore si riempie d'acqua come le carte della prima pagina: è il
-   dettaglio che fa capire che si è ancora dentro lo stesso sito, e non su una
-   pagina legale incollata da un'altra parte. */
+/* Riquadri delle sezioni di testo con blur e opacità */
+.sezione-scheda {
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--card-border);
+  border-radius: 22px;
+  padding: 26px 28px;
+  margin-bottom: 22px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.15);
+  position: relative;
+  overflow: hidden;
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+.sezione-scheda:hover {
+  border-color: var(--card-hover-border);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 38px rgba(0,0,0,.22);
+}
+.sezione-scheda h2 {
+  margin-top: 0;
+  margin-bottom: 14px;
+}
+.sezione-scheda p:last-child,
+.sezione-scheda ul:last-child {
+  margin-bottom: 0;
+}
+@media (max-width: 600px) {
+  .sezione-scheda { padding: 20px 18px; border-radius: 18px; margin-bottom: 18px; }
+}
+
+/* Il riquadro in rilievo */
 .rilievo{
   position:relative;overflow:hidden;
-  background:rgba(123,240,255,.06);border:1px solid rgba(123,240,255,.16);
+  background: rgba(123,240,255,.07); border: 1px solid var(--card-border);
   border-radius:20px;padding:22px 24px;margin:26px 0;
-  transition:border-color .3s, transform .3s cubic-bezier(.2,.8,.3,1)
+  transition:border-color .3s, transform .3s cubic-bezier(.2,.8,.3,1), box-shadow .3s;
 }
 .rilievo::after{
   content:'';position:absolute;left:-12%;right:-12%;bottom:-105%;height:105%;
   pointer-events:none;
-  background:linear-gradient(180deg,rgba(123,240,255,.16),rgba(123,240,255,.03));
+  background:linear-gradient(180deg,rgba(123,240,255,.16),transparent);
   border-radius:44% 46% 0 0 / 14% 13% 0 0;
-  transition:bottom .75s cubic-bezier(.25,.9,.35,1)
+  transition:bottom .75s cubic-bezier(.25,.9,.35,1);
 }
-.rilievo:hover{border-color:rgba(123,240,255,.34);transform:translateY(-3px)}
+.rilievo:hover{border-color:var(--card-hover-border);transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,.15)}
 .rilievo:hover::after{bottom:-64%}
 .rilievo > *{position:relative;z-index:1}
 .rilievo p:last-child{margin-bottom:0}
 
-/* I titoli di sezione si accendono come quelli della prima pagina. */
-h2{position:relative}
-h2::after{
-  content:'';display:inline-block;vertical-align:middle;margin-left:12px;
-  height:1px;width:0;background:linear-gradient(90deg,rgba(123,240,255,.5),transparent);
-  transition:width .9s cubic-bezier(.2,.7,.3,1) .15s
-}
-h2.dentro::after{width:90px}
-
 /* ---- piede ---- */
 footer{
-  border-top:1px solid rgba(123,240,255,.14);padding:34px 0 44px;margin-top:60px;
-  position:relative;z-index:1;background:rgba(2,22,28,.7);backdrop-filter:blur(8px)
+  border-top:1px solid var(--card-border);padding:34px 0 44px;margin-top:60px;
+  position:relative;z-index:1;background:var(--footer-bg);backdrop-filter:blur(10px);
 }
 .piede{display:flex;justify-content:space-between;gap:22px;flex-wrap:wrap;align-items:center}
-.piede .firma{color:rgba(234,251,255,.6);font-size:14px}
+.piede .firma{color:var(--mist);font-size:14px}
 .piede .firma b{color:var(--schiuma);font-weight:600}
 .link-piede{display:flex;gap:22px;flex-wrap:wrap}
-.link-piede a{color:rgba(234,251,255,.6);font-size:14px;text-decoration:none;transition:color .2s}
+.link-piede a{color:var(--mist);font-size:14px;text-decoration:none;transition:color .2s}
 .link-piede a:hover{color:var(--glow)}

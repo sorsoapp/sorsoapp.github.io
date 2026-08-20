@@ -7,7 +7,8 @@
 <meta http-equiv="Content-Security-Policy" content="
   default-src 'none';
   script-src 'self' 'unsafe-inline';
-  style-src 'self' 'unsafe-inline';
+  style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
+  font-src 'self' https://cdnjs.cloudflare.com data:;
   img-src 'self' data:;
   connect-src https://api.github.com;
   base-uri 'none';
@@ -22,20 +23,20 @@
 <meta property="og:image" content="https://sorsoapp.it/anteprima.png">
 <meta name="theme-color" content="#02161C">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💧</text></svg>">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 <link rel="stylesheet" href="comune.css">
 <link rel="stylesheet" href="stile.css">
 <style>
-  /* Questa pagina è più larga delle altre due: i passi hanno bisogno di spazio,
-     e leggerli in colonna stretta li fa sembrare più di quanti sono. */
   .wrap{max-width:800px}
-
 
   /* ---- i passi ---- */
   .passi{counter-reset:passo;margin-top:10px}
   .passo{
     position:relative;overflow:hidden;
-    border:1px solid rgba(123,240,255,.14);background:rgba(123,240,255,.04);
+    border:1px solid var(--card-border);background:var(--card-bg);
+    backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
     border-radius:22px;padding:26px 28px 24px 78px;margin-bottom:16px;
+    box-shadow:0 8px 28px rgba(0,0,0,.15);
     transition:transform .28s cubic-bezier(.2,.8,.3,1), border-color .28s, box-shadow .28s
   }
   .passo::before{
@@ -43,32 +44,30 @@
     position:absolute;left:24px;top:24px;
     width:34px;height:34px;border-radius:50%;
     display:flex;align-items:center;justify-content:center;
-    background:rgba(123,240,255,.12);border:1px solid rgba(123,240,255,.35);
+    background:var(--card-bg);border:1.5px solid var(--card-border);
     color:var(--glow);font-size:15px;font-weight:700;
-    transition:background .3s,transform .35s cubic-bezier(.34,1.56,.64,1)
+    transition:background .3s, transform .35s cubic-bezier(.34,1.56,.64,1), color .3s
   }
   .passo::after{
     content:'';position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .35s;
-    background:radial-gradient(300px circle at var(--mx,50%) var(--my,50%),rgba(123,240,255,.13),transparent 62%)
+    background:radial-gradient(300px circle at var(--mx,50%) var(--my,50%),var(--glow),transparent 62%)
   }
-  .passo:hover{transform:translateY(-4px);border-color:rgba(123,240,255,.4);box-shadow:0 18px 44px rgba(0,0,0,.38)}
-  .passo:hover::before{background:var(--glow);color:#04222B;transform:scale(1.12) rotate(-8deg)}
-  .passo:hover::after{opacity:1}
+  .passo:hover{transform:translateY(-4px);border-color:var(--card-hover-border);box-shadow:0 18px 44px rgba(0,0,0,.28)}
+  .passo:hover::before{background:var(--glow);color:var(--ink);transform:scale(1.12) rotate(-8deg)}
+  .passo:hover::after{opacity:.12}
   .passo h3{font-size:19px;font-weight:700;margin-bottom:9px;color:var(--schiuma)}
-  .passo p{font-size:16px;margin-bottom:10px}
+  .passo p{font-size:16px;margin-bottom:10px;color:var(--mist)}
   .passo p:last-child{margin-bottom:0}
 
-  /* Quello che c'è scritto sullo schermo del telefono, riportato uguale: è
-     l'unico modo per riconoscerlo mentre lo si ha davanti. */
   .schermata{
-    display:block;border-left:2px solid rgba(123,240,255,.4);
-    background:rgba(2,22,28,.55);border-radius:0 12px 12px 0;
+    display:block;border-left:2px solid var(--glow);
+    background:var(--card-bg);border-radius:0 12px 12px 0;
     padding:12px 16px;margin:12px 0;font-size:15px;
-    color:rgba(234,251,255,.75);font-style:italic
+    color:var(--mist);font-style:italic
   }
   .tocca{
     display:inline-block;background:rgba(123,240,255,.14);
-    border:1px solid rgba(123,240,255,.3);border-radius:9px;
+    border:1px solid var(--card-border);border-radius:9px;
     padding:1px 9px;font-size:14.5px;font-style:normal;font-weight:600;
     color:var(--glow);white-space:nowrap
   }
@@ -77,11 +76,11 @@
   .btn{
     position:relative;overflow:hidden;isolation:isolate;
     display:inline-flex;align-items:center;gap:10px;
-    background:var(--schiuma);color:#04303D;
+    background:var(--schiuma);color:var(--ink);
     padding:16px 28px;border-radius:30px;font-weight:700;font-size:16.5px;
     text-decoration:none;
-    transition:transform .18s cubic-bezier(.34,1.56,.64,1), box-shadow .25s;
-    box-shadow:0 8px 30px rgba(123,240,255,.18)
+    transition:transform .18s cubic-bezier(.34,1.56,.64,1), box-shadow .25s, background .3s;
+    box-shadow:0 8px 30px rgba(0,0,0,.18)
   }
   .btn::after{
     content:'';position:absolute;top:-20%;left:-140%;width:55%;height:140%;
@@ -90,17 +89,18 @@
   }
   .btn:hover::after{animation:lampo .85s ease-out}
   @keyframes lampo{to{left:150%}}
-  .btn:hover{transform:translateY(-3px);box-shadow:0 16px 46px rgba(123,240,255,.34)}
+  .btn:hover{transform:translateY(-3px);box-shadow:0 16px 46px rgba(0,0,0,.26)}
   .btn:active{transform:scale(.96)}
   .btn.vuoto{
-    background:transparent;color:var(--schiuma);
-    border:1.5px solid rgba(123,240,255,.35);box-shadow:none;font-weight:600
+    background:var(--card-bg);color:var(--schiuma);
+    backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+    border:1.5px solid var(--card-border);box-shadow:none;font-weight:600
   }
-  .btn.vuoto::after{background:linear-gradient(100deg,transparent,rgba(123,240,255,.28),transparent)}
-  .btn.vuoto:hover{background:rgba(123,240,255,.09);box-shadow:0 10px 34px rgba(123,240,255,.14)}
+  .btn.vuoto::after{background:linear-gradient(100deg,transparent,var(--card-border),transparent)}
+  .btn.vuoto:hover{background:rgba(123,240,255,.14);border-color:var(--glow);box-shadow:0 10px 34px rgba(0,0,0,.14)}
   .btn .freccia{display:inline-block;transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
   .btn:hover .freccia{transform:translateY(3px)}
-  .sotto-bottone{font-size:13.5px;color:rgba(234,251,255,.55);margin-top:2px}
+  .sotto-bottone{font-size:13.5px;color:var(--mist-soft);margin-top:4px}
 
   @media (prefers-reduced-motion:reduce){
     *,*::before,*::after{animation:none !important;transition:none !important}
@@ -117,13 +117,20 @@
 <body>
 
 <div class="avanzamento" aria-hidden="true"><i></i></div>
+
+<header class="barra-top">
+  <button type="button" class="pillola-top pillola-lingua-label" data-apri-lingua aria-label="Cambia lingua">
+    🇮🇹 Italiano <span class="freccetta">▾</span>
+  </button>
+</header>
+
 <div class="bolle-ambiente" id="bolle-ambiente" aria-hidden="true"></div>
 
 <div class="mare" aria-hidden="true">
  <div class="respiro">
-  <div class="onda c"><svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 15 Q 150 4 300 14 T 600 14 T 900 14 T 1200 14 V26 H0Z" fill="#0A3A48"/></svg><svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 15 Q 150 4 300 14 T 600 14 T 900 14 T 1200 14 V26 H0Z" fill="#0A3A48"/></svg></div>
-  <div class="onda b"><svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 14 Q 150 0 300 13 T 600 13 T 900 13 T 1200 13 V26 H0Z" fill="#0A3A48"/></svg><svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 14 Q 150 0 300 13 T 600 13 T 900 13 T 1200 13 V26 H0Z" fill="#0A3A48"/></svg></div>
-  <div class="onda a"><svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 13 Q 150 26 300 13 T 600 13 T 900 13 T 1200 13 V26 H0Z" fill="#12586B"/></svg><svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 13 Q 150 26 300 13 T 600 13 T 900 13 T 1200 13 V26 H0Z" fill="#12586B"/></svg></div>
+  <div class="onda c"><svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 15 Q 150 4 300 14 T 600 14 T 900 14 T 1200 14 V26 H0Z"/></svg><svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 15 Q 150 4 300 14 T 600 14 T 900 14 T 1200 14 V26 H0Z"/></svg></div>
+  <div class="onda b"><svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 14 Q 150 0 300 13 T 600 13 T 900 13 T 1200 13 V26 H0Z"/></svg><svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 14 Q 150 0 300 13 T 600 13 T 900 13 T 1200 13 V26 H0Z"/></svg></div>
+  <div class="onda a"><svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 13 Q 150 26 300 13 T 600 13 T 900 13 T 1200 13 V26 H0Z"/></svg><svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 13 Q 150 26 300 13 T 600 13 T 900 13 T 1200 13 V26 H0Z"/></svg></div>
   <div class="corpo" id="bolle"></div>
  </div>
 </div>
@@ -131,7 +138,7 @@
 <main>
   <div class="wrap">
     <div class="testata">
-      <a class="torna" href="./">← Torna a Sorso</a>
+      <a class="torna" href="./"><i class="fa-solid fa-arrow-left"></i> <span>Torna a Sorso</span></a>
       <h1>Come si installa</h1>
       <p class="data-agg">Due minuti, e la maggior parte del tempo è Android che chiede conferma</p>
     </div>
@@ -154,7 +161,7 @@
           Apri questo sito <strong>dal telefono Android</strong> (non dal computer) e tocca
           «Scarica Sorso». Il browser quasi certamente dirà qualcosa del genere:
         </p>
-        <span class="schermata">«Questo tipo di file può danneggiare il dispositivo. Vuoi conservare <span class="nome-file">Sorso-1.10.apk</span>?»</span>
+        <span class="schermata">«Questo tipo di file può danneggiare il dispositivo. Vuoi conservare <span class="nome-file">Sorso-1.11.1.apk</span>?»</span>
         <p>Tocca <span class="tocca">Scarica comunque</span> — oppure <span class="tocca">OK</span>, dipende dal browser.</p>
       </div>
 
@@ -163,7 +170,7 @@
         <p>
           Quando il download finisce, tocca la notifica che compare in alto. Se l'hai già
           chiusa, il file sta nell'app <strong>File</strong> o <strong>Download</strong>,
-          e si chiama <em class="nome-file">Sorso-1.10.apk</em>: toccalo per aprirlo.
+          e si chiama <em class="nome-file">Sorso-1.11.1.apk</em>: toccalo per aprirlo.
         </p>
       </div>
 
@@ -264,7 +271,7 @@
 
     <div class="bottoniera rivela">
       <a class="btn" id="scarica" href="https://github.com/sorsoapp/sorso-releases/releases/latest">
-        <span class="freccia">⬇</span> Scarica Sorso
+        <span class="freccia"><i class="fa-solid fa-arrow-down"></i></span> Scarica Sorso
       </a>
       <a class="btn vuoto" href="./">Torna alla home</a>
     </div>
@@ -287,18 +294,6 @@
 </footer>
 
 <script>
-document.querySelectorAll('.passo').forEach(p => {
-  p.addEventListener('pointermove', e => {
-    const r = p.getBoundingClientRect();
-    p.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-    p.style.setProperty('--my', (e.clientY - r.top) + 'px');
-  });
-});
-
-// Il nome del file negli esempi deve essere quello vero della versione in corso,
-// altrimenti chi legge cerca sul telefono un file che non esiste.
-// Come nella prima pagina: l'indirizzo arriva da fuori, e prima di diventare un
-// pulsante da premere deve dimostrare di essere di GitHub e in https.
 function scaricoAttendibile(indirizzo) {
   try {
     const u = new URL(indirizzo);

@@ -7,29 +7,43 @@
 <meta http-equiv="Content-Security-Policy" content="
   default-src 'none';
   script-src 'self' 'unsafe-inline';
-  style-src 'self' 'unsafe-inline';
+  style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
+  font-src 'self' https://cdnjs.cloudflare.com data:;
   img-src 'self' data:;
   connect-src https://api.github.com;
   base-uri 'none';
   form-action 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<meta name="description" content="Sorso è gratuita e serve a ricordarti di bere, non a stabilire quanto devi bere. Non è un dispositivo medico.">
+<meta name="description" content="Condizioni d'uso di Sorso: un'app per ricordarsi di bere acqua, fornita così com'è, senza pretese mediche e senza fregature.">
 <link rel="canonical" href="https://sorsoapp.it/condizioni.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sorsoapp.it/condizioni.html">
+<meta property="og:title" content="Condizioni d'uso — Sorso">
+<meta property="og:description" content="Un promemoria per l'acqua, niente di più e niente di meno.">
+<meta property="og:image" content="https://sorsoapp.it/anteprima.png">
 <meta name="theme-color" content="#02161C">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💧</text></svg>">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 <link rel="stylesheet" href="comune.css">
 <link rel="stylesheet" href="stile.css">
 </head>
 <body>
 
 <div class="avanzamento" aria-hidden="true"><i></i></div>
+
+<header class="barra-top">
+  <button type="button" class="pillola-top pillola-lingua-label" data-apri-lingua aria-label="Cambia lingua">
+    🇮🇹 Italiano <span class="freccetta">▾</span>
+  </button>
+</header>
+
 <div class="bolle-ambiente" id="bolle-ambiente" aria-hidden="true"></div>
 
 <div class="mare" aria-hidden="true">
  <div class="respiro">
-  <div class="onda c"><svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 15 Q 150 4 300 14 T 600 14 T 900 14 T 1200 14 V26 H0Z" fill="#0A3A48"/></svg><svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 15 Q 150 4 300 14 T 600 14 T 900 14 T 1200 14 V26 H0Z" fill="#0A3A48"/></svg></div>
-  <div class="onda b"><svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 14 Q 150 0 300 13 T 600 13 T 900 13 T 1200 13 V26 H0Z" fill="#0A3A48"/></svg><svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 14 Q 150 0 300 13 T 600 13 T 900 13 T 1200 13 V26 H0Z" fill="#0A3A48"/></svg></div>
-  <div class="onda a"><svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 13 Q 150 26 300 13 T 600 13 T 900 13 T 1200 13 V26 H0Z" fill="#12586B"/></svg><svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 13 Q 150 26 300 13 T 600 13 T 900 13 T 1200 13 V26 H0Z" fill="#12586B"/></svg></div>
+  <div class="onda c"><svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 15 Q 150 4 300 14 T 600 14 T 900 14 T 1200 14 V26 H0Z"/></svg><svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 15 Q 150 4 300 14 T 600 14 T 900 14 T 1200 14 V26 H0Z"/></svg></div>
+  <div class="onda b"><svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 14 Q 150 0 300 13 T 600 13 T 900 13 T 1200 13 V26 H0Z"/></svg><svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 14 Q 150 0 300 13 T 600 13 T 900 13 T 1200 13 V26 H0Z"/></svg></div>
+  <div class="onda a"><svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 13 Q 150 26 300 13 T 600 13 T 900 13 T 1200 13 V26 H0Z"/></svg><svg viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 13 Q 150 26 300 13 T 600 13 T 900 13 T 1200 13 V26 H0Z"/></svg></div>
   <div class="corpo" id="bolle"></div>
  </div>
 </div>
@@ -37,7 +51,7 @@
 <main>
   <div class="wrap">
     <div class="testata">
-      <a class="torna" href="./">← Torna a Sorso</a>
+      <a class="torna" href="./"><i class="fa-solid fa-arrow-left"></i> <span>Torna a Sorso</span></a>
       <h1>Condizioni d'uso</h1>
       <p class="data-agg">In vigore dal 16 agosto 2026</p>
     </div>
@@ -48,71 +62,83 @@
          consiglio medico.</p>
     </div>
 
-    <h2 class="rivela">Sulla salute, per esteso</h2>
-    <p class="rivela">
-      Il numero che Sorso ti propone nasce da poche informazioni — peso, età, quanto ti
-      alleni, il clima — e da indicazioni generali valide per una persona sana. Il
-      fabbisogno vero dipende da cose che nessuna app può sapere: quanto mangi, che
-      farmaci prendi, come stanno i tuoi reni.
-    </p>
-    <p class="rivela">
-      Se hai condizioni di salute che riguardano i liquidi — reni, cuore, gravidanza — o se
-      un medico ti ha già detto quanto bere, <strong>vale quello che dice il medico, non
-      quello che segna l'app</strong>. Puoi cambiare l'obiettivo a mano in qualunque
-      momento, dalle impostazioni.
-    </p>
-    <p class="rivela">
-      Vale anche il contrario di quello che si crede di solito: bere molta acqua in poco
-      tempo può fare male, perché diluisce il sodio nel sangue. Per questo l'app non
-      propone mai più di quattro litri, qualunque cosa dicano i dati che le hai dato.
-    </p>
+    <div class="sezione-scheda rivela">
+      <h2>Sulla salute, per esteso</h2>
+      <p>
+        Il numero che Sorso ti propone nasce da poche informazioni — peso, età, quanto ti
+        alleni, il clima — e da indicazioni generali valide per una persona sana. Il
+        fabbisogno vero dipende da cose che nessuna app può sapere: quanto mangi, che
+        farmaci prendi, come stanno i tuoi reni.
+      </p>
+      <p>
+        Se hai condizioni di salute che riguardano i liquidi — reni, cuore, gravidanza — o se
+        un medico ti ha già detto quanto bere, <strong>vale quello che dice il medico, non
+        quello che segna l'app</strong>. Puoi cambiare l'obiettivo a mano in qualunque
+        momento, dalle impostazioni.
+      </p>
+      <p>
+        Vale anche il contrario di quello che si crede di solito: bere molta acqua in poco
+        tempo può fare male, perché diluisce il sodio nel sangue. Per questo l'app non
+        propone mai più di quattro litri, qualunque cosa dicano i dati che le hai dato.
+      </p>
+    </div>
 
-    <h2 class="rivela">Nessuna garanzia</h2>
-    <p class="rivela">
-      Sorso è gratuita e la usi così com'è. Faccio il possibile perché i promemoria
-      arrivino sempre e all'ora giusta, ma nessun software è perfetto, e su alcuni telefoni
-      è il sistema stesso a metterci lo zampino chiudendo le app per risparmiare batteria:
-      se un avviso non arriva, non è una cosa di cui posso rispondere.
-    </p>
-    <p class="rivela">
-      Segnalarlo però serve davvero: è così che i difetti vengono corretti, ed è così che
-      sono state corrette le versioni fino a qui. Si scrive a
-      <a href="mailto:sorsoapp@gmail.com">sorsoapp@gmail.com</a>, oppure si apre una
-      segnalazione <a href="https://github.com/sorsoapp/sorso-releases/issues" rel="noopener">su GitHub</a>.
-    </p>
+    <div class="sezione-scheda rivela">
+      <h2>Nessuna garanzia</h2>
+      <p>
+        Sorso è gratuita e la usi così com'è. Faccio il possibile perché i promemoria
+        arrivino sempre e all'ora giusta, ma nessun software è perfetto, e su alcuni telefoni
+        è il sistema stesso a metterci lo zampino chiudendo le app per risparmiare batteria:
+        se un avviso non arriva, non è una cosa di cui posso rispondere.
+      </p>
+      <p>
+        Segnalarlo però serve davvero: è così che i difetti vengono corretti, ed è così che
+        sono state corrette le versioni fino a qui. Si scrive a
+        <a href="mailto:sorsoapp@gmail.com">sorsoapp@gmail.com</a>, oppure si apre una
+        segnalazione <a href="https://github.com/sorsoapp/sorso-releases/issues" rel="noopener">su GitHub</a>.
+      </p>
+    </div>
 
-    <h2 class="rivela">Dove prenderla</h2>
-    <p class="rivela">
-      L'unica copia autentica di Sorso è quella pubblicata su
-      <a href="https://github.com/sorsoapp/sorso-releases/releases" rel="noopener">github.com/sorsoapp/sorso-releases</a>,
-      ed è firmata con la chiave dell'autore. Il pulsante «Scarica» di questo sito porta
-      sempre lì.
-    </p>
-    <p class="rivela">
-      Un file con lo stesso nome trovato altrove può contenere qualunque cosa, e nessuno
-      può garantirti il contrario: un'app Android scaricata da un sito qualsiasi ha gli
-      stessi permessi di una scaricata da un negozio, e nessuno l'ha controllata.
-    </p>
+    <div class="sezione-scheda rivela">
+      <h2>Dove prenderla</h2>
+      <p>
+        L'unica copia autentica di Sorso è quella pubblicata su
+        <a href="https://github.com/sorsoapp/sorso-releases/releases" rel="noopener">github.com/sorsoapp/sorso-releases</a>,
+        ed è firmata con la chiave dell'autore. Il pulsante «Scarica» di questo sito porta
+        sempre lì.
+      </p>
+      <p>
+        Un file con lo stesso nome trovato altrove può contenere qualunque cosa, e nessuno
+        può garantirti il contrario: un'app Android scaricata da un sito qualsiasi ha gli
+        stessi permessi di una scaricata da un negozio, e nessuno l'ha controllata.
+      </p>
+    </div>
 
-    <h2 class="rivela">Diritti</h2>
-    <p class="rivela">
-      Sorso, il suo nome e il suo codice sono di <strong>Giovanni Romito</strong>. Puoi
-      usarla quanto vuoi e passarla a chi vuoi <strong>così com'è</strong>, gratuitamente;
-      non puoi rivenderla né distribuirne versioni modificate.
-    </p>
+    <div class="sezione-scheda rivela">
+      <h2>Diritti</h2>
+      <p>
+        Sorso, il suo nome e il suo codice sono di <strong>Giovanni Romito</strong>. Puoi
+        usarla quanto vuoi e passarla a chi vuoi <strong>così com'è</strong>, gratuitamente;
+        non puoi rivenderla né distribuirne versioni modificate.
+      </p>
+    </div>
 
-    <h2 class="rivela">Se cambia qualcosa</h2>
-    <p class="rivela">
-      Se queste condizioni cambieranno, sarà scritto qui e nelle note della versione in cui
-      la cosa entra in vigore. La data in cima alla pagina dice sempre da quando vale il
-      testo che stai leggendo.
-    </p>
+    <div class="sezione-scheda rivela">
+      <h2>Se cambia qualcosa</h2>
+      <p>
+        Se queste condizioni cambieranno, sarà scritto qui e nelle note della versione in cui
+        la cosa entra in vigore. La data in cima alla pagina dice sempre da quando vale il
+        testo che stai leggendo.
+      </p>
+    </div>
 
-    <h2 class="rivela">Contatti</h2>
-    <p class="rivela">
-      Per qualunque cosa riguardi queste condizioni, l'app o il sito, l'indirizzo è
-      <a href="mailto:sorsoapp@gmail.com">sorsoapp@gmail.com</a>.
-    </p>
+    <div class="sezione-scheda rivela">
+      <h2>Contatti</h2>
+      <p>
+        Per qualunque cosa riguardi queste condizioni, l'app o il sito, l'indirizzo è
+        <a href="mailto:sorsoapp@gmail.com">sorsoapp@gmail.com</a>.
+      </p>
+    </div>
   </div>
 </main>
 
