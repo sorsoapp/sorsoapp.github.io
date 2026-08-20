@@ -1,6 +1,25 @@
 /* Quello che tutte le pagine hanno in comune: l'acqua, le bollicine, il cerchio
    del tocco, l'ingresso dei blocchi, i temi, la lingua e il pannello dei cookie. */
 
+@property --glow { syntax: '<color>'; inherits: true; initial-value: #7BF0FF; }
+@property --onda-a { syntax: '<color>'; inherits: true; initial-value: #12586B; }
+@property --onda-bc { syntax: '<color>'; inherits: true; initial-value: #0A3A48; }
+@property --fondo { syntax: '<color>'; inherits: true; initial-value: #02161C; }
+@property --abisso { syntax: '<color>'; inherits: true; initial-value: #04222B; }
+@property --card-bg { syntax: '<color>'; inherits: true; initial-value: rgba(6, 38, 48, 0.72); }
+@property --card-border { syntax: '<color>'; inherits: true; initial-value: rgba(123,240,255,.24); }
+@property --card-hover-border { syntax: '<color>'; inherits: true; initial-value: rgba(123,240,255,.55); }
+@property --footer-bg { syntax: '<color>'; inherits: true; initial-value: rgba(4, 26, 33, 0.92); }
+@property --schiuma { syntax: '<color>'; inherits: true; initial-value: #EAFBFF; }
+@property --mist { syntax: '<color>'; inherits: true; initial-value: rgba(234,251,255,.88); }
+@property --onda-accent { syntax: '<color>'; inherits: true; initial-value: rgba(123,240,255,.6); }
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.35s;
+  animation-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
 :root {
   /* Tema predefinito: Notte */
   --abisso: #04222B;
@@ -374,7 +393,9 @@ body, main, header, footer,
   border-radius: 22px; padding: 18px;
   display: flex; align-items: center; gap: 16px;
   cursor: pointer; text-align: left;
-  transition: transform .25s cubic-bezier(.2,.8,.3,1), border-color .25s, box-shadow .25s;
+  border: 1.5px solid var(--card-border);
+  background: var(--card-bg);
+  transition: transform .25s cubic-bezier(.2,.8,.3,1), border-color .35s ease, background-color .35s ease, box-shadow .35s ease;
   position: relative; overflow: hidden;
 }
 .scheda-tema::before {
@@ -399,8 +420,7 @@ body, main, header, footer,
 .scheda-tema:active { transform: scale(.97); }
 .scheda-tema.attivo {
   border-color: var(--glow);
-  border-width: 2px;
-  background: rgba(123,240,255,.14);
+  box-shadow: 0 0 18px var(--onda-accent);
 }
 .scheda-tema > * { position: relative; z-index: 1; }
 

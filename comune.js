@@ -23,18 +23,27 @@ function temaSalvato() {
 
 function applicaTema(idTema) {
   const tema = TEMI.find(t => t.id === idTema) || TEMI[0];
-  document.documentElement.setAttribute('data-tema', tema.id);
-  try { localStorage.setItem(CHIAVE_TEMA, tema.id); } catch {}
 
-  // Aggiorna lo stato attivo nelle tessere dei temi
-  document.querySelectorAll('.scheda-tema').forEach(el => {
-    el.classList.toggle('attivo', el.getAttribute('data-tema-id') === tema.id);
-  });
+  const esegui = () => {
+    document.documentElement.setAttribute('data-tema', tema.id);
+    try { localStorage.setItem(CHIAVE_TEMA, tema.id); } catch {}
 
-  // Aggiorna l'etichetta del pulsante rapido tema se presente
-  const btnTema = document.getElementById('btn-tema-corrente');
-  if (btnTema) {
-    btnTema.innerHTML = `<i class="fa-solid fa-palette"></i> <span>${tema.nome}</span>`;
+    // Aggiorna lo stato attivo nelle tessere dei temi
+    document.querySelectorAll('.scheda-tema').forEach(el => {
+      el.classList.toggle('attivo', el.getAttribute('data-tema-id') === tema.id);
+    });
+
+    // Aggiorna l'etichetta del pulsante rapido tema se presente
+    const btnTema = document.getElementById('btn-tema-corrente');
+    if (btnTema) {
+      btnTema.innerHTML = `<i class="fa-solid fa-palette"></i> <span>${tema.nome}</span>`;
+    }
+  };
+
+  if (!fermo && document.startViewTransition) {
+    document.startViewTransition(esegui);
+  } else {
+    esegui();
   }
 
   // Inizializza le bolle al primo avvio senza ricrearle continuamente
