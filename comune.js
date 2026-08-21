@@ -732,26 +732,28 @@ function chiudiPannelloLingua() {
 window.apriPannelloLingua = apriPannelloLingua;
 
 /* ==========================================================================
-   3. FISICA SCORRIMENTO & MARE
+   3. FISICA SCORRIMENTO & MARE (GPU ACCELERATO A 60/120 FPS)
    ========================================================================== */
 let inCoda = false;
-let ultimoY = scrollY;
-let calmante = 0;
+let elBarraAvanzamento = null;
+let elMare = null;
 
 function suScorrimento() {
+  if (!elBarraAvanzamento) elBarraAvanzamento = document.querySelector('.avanzamento i');
+  if (!elMare) elMare = document.querySelector('.mare');
+
   const max = document.documentElement.scrollHeight - innerHeight;
-  const p = max > 0 ? Math.min(1, scrollY / max) : 0;
-  document.documentElement.style.setProperty('--salita', p.toFixed(4));
+  const p = max > 0 ? Math.min(1, Math.max(0, scrollY / max)) : 0;
 
-  const dy = scrollY - ultimoY;
-  ultimoY = scrollY;
-  const spinta = Math.max(-1, Math.min(1, dy / 55));
-  document.documentElement.style.setProperty('--spinta', spinta.toFixed(3));
+  if (elBarraAvanzamento) {
+    elBarraAvanzamento.style.transform = `scaleX(${p})`;
+  }
 
-  clearTimeout(calmante);
-  calmante = setTimeout(
-    () => document.documentElement.style.setProperty('--spinta', '0'), 110
-  );
+  if (elMare) {
+    // Escursione fluida del mare calcolata direttamente dal motore di composizione GPU
+    const offsetVh = 76 - (p * 74);
+    elMare.style.transform = `translate3d(0, ${offsetVh.toFixed(2)}vh, 0)`;
+  }
 
   inCoda = false;
 }
@@ -761,35 +763,39 @@ addEventListener('scroll', () => {
   requestAnimationFrame(suScorrimento);
 }, { passive: true });
 addEventListener('resize', suScorrimento, { passive: true });
-suScorrimento();
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', suScorrimento);
+} else {
+  suScorrimento();
+}
 
-/* ---- Bollicine nel mare e ambientali ------------------------------------- */
+/* ---- Bollicine nel mare e ambientali (leggere e fluide) ------------------- */
 function inizializzaBolleMare() {
   const dentroIlMare = document.getElementById('bolle');
   if (!dentroIlMare || fermo || dentroIlMare.children.length > 0) return;
 
-  for (let i = 0; i < 35; i++) {
+  for (let i = 0; i < 16; i++) {
     const b = document.createElement('div');
-    const d = 3 + Math.random() * 8;
+    const d = 3 + Math.random() * 7;
     b.className = 'bolla';
     b.style.width = b.style.height = d + 'px';
     b.style.left = Math.random() * 100 + '%';
-    b.style.animationDuration = (4 + Math.random() * 8) + 's';
-    b.style.animationDelay = (Math.random() * 8) + 's';
+    b.style.animationDuration = (4 + Math.random() * 7) + 's';
+    b.style.animationDelay = (Math.random() * 6) + 's';
     dentroIlMare.appendChild(b);
   }
 }
 
 const ambiente = document.getElementById('bolle-ambiente');
 if (ambiente && !fermo) {
-  for (let i = 0; i < 18; i++) {
+  for (let i = 0; i < 10; i++) {
     const b = document.createElement('div');
-    const d = 5 + Math.random() * 18;
+    const d = 6 + Math.random() * 14;
     b.className = 'bolla-a';
     b.style.width = b.style.height = d + 'px';
     b.style.left = Math.random() * 100 + '%';
-    b.style.animationDuration = (16 + d * 0.9 + Math.random() * 10) + 's';
-    b.style.animationDelay = (-Math.random() * 26) + 's';
+    b.style.animationDuration = (16 + d * 0.8 + Math.random() * 8) + 's';
+    b.style.animationDelay = (-Math.random() * 20) + 's';
     ambiente.appendChild(b);
   }
 }

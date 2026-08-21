@@ -167,6 +167,8 @@ body, main, header, footer,
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--card-border);
+  transform: translateZ(0);
+  contain: paint;
 }
 
 /* Icone FontAwesome / SVG generiche */
@@ -179,7 +181,7 @@ body, main, header, footer,
 .avanzamento { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 50; pointer-events: none; }
 .avanzamento i {
   display: block; height: 100%; width: 100%;
-  transform: scaleX(var(--salita, 0));
+  transform: scaleX(0);
   transform-origin: left center;
   will-change: transform;
   background: linear-gradient(90deg, var(--onda-a), var(--glow));
@@ -201,24 +203,24 @@ body, main, header, footer,
   padding: 8px 16px; border-radius: 24px;
   font-size: 14px; font-weight: 600; cursor: pointer;
   box-shadow: 0 4px 18px rgba(0,0,0,.15);
+  transform: translateZ(0);
   transition: transform .18s cubic-bezier(.34,1.56,.64,1), border-color .25s, background .25s;
 }
 .pillola-top:hover {
-  transform: translateY(-2px);
+  transform: translateY(-2px) translateZ(0);
   border-color: var(--glow);
   background: rgba(123,240,255,.14);
 }
-.pillola-top:active { transform: scale(.96); }
+.pillola-top:active { transform: scale(.96) translateZ(0); }
 .pillola-top .freccetta { font-size: 10px; opacity: .7; transition: transform .2s; }
 
-/* ============ IL MARE ============ */
+/* ============ IL MARE (100% GPU ACCELERATED) ============ */
 .mare {
   position: fixed; left: -6%; right: -6%; width: 112%; bottom: 0; z-index: 0; pointer-events: none;
-  height: calc(26vh + var(--salita, 0) * 82vh);
-  max-height: 100vh; max-height: 100dvh;
-  will-change: transform, height;
-  transform: translateY(calc(var(--spinta,0) * -14px)) rotate(calc(var(--spinta,0) * .45deg));
-  transition: transform .35s cubic-bezier(.2,.9,.3,1);
+  height: 104vh; height: 104dvh;
+  will-change: transform;
+  transform: translate3d(0, 76vh, 0);
+  contain: strict;
 }
 .mare .respiro { position: absolute; inset: 0; animation: respira 11s ease-in-out infinite; }
 @keyframes respira { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
@@ -256,6 +258,8 @@ body, main, header, footer,
 .bolla {
   position: absolute; bottom: -20px; border-radius: 50%;
   background: var(--schiuma); opacity: .22; animation: sali linear infinite;
+  will-change: transform, opacity;
+  contain: strict;
 }
 @keyframes sali {
   0%{transform:translateY(0) translateX(0);opacity:0}
@@ -270,13 +274,15 @@ body, main, header, footer,
 }
 
 /* ============ BOLLICINE AMBIENTALI ============ */
-.bolle-ambiente { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.bolle-ambiente { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; contain: strict; }
 .bolla-a {
   position: absolute; bottom: -60px; border-radius: 50%;
   background: radial-gradient(circle at 32% 27%, var(--schiuma), var(--glow) 55%, transparent 100%);
   border: 1px solid rgba(255,255,255,.1);
   opacity: .25;
   animation: risali linear infinite;
+  will-change: transform, opacity;
+  contain: strict;
 }
 @keyframes risali {
   0%{transform:translate3d(0,0,0) scale(.8);opacity:0}
@@ -607,9 +613,6 @@ body, main, header, footer,
   .biscotti .scelte { flex-direction: column; }
 }
 
-@media (max-width: 640px) {
-  .mare { height: calc(20vh + var(--salita) * 90vh); }
-}
 
 @media (prefers-reduced-motion: reduce) {
   .bolle-ambiente { display: none; }
