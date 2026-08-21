@@ -9,9 +9,11 @@ const DIZIONARIO = {
     // Nav
     "nav_ruolo": "Frontend & Video Specialist",
     "nav_progetti": "Progetti",
+    "nav_chi_sono": "Chi Sono",
     "nav_competenze": "Competenze",
     "nav_approccio": "Metodo",
-    "nav_contatti": "Contattami",
+    "nav_contatti": "Contatti",
+    "nav_scrivimi": "Scrivimi",
 
     // Hero
     "hero_badge": "Disponibile per Opportunità & Progetti",
@@ -101,9 +103,11 @@ const DIZIONARIO = {
     // Nav
     "nav_ruolo": "Frontend & Video Specialist",
     "nav_progetti": "Projects",
+    "nav_chi_sono": "About",
     "nav_competenze": "Skills",
     "nav_approccio": "Approach",
-    "nav_contatti": "Contact Me",
+    "nav_contatti": "Contact",
+    "nav_scrivimi": "Contact",
 
     // Hero
     "hero_badge": "Available for Opportunities & Projects",
@@ -209,12 +213,12 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    document.querySelectorAll('.btn-lingua').forEach(btn => {
+    document.querySelectorAll('.btn-lang, .btn-lingua').forEach(btn => {
       btn.classList.toggle('attiva', btn.getAttribute('data-lang') === linguaAttiva);
     });
   }
 
-  document.querySelectorAll('.btn-lingua').forEach(btn => {
+  document.querySelectorAll('.btn-lang, .btn-lingua').forEach(btn => {
     btn.addEventListener('click', () => {
       applicaLingua(btn.getAttribute('data-lang'));
     });

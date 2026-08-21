@@ -32,32 +32,33 @@
   <header class="testata">
     <div class="contenitore barra-nav">
       
-      <!-- Brand & Avatar Placeholder -->
+      <!-- Brand & Avatar -->
       <a href="#" class="brand-box">
-        <div class="avatar-cornice" title="La tua foto profilo">
-          <!-- Placeholder avatar: quando avrai la foto basterà sostituire il tag img -->
-          <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23181C26'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-size='38' fill='%23FFD000'>GR</text></svg>" alt="Giovanni Romito" id="avatar-img">
-          <span class="avatar-punto-online" title="Online"></span>
+        <div class="avatar-cornice" title="Giovanni Romito">
+          <!-- Quando avrai la tua foto profilo, basterà sostituire il file immagine qui sotto -->
+          <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23181C26'/><text x='50%' y='58%' dominant-baseline='middle' text-anchor='middle' font-size='42' font-family='sans-serif' font-weight='bold' fill='%23FFD000'>GR</text></svg>" alt="Giovanni Romito" id="avatar-img" width="38" height="38">
         </div>
-        <div class="brand-testo">
-          <span class="nome">Giovanni Romito</span>
-          <span class="ruolo-mini" data-i18n="nav_ruolo">Frontend & Video Specialist</span>
-        </div>
+        <span class="nome-brand">Giovanni Romito</span>
       </a>
 
       <!-- Nav Links -->
       <nav class="nav-voci">
         <a href="#progetti" class="nav-link" data-i18n="nav_progetti">Progetti</a>
+        <a href="#perche-me" class="nav-link" data-i18n="nav_chi_sono">Chi Sono</a>
         <a href="#competenze" class="nav-link" data-i18n="nav_competenze">Competenze</a>
-        <a href="#perche-me" class="nav-link" data-i18n="nav_approccio">Metodo</a>
-        <a href="#contatti" class="nav-link btn-nav" data-i18n="nav_contatti">Contattami</a>
+        <a href="#contatti" class="nav-link" data-i18n="nav_contatti">Contatti</a>
         
-        <!-- Switch Lingua (IT / EN) -->
-        <div class="selettore-lingua">
-          <button type="button" class="btn-lingua attiva" data-lang="it">IT</button>
-          <span class="sep-lingua">/</span>
-          <button type="button" class="btn-lingua" data-lang="en">EN</button>
+        <!-- Segmented Language Switcher Pill -->
+        <div class="pillola-lingua-switch">
+          <button type="button" class="btn-lang attiva" data-lang="it">IT</button>
+          <button type="button" class="btn-lang" data-lang="en">EN</button>
         </div>
+
+        <!-- Scrivimi CTA Button -->
+        <a href="#contatti" class="btn-scrivimi-top">
+          <i class="fa-solid fa-paper-plane"></i>
+          <span data-i18n="nav_scrivimi">Scrivimi</span>
+        </a>
       </nav>
 
       <!-- Mobile Hamburger -->
