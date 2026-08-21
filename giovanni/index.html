@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Giovanni Romito — Frontend Developer, Video Editor & AI Specialist</title>
+  <title>Giovanni Romito — Frontend Developer, Video Editor & Tech Specialist</title>
   <meta name="description" content="Portfolio di Giovanni Romito: Sviluppo Software Frontend, Video Editing, AI Workflow, Discord & Telegram Community Management e Tech Specialist.">
   
   <!-- Favicon -->
@@ -32,20 +32,23 @@
   <header class="testata">
     <div class="contenitore barra-nav">
       
-      <!-- Brand & Avatar -->
+      <!-- Brand / Logo -->
       <a href="#" class="brand-box">
         <div class="avatar-cornice" title="Giovanni Romito">
-          <!-- Quando avrai la tua foto profilo, basterà sostituire il file immagine qui sotto -->
+          <!-- Placeholder avatar: quando avrai la tua foto profilo, basterà sostituire il file immagine qui sotto -->
           <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23181C26'/><text x='50%' y='58%' dominant-baseline='middle' text-anchor='middle' font-size='42' font-family='sans-serif' font-weight='bold' fill='%23FFD000'>GR</text></svg>" alt="Giovanni Romito" id="avatar-img" width="38" height="38">
         </div>
-        <span class="nome-brand">Giovanni Romito</span>
+        <div class="brand-info">
+          <span class="nome-brand">Giovanni Romito</span>
+          <span class="badge-ruolo-nav" data-i18n="nav_ruolo">Tech & Frontend Creator</span>
+        </div>
       </a>
 
       <!-- Nav Links -->
       <nav class="nav-voci">
         <a href="#progetti" class="nav-link" data-i18n="nav_progetti">Progetti</a>
-        <a href="#perche-me" class="nav-link" data-i18n="nav_chi_sono">Chi Sono</a>
         <a href="#competenze" class="nav-link" data-i18n="nav_competenze">Competenze</a>
+        <a href="#metodo" class="nav-link" data-i18n="nav_metodo">Metodo</a>
         <a href="#contatti" class="nav-link" data-i18n="nav_contatti">Contatti</a>
         
         <!-- Segmented Language Switcher Pill -->
@@ -56,8 +59,8 @@
 
         <!-- Scrivimi CTA Button -->
         <a href="#contatti" class="btn-scrivimi-top">
-          <i class="fa-solid fa-paper-plane"></i>
-          <span data-i18n="nav_scrivimi">Scrivimi</span>
+          <i class="fa-solid fa-bolt"></i>
+          <span data-i18n="nav_scrivimi">Parliamo</span>
         </a>
       </nav>
 
@@ -70,321 +73,374 @@
 
   <main>
     
-    <!-- ==================== HERO SECTION ==================== -->
+    <!-- ==================== HERO SECTION (SPLIT ASIMMETRICO INNOVATIVO) ==================== -->
     <section class="sezione-hero">
-      <div class="contenitore">
+      <div class="contenitore hero-split">
         
-        <!-- Status Badge -->
-        <div class="badge-stato rivela">
-          <span class="punto-stato"></span>
-          <span data-i18n="hero_badge">Disponibile per Opportunità & Progetti</span>
+        <!-- Colonna Sinistra: Testi & Call to Action -->
+        <div class="hero-col-sinistra">
+          
+          <div class="badge-stato rivela">
+            <span class="punto-stato"></span>
+            <span data-i18n="hero_badge">Disponibile per Opportunità & Progetti</span>
+          </div>
+
+          <h1 class="hero-titolo rivela">
+            <span data-i18n="hero_titolo_1">Creo prodotti digitali,</span><br>
+            <span class="testo-giallo" data-i18n="hero_titolo_2">interfacce grafiche</span><br>
+            <span data-i18n="hero_titolo_3">& video ad alto impatto.</span>
+          </h1>
+
+          <p class="hero-sottotitolo rivela" data-i18n="hero_sottotitolo">
+            Sviluppatore con una forte specializzazione nel <strong>Frontend e nella cura grafica visiva</strong>. Potenzio ogni flusso di lavoro con l'<strong>Intelligenza Artificiale</strong>, con anni di esperienza nel video editing dinamico (Vegas Pro, CapCut, iMovie) e nella gestione di community digitali su Discord e Telegram.
+          </p>
+
+          <!-- Action Buttons -->
+          <div class="hero-pulsanti rivela">
+            <a href="#progetti" class="btn btn-primario-glow">
+              <span>Esplora i Progetti</span>
+              <i class="fa-solid fa-arrow-down-right"></i>
+            </a>
+            <a href="#contatti" class="btn btn-secondario-outline">
+              <i class="fa-regular fa-envelope"></i>
+              <span data-i18n="btn_scrivimi">Contattami Subito</span>
+            </a>
+          </div>
+
+          <!-- Quick Skills Ticker -->
+          <div class="hero-ticker-competenze rivela">
+            <div class="ticker-item"><i class="fa-solid fa-palette"></i> <span>UI/UX & Frontend</span></div>
+            <div class="ticker-sep">/</div>
+            <div class="ticker-item"><i class="fa-solid fa-film"></i> <span>Video Editing</span></div>
+            <div class="ticker-sep">/</div>
+            <div class="ticker-item"><i class="fa-solid fa-brain"></i> <span>AI Workflows</span></div>
+            <div class="ticker-sep">/</div>
+            <div class="ticker-item"><i class="fa-solid fa-mobile-screen"></i> <span>Tech Advisor</span></div>
+          </div>
+
         </div>
 
-        <!-- Main Headline -->
-        <h1 class="hero-titolo rivela">
-          <span data-i18n="hero_titolo_1">Sviluppo Software Frontend</span><br>
-          <span class="testo-giallo" data-i18n="hero_titolo_2">Video Editing & AI Specialist</span>
-        </h1>
-
-        <!-- Subtitle -->
-        <p class="hero-sottotitolo rivela" data-i18n="hero_sottotitolo">
-          Unisco la cura maniacale per il frontend e le interfacce grafiche alla velocità dei workflow potenziati dall'Intelligenza Artificiale, con anni di esperienza nel video editing dinamico e nella gestione di community digitali.
-        </p>
-
-        <!-- 3 Highlight Pills/Cards (Stile ispirato al mockup) -->
-        <div class="hero-cards-trio rivela">
-          <div class="pill-card">
-            <div class="pill-header">
-              <span class="pill-titolo" data-i18n="pill_1_titolo">Frontend & UI/UX</span>
-              <span class="pill-badge" data-i18n="pill_1_tag">Cura Grafica</span>
+        <!-- Colonna Destra: Hub Interattivo in Tempo Reale -->
+        <div class="hero-col-destra rivela">
+          <div class="scheda-hub-vetrina">
+            
+            <div class="hub-header">
+              <div class="hub-pallini">
+                <span></span><span></span><span></span>
+              </div>
+              <span class="hub-titolo-tag">GIOVANNI_ROMITO.OS // HIGHLIGHTS</span>
             </div>
-            <p class="pill-desc" data-i18n="pill_1_desc">Layout Pixel-Perfect, Animazioni 60/120 FPS & Mobile UI</p>
-          </div>
 
-          <div class="pill-card">
-            <div class="pill-header">
-              <span class="pill-titolo" data-i18n="pill_2_titolo">Video Editing & Content</span>
-              <span class="pill-badge" data-i18n="pill_2_tag">Vegas · CapCut</span>
+            <!-- Tab Switcher nel Widget -->
+            <div class="hub-tabs">
+              <button class="tab-hub-btn attiva" data-hub-tab="loot"><i class="fa-solid fa-radar"></i> L.O.O.T.</button>
+              <button class="tab-hub-btn" data-hub-tab="sorso"><i class="fa-solid fa-droplet"></i> Sorso</button>
+              <button class="tab-hub-btn" data-hub-tab="stack"><i class="fa-solid fa-cubes"></i> Stack</button>
             </div>
-            <p class="pill-desc" data-i18n="pill_2_desc">Montaggio Dinamico, Retention YouTube & Social Formats</p>
-          </div>
 
-          <div class="pill-card">
-            <div class="pill-header">
-              <span class="pill-titolo" data-i18n="pill_3_titolo">AI Workflow & Coding</span>
-              <span class="pill-badge" data-i18n="pill_3_tag">Velocità 5x</span>
+            <!-- Vista 1: L.O.O.T. -->
+            <div class="hub-pannello attiva" id="hub-loot">
+              <div class="hub-progetto-anteprima">
+                <div class="hub-progetto-top">
+                  <span class="hub-badge-live">24/7 Live Monitoring</span>
+                  <span class="hub-link-esterno"><a href="https://www.lo-ot.it/" target="_blank" rel="noopener">lo-ot.it &rarr;</a></span>
+                </div>
+                <h4>L.O.O.T. — Offer Tracker</h4>
+                <p>Scanner automatico in tempo reale su Vinted, eBay e Subito.it con notifiche istantanee via Bot Telegram prima della concorrenza.</p>
+                <div class="hub-mini-console">
+                  <span class="prompt">$</span> <span>scanner.listen() &rarr; target: <b class="glow-txt">drop_rilevato</b></span>
+                </div>
+              </div>
             </div>
-            <p class="pill-desc" data-i18n="pill_3_desc">Prompt Engineering, Automazioni & Problem Solving Rapido</p>
-          </div>
-        </div>
 
-        <!-- Action Buttons -->
-        <div class="hero-pulsanti rivela">
-          <a href="#progetti" class="btn btn-primario">
-            <i class="fa-solid fa-layer-group"></i>
-            <span data-i18n="btn_progetti">Progetti in Evidenza</span>
-          </a>
-          <a href="#contatti" class="btn btn-secondario">
-            <i class="fa-regular fa-envelope"></i>
-            <span data-i18n="btn_scrivimi">Scrivimi un'Email</span>
-          </a>
+            <!-- Vista 2: Sorso -->
+            <div class="hub-pannello" id="hub-sorso">
+              <div class="hub-progetto-anteprima">
+                <div class="hub-progetto-top">
+                  <span class="hub-badge-live">Android App Nativa</span>
+                  <span class="hub-link-esterno"><a href="https://sorsoapp.it/" target="_blank" rel="noopener">sorsoapp.it &rarr;</a></span>
+                </div>
+                <h4>Sorso — Water Reminder</h4>
+                <p>App Android nativa in Kotlin + Jetpack Compose. &lt; 2 MB, fisica dell'acqua su Canvas procedurale e zero librerie esterne.</p>
+                <div class="hub-mini-console">
+                  <span class="prompt">$</span> <span>compose.render() &rarr; wave_fps: <b class="glow-txt">120 FPS</b></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Vista 3: Stack -->
+            <div class="hub-pannello" id="hub-stack">
+              <div class="hub-progetto-anteprima">
+                <h4>Toolkit & Specializzazioni</h4>
+                <div class="hub-stack-tag-grid">
+                  <span>HTML5 / CSS3 Avanzato</span>
+                  <span>Jetpack Compose UI</span>
+                  <span>Sony Vegas Pro</span>
+                  <span>CapCut Pro</span>
+                  <span>Discord Architect</span>
+                  <span>Telegram Bots</span>
+                  <span>AI Prompting & Coding</span>
+                  <span>Smartphone Hardware</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="hub-footer">
+              <div class="hub-status-riga">
+                <span class="hub-ping"></span>
+                <span>Tutti i sistemi & servizi operativi</span>
+              </div>
+            </div>
+
+          </div>
         </div>
 
       </div>
     </section>
 
-    <!-- ==================== PROGETTI IN EVIDENZA ==================== -->
+    <!-- ==================== PROGETTI PRINCIPALI ==================== -->
     <section id="progetti" class="sezione-progetti">
       <div class="contenitore">
         
         <div class="sezione-testata rivela">
-          <span class="sopratitolo" data-i18n="progetti_sopratitolo">Lavori Principali</span>
-          <h2 data-i18n="progetti_titolo">I miei <span class="testo-giallo">Progetti in Evidenza</span></h2>
+          <span class="sopratitolo" data-i18n="progetti_sopratitolo">Portfolio & Case Studies</span>
+          <h2 data-i18n="progetti_titolo">I miei <span class="testo-giallo">Progetti Principali</span></h2>
           <p class="sezione-descrizione" data-i18n="progetti_desc">
-            Prodotti digitali completi sviluppati con cura del dettaglio, alte prestazioni e architetture stabili.
+            Prodotti software reali sviluppati con focus su efficienza, estetica visiva e architetture stabili.
           </p>
         </div>
 
-        <!-- PROGETTO 1: L.O.O.T. -->
-        <div class="progetto-evidenza-card rivela">
-          <div class="progetto-contenuto">
-            
-            <div class="progetto-top-meta">
-              <span class="progetto-tag-sopra" data-i18n="loot_tag">PROGETTO IN EVIDENZA · LIVE SERVICE</span>
-              <span class="badge-status-live"><span class="punto-live"></span> Live Service</span>
-            </div>
-
-            <h3 class="progetto-titolo-grande">L.O.O.T. — Live Online Offer Tracker</h3>
-
-            <p class="progetto-descrizione-estesa" data-i18n="loot_desc">
-              Software di monitoraggio continuo sviluppato per intercettare affari e articoli sottocosto in tempo reale. Scansiona costantemente i cataloghi di <strong>Vinted, eBay e Subito.it</strong>, applica filtri avanzati personalizzati su parole chiave e soglie di prezzo, e invia alert Telegram immediati con link d'acquisto diretto prima della concorrenza.
-            </p>
-
-            <ul class="progetto-punti-elenco">
-              <li>
-                <i class="fa-solid fa-circle-check"></i>
-                <span data-i18n="loot_punto_1">Monitoraggio Multi-Piattaforma su Vinted, eBay e Subito.it attivo 24/7.</span>
-              </li>
-              <li>
-                <i class="fa-solid fa-circle-check"></i>
-                <span data-i18n="loot_punto_2">Notifiche push istantanee via Bot Telegram dedicato con trigger ad altissima velocità.</span>
-              </li>
-              <li>
-                <i class="fa-solid fa-circle-check"></i>
-                <span data-i18n="loot_punto_3">Filtri mirati su parole chiave (incluse/escluse), tetti di prezzo e gestione ricerche parallele.</span>
-              </li>
-            </ul>
-
-            <div class="progetto-cta-box">
-              <a href="https://www.lo-ot.it/" target="_blank" rel="noopener" class="btn btn-primario">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                <span data-i18n="btn_visita_loot">Visita L.O.O.T. (lo-ot.it)</span>
-              </a>
-            </div>
-
-          </div>
-
-          <!-- Live Terminal Preview Mockup -->
-          <div class="progetto-anteprima-console">
-            <div class="console-topbar">
-              <div class="console-bottoni">
-                <span class="c-btn red"></span>
-                <span class="c-btn yellow"></span>
-                <span class="c-btn green"></span>
-              </div>
-              <span class="console-titolo">Live Scanner Console · 24/7</span>
-            </div>
-            <div class="console-corpo">
-              <p class="c-riga dim"># Inizializzazione scan worker multi-thread...</p>
-              <p class="c-riga ok"><i class="fa-solid fa-check"></i> Scanner attivo &rarr; <b>playstation_5</b> (eBay)</p>
-              <p class="c-riga ok"><i class="fa-solid fa-check"></i> Scanner attivo &rarr; <b>rtx_5070</b> (Subito.it)</p>
-              <p class="c-riga ok"><i class="fa-solid fa-check"></i> Scanner attivo &rarr; <b>jordan_4_retro</b> (Vinted)</p>
+        <div class="griglia-progetti-duo">
+          
+          <!-- Card Progetto 1: L.O.O.T. -->
+          <div class="card-progetto-grande rivela">
+            <div class="card-progetto-inner">
               
-              <div class="console-drop-box">
-                <div class="drop-header">
-                  <span class="drop-pill"><i class="fa-solid fa-fire"></i> NUOVO DROP RILEVATO</span>
-                  <span class="drop-tempo">adesso</span>
-                </div>
-                <div class="drop-titolo">Jordan 4 Retro OG — Prezzo Target Raggiunto</div>
-                <div class="drop-prezzo">Offerta: <b>€ 120,00</b> <del>€ 240,00</del> <span class="tag-vinted">Vinted</span></div>
-                <div class="drop-notifica"><i class="fa-brands fa-telegram"></i> Notifica inviata al canale Telegram &rarr; Click diretto</div>
+              <div class="progetto-badge-linea">
+                <span class="tag-categoria"><i class="fa-solid fa-radar"></i> Cloud Live Service</span>
+                <span class="badge-stato-verde">Attivo 24/7</span>
               </div>
 
-              <p class="c-riga pulse"><span class="c-dot"></span> Monitoraggio continuo cloud 24/7 in esecuzione...</p>
-            </div>
-          </div>
-        </div>
+              <h3>L.O.O.T. — Live Online Offer Tracker</h3>
 
-        <!-- PROGETTO 2: SORSO -->
-        <div class="progetto-evidenza-card rivela progetto-invertito">
-          <div class="progetto-contenuto">
-            
-            <div class="progetto-top-meta">
-              <span class="progetto-tag-sopra" data-i18n="sorso_tag">PROGETTO IN EVIDENZA · ANDROID APP</span>
-              <span class="badge-status-live"><span class="punto-live"></span> v1.11.3 Online</span>
-            </div>
+              <p class="progetto-testo-lungo" data-i18n="loot_desc">
+                Software di monitoraggio continuo sviluppato per intercettare affari e articoli sottocosto in tempo reale. Scansiona costantemente i cataloghi di <strong>Vinted, eBay e Subito.it</strong>, applica filtri personalizzati su parole chiave e soglie di prezzo, e invia alert Telegram immediati con link d'acquisto diretto.
+              </p>
 
-            <h3 class="progetto-titolo-grande">Sorso — Native Water Reminder App</h3>
-
-            <p class="progetto-descrizione-estesa" data-i18n="sorso_desc">
-              App Android nativa creata da zero in <strong>Kotlin + Jetpack Compose</strong>. Nata per dimostrare che un'app moderna e complessa può essere incredibilmente leggera (<strong>meno di 2 MB</strong>) e 100% offline, con rendering grafico procedurale dell'acqua su Canvas a 60/120 fps e gestione autonoma dei promemoria.
-            </p>
-
-            <ul class="progetto-punti-elenco">
-              <li>
-                <i class="fa-solid fa-circle-check"></i>
-                <span data-i18n="sorso_punto_1">Zero librerie pesanti di terze parti: codice puro, scattante e rispettoso della privacy.</span>
-              </li>
-              <li>
-                <i class="fa-solid fa-circle-check"></i>
-                <span data-i18n="sorso_punto_2">Fisica dell'acqua procedurale con onde sinusoidali sfasate e particelle bolle su Canvas.</span>
-              </li>
-              <li>
-                <i class="fa-solid fa-circle-check"></i>
-                <span data-i18n="sorso_punto_3">Notifiche interattive con azione diretta, widget per la home e supporto a 6 lingue.</span>
-              </li>
-            </ul>
-
-            <div class="progetto-cta-box">
-              <a href="https://sorsoapp.it/" target="_blank" rel="noopener" class="btn btn-primario">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                <span data-i18n="btn_visita_sorso">Esplora il sito di Sorso (sorsoapp.it)</span>
-              </a>
-            </div>
-
-          </div>
-
-          <!-- Sorso Interactive Card Mockup -->
-          <div class="progetto-anteprima-sorso">
-            <div class="sorso-mockup-vetro">
-              <div class="sorso-bicchiere">
-                <div class="sorso-acqua">
-                  <div class="sorso-onda-animata"></div>
-                  <div class="sorso-bolla b1"></div>
-                  <div class="sorso-bolla b2"></div>
-                  <div class="sorso-bolla b3"></div>
+              <!-- Caratteristiche Chiave a Matrice -->
+              <div class="matrice-caratteristiche">
+                <div class="matrice-item">
+                  <i class="fa-solid fa-cloud-bolt"></i>
+                  <div>
+                    <strong data-i18n="loot_feat_1_titolo">Scansione Multi-Piattaforma</strong>
+                    <span data-i18n="loot_feat_1_desc">Vinted, eBay & Subito.it</span>
+                  </div>
                 </div>
-                <div class="sorso-info-livello">
-                  <span class="sorso-icona-goccia">💧</span>
-                  <span class="sorso-ml">1.800 <small>ml</small></span>
-                  <span class="sorso-target">Obiettivo giornaliero: 75%</span>
+                <div class="matrice-item">
+                  <i class="fa-brands fa-telegram"></i>
+                  <div>
+                    <strong data-i18n="loot_feat_2_titolo">Bot Telegram Istantaneo</strong>
+                    <span data-i18n="loot_feat_2_desc">Notifiche push con link diretto</span>
+                  </div>
+                </div>
+                <div class="matrice-item">
+                  <i class="fa-solid fa-sliders"></i>
+                  <div>
+                    <strong data-i18n="loot_feat_3_titolo">Filtri Intelligenti</strong>
+                    <span data-i18n="loot_feat_3_desc">Keywords incluse/escluse & tetti prezzo</span>
+                  </div>
                 </div>
               </div>
-              <div class="sorso-pillole-stat">
-                <div class="s-pill"><i class="fa-solid fa-bolt"></i> &lt; 2 MB APK</div>
-                <div class="s-pill"><i class="fa-solid fa-shield-halved"></i> 100% Offline</div>
-                <div class="s-pill"><i class="fa-solid fa-gauge-high"></i> 120 FPS UI</div>
+
+              <div class="progetto-pulsante-box">
+                <a href="https://www.lo-ot.it/" target="_blank" rel="noopener" class="btn btn-progetto">
+                  <span data-i18n="btn_visita_loot">Visita L.O.O.T. (lo-ot.it)</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
               </div>
+
             </div>
           </div>
+
+          <!-- Card Progetto 2: Sorso -->
+          <div class="card-progetto-grande rivela">
+            <div class="card-progetto-inner">
+              
+              <div class="progetto-badge-linea">
+                <span class="tag-categoria"><i class="fa-solid fa-droplet"></i> Mobile App · Android</span>
+                <span class="badge-stato-verde">v1.11.3 Online</span>
+              </div>
+
+              <h3>Sorso — Native Water Reminder App</h3>
+
+              <p class="progetto-testo-lungo" data-i18n="sorso_desc">
+                App Android nativa creata da zero in <strong>Kotlin + Jetpack Compose</strong>. Nata con l'obiettivo di essere incredibilmente leggera (<strong>meno di 2 MB</strong>) e 100% offline, con rendering grafico procedurale dell'acqua su Canvas a 60/120 fps e gestione autonoma dei promemoria.
+              </p>
+
+              <!-- Caratteristiche Chiave a Matrice -->
+              <div class="matrice-caratteristiche">
+                <div class="matrice-item">
+                  <i class="fa-solid fa-feather"></i>
+                  <div>
+                    <strong data-i18n="sorso_feat_1_titolo">Zero Librerie Esterne</strong>
+                    <span data-i18n="sorso_feat_1_desc">APK leggerissimo &lt; 2 MB</span>
+                  </div>
+                </div>
+                <div class="matrice-item">
+                  <i class="fa-solid fa-water"></i>
+                  <div>
+                    <strong data-i18n="sorso_feat_2_titolo">Fisica su Canvas</strong>
+                    <span data-i18n="sorso_feat_2_desc">Onde sinusoidali a 120 FPS</span>
+                  </div>
+                </div>
+                <div class="matrice-item">
+                  <i class="fa-solid fa-bell"></i>
+                  <div>
+                    <strong data-i18n="sorso_feat_3_titolo">Notifiche & Widget</strong>
+                    <span data-i18n="sorso_feat_3_desc">Promemoria precisi e widget home</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="progetto-pulsante-box">
+                <a href="https://sorsoapp.it/" target="_blank" rel="noopener" class="btn btn-progetto">
+                  <span data-i18n="btn_visita_sorso">Esplora Sorso (sorsoapp.it)</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              </div>
+
+            </div>
+          </div>
+
         </div>
 
       </div>
     </section>
 
-    <!-- ==================== COMPETENZE & SKILLS ==================== -->
+    <!-- ==================== TUTTE LE COMPETENZE (HEX / BENTO GRID) ==================== -->
     <section id="competenze" class="sezione-competenze">
       <div class="contenitore">
         
         <div class="sezione-testata rivela">
-          <span class="sopratitolo" data-i18n="competenze_sopratitolo">Stack Tecnico & Abilità</span>
-          <h2 data-i18n="competenze_titolo">Tutte le mie <span class="testo-giallo">Competenze</span></h2>
+          <span class="sopratitolo" data-i18n="competenze_sopratitolo">Stack & Aree di Competenza</span>
+          <h2 data-i18n="competenze_titolo">Cosa so fare <span class="testo-giallo">nella pratica</span></h2>
           <p class="sezione-descrizione" data-i18n="competenze_desc">
-            Un set di competenze concrete, testate sul campo su progetti reali e community attive.
+            Dallo sviluppo frontend di alto livello alla produzione video, fino alla gestione di community online.
           </p>
         </div>
 
-        <div class="competenze-bento-griglia">
+        <div class="griglia-competenze-bento">
           
-          <!-- Card 1: Frontend & UI/UX -->
-          <div class="bento-card card-frontend rivela">
-            <div class="bento-icona"><i class="fa-solid fa-code"></i></div>
-            <h3 data-i18n="skill_frontend_titolo">Sviluppo Software Frontend & UI</h3>
-            <p data-i18n="skill_frontend_desc">
-              Massima attenzione al design visivo, fluidità e interazione. Padronanza di HTML5 semantico, CSS3 moderno (Glassmorphism, Flexbox, CSS Grid, micro-animazioni GPU), Jetpack Compose e interfacce web responsive per ogni schermo.
-            </p>
-            <div class="bento-tags">
-              <span>HTML5 / CSS3 Moderno</span>
-              <span>Jetpack Compose (Kotlin)</span>
-              <span>Glassmorphism & Micro-animations</span>
-              <span>Responsive Web Design</span>
-              <span>Canvas 2D Rendering</span>
+          <!-- Box 1: Frontend & UI Design -->
+          <div class="box-skill skill-span-2 rivela">
+            <div class="skill-icona-box">
+              <i class="fa-solid fa-palette"></i>
+            </div>
+            <div class="skill-corpo">
+              <h3 data-i18n="skill_frontend_titolo">Sviluppo Software Frontend & Cura Grafica</h3>
+              <p data-i18n="skill_frontend_desc">
+                La mia massima specializzazione. Cura maniacale per contrasti visivi, layout pixel-perfect, micro-animazioni fluide a 60/120 fps, glassmorphism e rendering grafico su Canvas. Creo interfacce che non solo funzionano, ma risultano belle e piacevoli da utilizzare.
+              </p>
+              <div class="skill-tags">
+                <span>HTML5 / CSS3 Moderno</span>
+                <span>Jetpack Compose (Kotlin)</span>
+                <span>Glassmorphism & Micro-animations</span>
+                <span>Responsive Web Design</span>
+                <span>Canvas 2D Rendering</span>
+              </div>
             </div>
           </div>
 
-          <!-- Card 2: Video Editing -->
-          <div class="bento-card card-video rivela">
-            <div class="bento-icona"><i class="fa-solid fa-film"></i></div>
-            <h3 data-i18n="skill_video_titolo">Video Editing & Content Creation</h3>
-            <p data-i18n="skill_video_desc">
-              Esperienza consolidata nel montaggio video con <strong>Sony Vegas Pro, CapCut e iMovie</strong>. Controllo del ritmo narrativo, tagli dinamici, sound design e ottimizzazione per YouTube, TikTok e Reels.
-            </p>
-            <div class="bento-tags">
-              <span>Sony Vegas Pro</span>
-              <span>CapCut Pro</span>
-              <span>iMovie</span>
-              <span>Retention & Pacing</span>
-              <span>YouTube Long & Shorts</span>
+          <!-- Box 2: Video Editing -->
+          <div class="box-skill rivela">
+            <div class="skill-icona-box">
+              <i class="fa-solid fa-film"></i>
+            </div>
+            <div class="skill-corpo">
+              <h3 data-i18n="skill_video_titolo">Video Editing & Content Creation</h3>
+              <p data-i18n="skill_video_desc">
+                Montaggio video dinamico e curato con <strong>Sony Vegas Pro, CapCut e iMovie</strong>. Controllo del ritmo, tagli veloci, sound design e strategie di retention per YouTube, TikTok e Reels.
+              </p>
+              <div class="skill-tags">
+                <span>Sony Vegas Pro</span>
+                <span>CapCut Pro</span>
+                <span>iMovie</span>
+                <span>Retention & Pacing</span>
+              </div>
             </div>
           </div>
 
-          <!-- Card 3: Discord Management -->
-          <div class="bento-card rivela">
-            <div class="bento-icona"><i class="fa-brands fa-discord"></i></div>
-            <h3 data-i18n="skill_discord_titolo">Creazione & Gestione Server Discord</h3>
-            <p data-i18n="skill_discord_desc">
-              Architettura completa di server Discord da zero: gestione avanzata di ruoli e permessi gerarchici, canali vocali e testuali, sistemi anti-raid e integrazione bot di moderazione e intrattenimento.
-            </p>
-            <div class="bento-tags">
-              <span>Discord Architecture</span>
-              <span>Bot Integration</span>
-              <span>Security & Anti-Raid</span>
-              <span>Community Engagement</span>
+          <!-- Box 3: Discord Server Management -->
+          <div class="box-skill rivela">
+            <div class="skill-icona-box">
+              <i class="fa-brands fa-discord"></i>
+            </div>
+            <div class="skill-corpo">
+              <h3 data-i18n="skill_discord_titolo">Creazione & Gestione Server Discord</h3>
+              <p data-i18n="skill_discord_desc">
+                Architettura completa di server Discord: organizzazione canali, ruoli gerarchici, permessi avanzati, sistemi anti-raid e integrazione bot personalizzati per automazioni e community attive.
+              </p>
+              <div class="skill-tags">
+                <span>Discord Architecture</span>
+                <span>Permessi & Ruoli</span>
+                <span>Security & Anti-Raid</span>
+              </div>
             </div>
           </div>
 
-          <!-- Card 4: Telegram & Bot -->
-          <div class="bento-card rivela">
-            <div class="bento-icona"><i class="fa-brands fa-telegram"></i></div>
-            <h3 data-i18n="skill_telegram_titolo">Conoscenza Profonda di Telegram & Bot</h3>
-            <p data-i18n="skill_telegram_desc">
-              Anni di gestione attiva di gruppi e canali Telegram. Configurazione e sviluppo di bot per notifiche automatiche in tempo reale, gestione annunci e automazioni di gruppo.
-            </p>
-            <div class="bento-tags">
-              <span>Telegram Bot API</span>
-              <span>Canali & Gruppi</span>
-              <span>Alert in Tempo Reale</span>
-              <span>Moderazione Automatica</span>
+          <!-- Box 4: Telegram & Bot -->
+          <div class="box-skill rivela">
+            <div class="skill-icona-box">
+              <i class="fa-brands fa-telegram"></i>
+            </div>
+            <div class="skill-corpo">
+              <h3 data-i18n="skill_telegram_titolo">Conoscenza Profonda di Telegram & Bot</h3>
+              <p data-i18n="skill_telegram_desc">
+                Anni di esperienza nella gestione e moderazione di canali e gruppi Telegram popolati. Configurazione e integrazione di bot per notifiche in tempo reale e automazioni.
+              </p>
+              <div class="skill-tags">
+                <span>Telegram Bot API</span>
+                <span>Gestione Canali & Gruppi</span>
+                <span>Alert in Tempo Reale</span>
+              </div>
             </div>
           </div>
 
-          <!-- Card 5: Tech & Smartphone Advisor -->
-          <div class="bento-card card-tech-advisor rivela">
-            <div class="bento-icona"><i class="fa-solid fa-mobile-screen-button"></i></div>
-            <h3 data-i18n="skill_tech_titolo">Consulenza Tech & Panorama Smartphone</h3>
-            <p data-i18n="skill_tech_desc">
-              Conoscenza enciclopedica del mondo smartphone e tech (alla pari dei recensori e giornalisti di settore): processori (SoC), sensori fotografici, display OLED, ottimizzazioni software Android/iOS e capacità di consigliare l'acquisto ideale per ogni esigenza.
-            </p>
-            <div class="bento-tags">
-              <span>Analisi Hardware Smartphone</span>
-              <span>Benchmark & SoC</span>
-              <span>Fotocamere & Sensori</span>
-              <span>Advisory Acquisti Tech</span>
+          <!-- Box 5: Tech & Smartphone Specialist -->
+          <div class="box-skill skill-span-2 rivela">
+            <div class="skill-icona-box">
+              <i class="fa-solid fa-mobile-screen-button"></i>
+            </div>
+            <div class="skill-corpo">
+              <h3 data-i18n="skill_tech_titolo">Consulenza Tech & Panorama Smartphone</h3>
+              <p data-i18n="skill_tech_desc">
+                Conoscenza approfondita del mercato tech e smartphone alla pari dei recensori e giornalisti di settore: processori (SoC), architetture grafiche, sensori fotografici, display OLED, ottimizzazioni software Android/iOS e capacità di consigliare l'acquisto ideale per ogni budget.
+              </p>
+              <div class="skill-tags">
+                <span>Analisi Hardware Smartphone</span>
+                <span>Benchmark & SoC</span>
+                <span>Fotocamere & Sensori</span>
+                <span>Advisory Acquisti Tech</span>
+              </div>
             </div>
           </div>
 
-          <!-- Card 6: Conoscenze Informatiche Avanzate -->
-          <div class="bento-card card-it-avanzata rivela">
-            <div class="bento-icona"><i class="fa-solid fa-microchip"></i></div>
-            <h3 data-i18n="skill_it_titolo">Competenze Informatiche Avanzate & AI</h3>
-            <p data-i18n="skill_it_desc">
-              Solida base informatica generale, troubleshooting hardware/software, padronanza degli ambienti operativi e utilizzo all'avanguardia dell'AI per risolvere qualsiasi problema tecnico in tempi record.
-            </p>
-            <div class="bento-tags">
-              <span>AI-Assisted Coding</span>
-              <span>Troubleshooting Avanzato</span>
-              <span>Git & GitHub Workflow</span>
-              <span>Automazioni di Sistema</span>
+          <!-- Box 6: Competenze Informatiche Avanzate & AI -->
+          <div class="box-skill skill-span-3 rivela box-it-highlight">
+            <div class="skill-icona-box">
+              <i class="fa-solid fa-microchip"></i>
+            </div>
+            <div class="skill-corpo">
+              <h3 data-i18n="skill_it_titolo">Competenze Informatiche Avanzate & AI Workflow</h3>
+              <p data-i18n="skill_it_desc">
+                Solida cultura informatica a 360°, troubleshooting rapido hardware e software, padronanza degli ambienti operativi e utilizzo all'avanguardia dell'Intelligenza Artificiale come acceleratore per scrivere codice, risolvere bug ed eseguire task complessi in tempi record.
+              </p>
+              <div class="skill-tags">
+                <span>AI-Assisted Coding</span>
+                <span>Troubleshooting Avanzato</span>
+                <span>Git & GitHub Workflows</span>
+                <span>Automazioni & Problem Solving</span>
+              </div>
             </div>
           </div>
 
@@ -393,41 +449,32 @@
       </div>
     </section>
 
-    <!-- ==================== IL MIO APPROCCIO AL LAVORO ==================== -->
-    <section id="perche-me" class="sezione-approccio">
+    <!-- ==================== IL MIO METODO ==================== -->
+    <section id="metodo" class="sezione-metodo">
       <div class="contenitore">
-        <div class="approccio-box rivela">
-          <div class="approccio-testo">
-            <span class="sopratitolo" data-i18n="approccio_sopratitolo">Metodo di Lavoro</span>
-            <h2 data-i18n="approccio_titolo">Perché scegliere di <span class="testo-giallo">collaborare con me</span></h2>
-            <p data-i18n="approccio_desc">
-              Niente teoria fine a se stessa: porto sul tavolo prontezza tecnica, occhio visivo per il design e una velocità di esecuzione moltiplicata dagli strumenti più moderni.
-            </p>
+        <div class="metodo-box rivela">
+          <div class="sezione-testata-centrata">
+            <span class="sopratitolo" data-i18n="approccio_sopratitolo">Metodo & Filosofia</span>
+            <h2 data-i18n="approccio_titolo">Come affronto ogni <span class="testo-giallo">progetto</span></h2>
+          </div>
 
-            <div class="approccio-griglia-punti">
-              <div class="punto-metodo">
-                <i class="fa-solid fa-wand-magic-sparkles"></i>
-                <div>
-                  <h4 data-i18n="metodo_1_titolo">Design ed Estetica di Livello</h4>
-                  <p data-i18n="metodo_1_desc">Non mi accontento di funzioni grezze. Le interfacce devono essere pulite, armoniche nei colori e piacevoli da utilizzare.</p>
-                </div>
-              </div>
+          <div class="metodo-steps-griglia">
+            <div class="metodo-col">
+              <div class="step-num">01</div>
+              <h4 data-i18n="metodo_1_titolo">Cura Visiva & Design First</h4>
+              <p data-i18n="metodo_1_desc">Prima di scrivere codice, penso all'esperienza visiva dell'utente: colori armoniosi, contrasti leggibili e micro-animazioni fluide.</p>
+            </div>
 
-              <div class="punto-metodo">
-                <i class="fa-solid fa-bolt-lightning"></i>
-                <div>
-                  <h4 data-i18n="metodo_2_titolo">Velocità & AI Power User</h4>
-                  <p data-i18n="metodo_2_desc">Integro i modelli linguistici e gli agenti AI in ogni fase di sviluppo, riducendo i tempi di implementazione e debugging di oltre il 60%.</p>
-                </div>
-              </div>
+            <div class="metodo-col">
+              <div class="step-num">02</div>
+              <h4 data-i18n="metodo_2_titolo">Velocità Moltiplicata dall'AI</h4>
+              <p data-i18n="metodo_2_desc">Integro gli strumenti AI più avanzati nel ciclo di lavoro quotidiano, riducendo drasticamente i tempi di sviluppo e debugging.</p>
+            </div>
 
-              <div class="punto-metodo">
-                <i class="fa-solid fa-compass"></i>
-                <div>
-                  <h4 data-i18n="metodo_3_titolo">Autonomia & Problem Solving</h4>
-                  <p data-i18n="metodo_3_desc">Se un problema è nuovo, lo studio e trovo la soluzione concreta senza bisogno di micro-management.</p>
-                </div>
-              </div>
+            <div class="metodo-col">
+              <div class="step-num">03</div>
+              <h4 data-i18n="metodo_3_titolo">Autonomia & Concretezza</h4>
+              <p data-i18n="metodo_3_desc">Niente fuffa: punto alla stabilità del codice, a software senza dipendenze inutili e a risultati concreti e testati.</p>
             </div>
           </div>
         </div>
@@ -439,12 +486,12 @@
       <div class="contenitore">
         <div class="contatti-card rivela">
           <span class="sopratitolo" data-i18n="contatti_sopratitolo">Scrivimi</span>
-          <h2 data-i18n="contatti_titolo">Hai un progetto o una posizione aperta? <span class="testo-giallo">Parliamone.</span></h2>
+          <h2 data-i18n="contatti_titolo">Hai un'opportunità o un progetto? <span class="testo-giallo">Mettiamoci in contatto.</span></h2>
           <p class="contatti-desc" data-i18n="contatti_desc">
             Sono disponibile per opportunità lavorative, ruoli in team e collaborazioni tecniche.
           </p>
 
-          <!-- Email Copy Box -->
+          <!-- Email Box -->
           <div class="box-email">
             <div class="email-indirizzo">
               <i class="fa-solid fa-envelope email-icona"></i>
@@ -456,11 +503,11 @@
             </button>
           </div>
 
-          <!-- Social / Channels -->
+          <!-- Channel Links -->
           <div class="contatti-canali">
             <a href="mailto:giovanniromitobusiness@gmail.com" class="canale-link">
               <i class="fa-solid fa-paper-plane"></i>
-              <span data-i18n="canale_email">Invia Email Diretta</span>
+              <span data-i18n="canale_email">Invia Email</span>
             </a>
             <a href="https://github.com/sorsoapp" target="_blank" rel="noopener" class="canale-link">
               <i class="fa-brands fa-github"></i>
@@ -468,7 +515,7 @@
             </a>
             <a href="https://sorsoapp.it" target="_blank" rel="noopener" class="canale-link">
               <i class="fa-solid fa-droplet"></i>
-              <span>Sorso App</span>
+              <span>Sorso</span>
             </a>
             <a href="https://www.lo-ot.it/" target="_blank" rel="noopener" class="canale-link">
               <i class="fa-solid fa-radar"></i>
