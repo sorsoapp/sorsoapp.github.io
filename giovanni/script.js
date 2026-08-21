@@ -15,9 +15,8 @@ const DIZIONARIO = {
 
     // Hero
     "hero_badge": "Disponibile per Opportunità & Progetti",
-    "hero_titolo_1": "Creo prodotti digitali,",
-    "hero_titolo_2": "interfacce grafiche",
-    "hero_titolo_3": "& video ad alto impatto.",
+    "hero_titolo_1": "Sviluppo Frontend & UI Design",
+    "hero_titolo_2": "Video Editor & AI Specialist",
     "hero_sottotitolo": "Sviluppatore con una forte specializzazione nel <strong>Frontend e nella cura grafica visiva</strong>. Potenzio ogni flusso di lavoro con l'<strong>Intelligenza Artificiale</strong>, con anni di esperienza nel video editing dinamico (Vegas Pro, CapCut, iMovie) e nella gestione di community digitali su Discord e Telegram.",
     "btn_scrivimi": "Contattami Subito",
 
@@ -52,7 +51,7 @@ const DIZIONARIO = {
     "competenze_desc": "Competenze reali, ordinate per area di applicazione e testate su progetti, canali e community live.",
 
     "skill_frontend_titolo": "Sviluppo Software Frontend & Cura Grafica",
-    "skill_frontend_desc": "Massima attenzione al design visivo, all'armonia cromatica e alla fluidità. Padronanza di HTML5 semantico, CSS3 moderno (Glassmorphism, Flexbox, Grid, micro-animazioni GPU a 60/120 fps), Jetpack Compose su Android e rendering grafico su Canvas 2D.",
+    "skill_frontend_desc": "Massima attenzione al design visivo, all'armonia cromatica, alla fluidità e alla leggibilità. Metto cura meticolosa in ogni singolo dettaglio grafico per creare interfacce pulite ed eleganti, dove ogni elemento è armonioso, intuitivo e sempre a portata di mano dell'utente, unendo bellezza estetica e massima facilità d'uso.",
 
     "skill_video_titolo": "Video Editing & Content Creation",
     "skill_video_desc": "Anni di esperienza diretta nel montaggio video e nella gestione di canali YouTube. Padronanza di <strong>Sony Vegas Pro, CapCut e iMovie</strong>, controllo maniacale del ritmo narrativo, tagli dinamici, sound design e strategie di retention per video lunghi e formati verticali (Shorts, Reels, TikTok).",
@@ -98,9 +97,8 @@ const DIZIONARIO = {
 
     // Hero
     "hero_badge": "Available for Opportunities & Projects",
-    "hero_titolo_1": "Building digital products,",
-    "hero_titolo_2": "visual interfaces",
-    "hero_titolo_3": "& high-impact media.",
+    "hero_titolo_1": "Frontend & UI Development",
+    "hero_titolo_2": "Video Editor & AI Specialist",
     "hero_sottotitolo": "Software developer specialized in <strong>Frontend & Visual Graphic Polish</strong>. I supercharge every workflow with <strong>Artificial Intelligence</strong>, backed by years of video editing experience (Vegas Pro, CapCut, iMovie) and digital community management on Discord & Telegram.",
     "btn_scrivimi": "Contact Me Directly",
 
@@ -135,7 +133,7 @@ const DIZIONARIO = {
     "competenze_desc": "Real, battle-tested capabilities organized by field of application across live code, YouTube channels, and active communities.",
 
     "skill_frontend_titolo": "Frontend Software Development & Visual Polish",
-    "skill_frontend_desc": "My primary specialization. Obsessive attention to visual contrast, pixel-perfect layouts, 60/120 fps micro-animations, glassmorphism, and Canvas graphics. I build user interfaces that not only work reliably, but look gorgeous and refined.",
+    "skill_frontend_desc": "Relentless focus on visual design, color harmony, smoothness, and typography legibility. I put meticulous care into every graphic detail to craft clean, elegant interfaces where every element is intuitive, perfectly placed, and effortless for the user to interact with.",
 
     "skill_video_titolo": "Video Editing & Content Creation",
     "skill_video_desc": "Years of video editing background with <strong>Sony Vegas Pro, CapCut, and iMovie</strong>. Narrative pacing, dynamic cuts, sound design, and retention strategies tailored for YouTube long-form, Shorts, TikTok, and Reels.",
