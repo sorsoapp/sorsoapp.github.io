@@ -47,28 +47,27 @@ const DIZIONARIO = {
     "btn_visita_sorso": "Esplora Sorso (sorsoapp.it)",
 
     // Competenze
-    "competenze_sopratitolo": "Stack & Aree di Competenza",
-    "competenze_titolo": "Cosa so fare <span class=\"testo-giallo\">nella pratica</span>",
-    "competenze_desc": "Dallo sviluppo frontend di alto livello alla produzione video, fino alla gestione di community online.",
+    "competenze_sopratitolo": "Stack & Competenze Pratiche",
+    "competenze_titolo": "Cosa so fare <span class=\"testo-giallo\">nel pratico</span>",
+    "competenze_desc": "Competenze reali, ordinate per area di applicazione e testate su progetti, canali e community live.",
 
     "skill_frontend_titolo": "Sviluppo Software Frontend & Cura Grafica",
-    "skill_frontend_desc": "La mia massima specializzazione. Cura maniacale per contrasti visivi, layout pixel-perfect, micro-animazioni fluide a 60/120 fps, glassmorphism e rendering grafico su Canvas. Creo interfacce che non solo funzionano, ma risultano belle e piacevoli da utilizzare.",
+    "skill_frontend_desc": "Massima attenzione al design visivo, all'armonia cromatica e alla fluidità. Padronanza di HTML5 semantico, CSS3 moderno (Glassmorphism, Flexbox, Grid, micro-animazioni GPU a 60/120 fps), Jetpack Compose su Android e rendering grafico su Canvas 2D.",
 
     "skill_video_titolo": "Video Editing & Content Creation",
-    "skill_video_desc": "Montaggio video dinamico e curato con <strong>Sony Vegas Pro, CapCut e iMovie</strong>. Controllo del ritmo, tagli veloci, sound design e strategie di retention per YouTube, TikTok e Reels.",
+    "skill_video_desc": "Anni di esperienza diretta nel montaggio video e nella gestione di canali YouTube. Padronanza di <strong>Sony Vegas Pro, CapCut e iMovie</strong>, controllo maniacale del ritmo narrativo, tagli dinamici, sound design e strategie di retention per video lunghi e formati verticali (Shorts, Reels, TikTok).",
 
     "skill_discord_titolo": "Creazione & Gestione Server Discord",
-    "skill_discord_desc": "Architettura completa di server Discord: organizzazione canali, ruoli gerarchici, permessi avanzati, sistemi anti-raid e integrazione bot personalizzati per automazioni e community attive.",
+    "skill_discord_desc": "Architettura completa di server Discord da zero: organizzazione canali testuali e vocali, permessi e ruoli gerarchici, sistemi anti-raid e integrazione di bot personalizzati per moderazione e engagement.",
 
-    "skill_telegram_titolo": "Conoscenza Profonda di Telegram & Bot",
-    "skill_telegram_desc": "Anni di esperienza nella gestione e moderazione di canali e gruppi Telegram popolati. Configurazione e integrazione di bot per notifiche in tempo reale e automazioni.",
+    "skill_telegram_titolo": "Telegram & Creazione Bot",
+    "skill_telegram_desc": "Anni di esperienza attiva: configurazione e creazione di <strong>bot di ogni tipo</strong> (notifiche in tempo reale, scanner, moderazione, utility), gestione di canali e gruppi popolati e automazioni su misura.",
 
-    "skill_tech_titolo": "Consulenza Tech & Panorama Smartphone",
-    "skill_tech_desc": "Conoscenza approfondita del mercato tech e smartphone alla pari dei recensori e giornalisti di settore: processori (SoC), architetture grafiche, sensori fotografici, display OLED, ottimizzazioni software Android/iOS e capacità di consigliare l'acquisto ideale per ogni budget.",
+    "skill_tech_titolo": "Tech & Smartphone · Tech Creator",
+    "skill_tech_desc": "Conoscenza ampia del mondo degli smartphone sia <strong>lato hardware</strong> (processori SoC, display, sensori fotografici) che <strong>lato software</strong> (Android, iOS). Disponibile e pronto a collaborare come <strong>Tech Creator e recensore</strong> per testate, canali YouTube e piattaforme digitali.",
 
-    "skill_it_titolo": "Competenze Informatiche Avanzate & AI Workflow",
-    "skill_it_desc": "Solida cultura informatica a 360°, troubleshooting rapido hardware e software, padronanza degli ambienti operativi e utilizzo all'avanguardia dell'Intelligenza Artificiale come acceleratore per scrivere codice, risolvere bug ed eseguire task complessi in tempi record.",
-    "skill_other_titolo": "Community Architecture, Tech Advisory & AI",
+    "skill_it_titolo": "Informatica Pratica, Troubleshooting & AI",
+    "skill_it_desc": "Solida cultura informatica pratica a 360°: assemblaggio, configurazione e manutenzione PC, troubleshooting rapido hardware e software, risoluzione problemi di sistema, gaming setup e utilizzo avanzato dell'AI per accelerare ogni flusso di lavoro.",
 
     // Metodo
     "approccio_sopratitolo": "Metodo & Filosofia",
@@ -131,28 +130,27 @@ const DIZIONARIO = {
     "btn_visita_sorso": "Explore Sorso (sorsoapp.it)",
 
     // Competenze
-    "competenze_sopratitolo": "Stack & Capabilities",
+    "competenze_sopratitolo": "Stack & Practical Capabilities",
     "competenze_titolo": "What I Do <span class=\"testo-giallo\">In Practice</span>",
-    "competenze_desc": "From high-end frontend software development to video production and digital community leadership.",
+    "competenze_desc": "Real, battle-tested capabilities organized by field of application across live code, YouTube channels, and active communities.",
 
     "skill_frontend_titolo": "Frontend Software Development & Visual Polish",
     "skill_frontend_desc": "My primary specialization. Obsessive attention to visual contrast, pixel-perfect layouts, 60/120 fps micro-animations, glassmorphism, and Canvas graphics. I build user interfaces that not only work reliably, but look gorgeous and refined.",
 
     "skill_video_titolo": "Video Editing & Content Creation",
-    "skill_video_desc": "Polished, dynamic editing background with <strong>Sony Vegas Pro, CapCut, and iMovie</strong>. Narrative pacing, rapid cuts, sound design, and retention tactics tailored for YouTube, TikTok, and Reels.",
+    "skill_video_desc": "Years of video editing background with <strong>Sony Vegas Pro, CapCut, and iMovie</strong>. Narrative pacing, dynamic cuts, sound design, and retention strategies tailored for YouTube long-form, Shorts, TikTok, and Reels.",
 
     "skill_discord_titolo": "Discord Server Architecture & Management",
     "skill_discord_desc": "Full Discord server design from the ground up: structured channel hierarchies, fine-grained role permissions, anti-raid security defenses, and automated bot integrations.",
 
-    "skill_telegram_titolo": "Deep Telegram & Bot Expertise",
-    "skill_telegram_desc": "Years of hands-on experience running active Telegram channels and groups. Development and configuration of bots for real-time alerts, broadcast announcements, and moderation.",
+    "skill_telegram_titolo": "Telegram & Custom Bot Creation",
+    "skill_telegram_desc": "Years of active experience: configuration and development of <strong>all types of Telegram bots</strong> (real-time alerts, scanners, moderation, utilities), managing populated channels/groups, and custom workflows.",
 
-    "skill_tech_titolo": "Tech & Smartphone Advisory",
-    "skill_tech_desc": "In-depth expertise in the consumer smartphone and tech landscape comparable to tech journalists: mobile processors (SoCs), GPU architectures, camera sensors, OLED displays, and expert buyer advisory for every budget.",
+    "skill_tech_titolo": "Tech & Smartphone · Tech Creator",
+    "skill_tech_desc": "Broad expertise in the smartphone landscape across both <strong>hardware</strong> (SoCs, displays, camera sensors) and <strong>software</strong> (Android, iOS). Available and ready to collaborate as a <strong>Tech Creator and reviewer</strong> for publications, YouTube channels, and digital media.",
 
-    "skill_it_titolo": "Advanced Computer Science & AI Workflows",
-    "skill_it_desc": "Broad computer science foundation, fast hardware and software troubleshooting, OS mastery, and cutting-edge use of AI agents as an execution accelerator to ship code and solve complex technical challenges in record time.",
-    "skill_other_titolo": "Community Architecture, Tech Advisory & AI",
+    "skill_it_titolo": "Practical IT, Troubleshooting & AI",
+    "skill_it_desc": "Solid 360° practical IT foundation: PC building, hardware and software troubleshooting, OS optimization, system diagnostics, gaming setups, and cutting-edge use of AI to accelerate every workflow.",
 
     // Metodo
     "approccio_sopratitolo": "Method & Philosophy",
@@ -297,6 +295,17 @@ document.addEventListener('DOMContentLoaded', () => {
     rootMargin: '0px 0px -30px 0px'
   });
   elementiRivela.forEach(el => osservatore.observe(el));
+
+  // 7. INTERACTIVE SPOTLIGHT GLOW ON MOUSEMOVE
+  document.querySelectorAll('.scheda-skill-ordinata, .card-progetto-grande, .scheda-hub-vetrina').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty('--mouse-x', `${x}px`);
+      card.style.setProperty('--mouse-y', `${y}px`);
+    });
+  });
 
   // 7. CANVAS PARTICELLE SOTTILI IN BACKGROUND (FLUIDE E ULTRA-LEGGERO)
   const canvas = document.getElementById('sfondo-particelle');
