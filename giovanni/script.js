@@ -68,6 +68,7 @@ const DIZIONARIO = {
 
     "skill_it_titolo": "Competenze Informatiche Avanzate & AI Workflow",
     "skill_it_desc": "Solida cultura informatica a 360°, troubleshooting rapido hardware e software, padronanza degli ambienti operativi e utilizzo all'avanguardia dell'Intelligenza Artificiale come acceleratore per scrivere codice, risolvere bug ed eseguire task complessi in tempi record.",
+    "skill_other_titolo": "Community Architecture, Tech Advisory & AI",
 
     // Metodo
     "approccio_sopratitolo": "Metodo & Filosofia",
@@ -151,6 +152,7 @@ const DIZIONARIO = {
 
     "skill_it_titolo": "Advanced Computer Science & AI Workflows",
     "skill_it_desc": "Broad computer science foundation, fast hardware and software troubleshooting, OS mastery, and cutting-edge use of AI agents as an execution accelerator to ship code and solve complex technical challenges in record time.",
+    "skill_other_titolo": "Community Architecture, Tech Advisory & AI",
 
     // Metodo
     "approccio_sopratitolo": "Method & Philosophy",
