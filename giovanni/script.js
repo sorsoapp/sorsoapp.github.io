@@ -26,7 +26,7 @@ const DIZIONARIO = {
     "progetti_desc": "Prodotti software reali sviluppati con focus su efficienza, estetica visiva e architetture stabili.",
 
     // LOOT
-    "loot_desc": "Ho curato lo <strong>sviluppo Frontend e l'interfaccia grafica</strong> del software di monitoraggio continuo sviluppato per intercettare affari e articoli sottocosto in tempo reale. Scansiona costantemente i cataloghi di <strong>Vinted, eBay e Subito.it</strong>, applica filtri personalizzati su parole chiave e soglie di prezzo, e invia alert Telegram immediati con link d'acquisto diretto.",
+    "loot_desc": "Progetto in cui ho curato l'intero <strong>sviluppo Frontend, la UI e l'interfaccia grafica</strong>. Si tratta di un software di monitoraggio continuo sviluppato per tracciare affari, offerte lampo e articoli sottocosto in tempo reale. Scansiona costantemente i cataloghi dei principali marketplace (Vinted, eBay e Subito.it), applica filtri mirati su parole chiave e fasce di prezzo, e invia alert istantanei su Telegram con link d'acquisto diretto.",
     "loot_feat_1_titolo": "Sviluppo Frontend & UI",
     "loot_feat_1_desc": "Interfaccia web, layout & user experience",
     "loot_feat_2_titolo": "Bot Telegram Istantaneo",
@@ -36,7 +36,8 @@ const DIZIONARIO = {
     "btn_visita_loot": "Visita L.O.O.T. (lo-ot.it)",
 
     // Sorso
-    "sorso_desc": "App Android nativa creata da zero in <strong>Kotlin + Jetpack Compose</strong>. Nata con l'obiettivo di essere incredibilmente leggera (<strong>meno di 2 MB</strong>) e 100% offline, con rendering grafico procedurale dell'acqua su Canvas a 60/120 fps e gestione autonoma dei promemoria.",
+    "sorso_titolo": "Sorso — L'app per ricordarti di bere acqua",
+    "sorso_desc": "Un'applicazione nata da una mia idea e <strong>sviluppata interamente da me da zero</strong>, pensata per aiutarti a bere più acqua durante la giornata in modo semplice e piacevole. Ho curato ogni singolo aspetto: un design pulito e senza distrazioni, animazioni fluide dell'acqua con onde su Canvas a 60/120 fps, privacy totale (funziona al 100% offline), zero pubblicità e notifiche intelligenti.",
     "sorso_feat_1_titolo": "Zero Librerie Esterne",
     "sorso_feat_1_desc": "APK leggerissimo < 2 MB",
     "sorso_feat_2_titolo": "Fisica su Canvas",
@@ -108,7 +109,7 @@ const DIZIONARIO = {
     "progetti_desc": "Real software products engineered for high performance, visual polish, and resilient architectures.",
 
     // LOOT
-    "loot_desc": "I developed the <strong>Frontend and user interface</strong> for this continuous monitoring software built to intercept bargains and underpriced deals in real-time. Constantly scans <strong>Vinted, eBay, and Subito.it</strong>, applies custom keyword and price threshold filters, and delivers instant Telegram alerts with direct purchase links.",
+    "loot_desc": "Project where I developed the entire <strong>Frontend, UI, and user interface design</strong>. It is a continuous monitoring platform built to track deals, flash offers, and underpriced bargains in real-time. It constantly scans major marketplaces (Vinted, eBay, Subito.it), applies targeted filters on keywords and price limits, and sends instant Telegram push alerts with direct purchase links.",
     "loot_feat_1_titolo": "Frontend & UI Development",
     "loot_feat_1_desc": "Web interface, layout & user experience",
     "loot_feat_2_titolo": "Instant Telegram Bot",
@@ -118,7 +119,8 @@ const DIZIONARIO = {
     "btn_visita_loot": "Visit L.O.O.T. (lo-ot.it)",
 
     // Sorso
-    "sorso_desc": "Native Android app built from scratch in <strong>Kotlin + Jetpack Compose</strong>. Designed to be ultra-lightweight (<strong>under 2 MB</strong>) and 100% offline, featuring procedural sine-wave water Canvas animations at 60/120 fps and reliable reminder alarms.",
+    "sorso_titolo": "Sorso — Smart Water Reminder App",
+    "sorso_desc": "An Android application born from my own idea and <strong>developed 100% solely by me from scratch</strong>, designed to help you stay hydrated throughout the day in a simple and enjoyable way. I built every single detail: a clean distraction-free UI, procedural 60/120 fps wave Canvas animations, total offline privacy with zero ads, and smart punctual reminder alerts.",
     "sorso_feat_1_titolo": "Zero External Libraries",
     "sorso_feat_1_desc": "Ultra-light APK < 2 MB",
     "sorso_feat_2_titolo": "Procedural Canvas Physics",
