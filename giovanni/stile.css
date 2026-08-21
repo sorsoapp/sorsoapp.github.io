@@ -1153,7 +1153,7 @@ main {
   transform: translateY(0);
 }
 
-/* ==================== RESPONSIVE DESIGN ==================== */
+/* ==================== RESPONSIVE DESIGN & MOBILE OPTIMIZATION ==================== */
 @media (max-width: 980px) {
   .hero-split {
     grid-template-columns: 1fr;
@@ -1161,19 +1161,18 @@ main {
   }
   .griglia-progetti-duo {
     grid-template-columns: 1fr;
+    gap: 22px;
   }
-  .pilastro-punti-griglia {
+  .griglia-competenze-pulita {
     grid-template-columns: 1fr;
-  }
-  .mini-griglia-sub-skills {
-    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
   .metodo-steps-griglia {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 20px;
   }
   .metodo-box {
-    padding: 32px 22px;
+    padding: 32px 20px;
   }
   .badge-ruolo-nav {
     display: none;
@@ -1181,17 +1180,62 @@ main {
 }
 
 @media (max-width: 768px) {
+  .contenitore {
+    padding: 0 18px;
+  }
+  .sezione-hero {
+    padding: 50px 0 45px;
+  }
+  .hero-titolo {
+    font-size: 32px;
+    letter-spacing: -0.8px;
+  }
+  .hero-sottotitolo {
+    font-size: 14.5px;
+    line-height: 1.6;
+  }
+  .hero-pulsanti {
+    flex-direction: column;
+    width: 100%;
+  }
+  .hero-pulsanti .btn {
+    width: 100%;
+  }
+  .hero-ticker-competenze {
+    gap: 8px 12px;
+  }
+  .ticker-sep {
+    display: none;
+  }
+  .ticker-item {
+    background: rgba(255, 255, 255, 0.04);
+    padding: 6px 12px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--bordo-sottile);
+    font-size: 12px;
+  }
+  .scheda-hub-vetrina {
+    padding: 18px;
+  }
+  .hub-tabs {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .tab-hub-btn {
+    padding: 6px 2px;
+    font-size: 11px;
+  }
   .nav-voci {
     display: none;
     position: absolute;
     top: 72px;
     left: 0;
     width: 100%;
-    background: var(--sfondo-superficie);
+    background: #0E121A;
     border-bottom: 1px solid var(--bordo-sottile);
     flex-direction: column;
-    padding: 22px;
-    gap: 16px;
+    padding: 24px;
+    gap: 18px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
   }
   .nav-voci.aperto {
     display: flex;
@@ -1199,14 +1243,26 @@ main {
   .menu-toggle {
     display: block;
   }
-  .pilastro-card {
-    padding: 28px 20px;
+  .card-progetto-grande {
+    padding: 26px 20px;
   }
-  .mini-griglia-sub-skills {
-    grid-template-columns: 1fr;
+  .card-progetto-inner h3 {
+    font-size: 20px;
+  }
+  .scheda-skill-ordinata {
+    padding: 24px 20px;
+  }
+  .scheda-skill-ordinata h3 {
+    font-size: 18px;
+  }
+  .scheda-skill-ordinata p {
+    font-size: 13.5px;
   }
   .contatti-card {
-    padding: 38px 18px;
+    padding: 34px 18px;
+  }
+  .contatti-card h2 {
+    font-size: 24px;
   }
   .box-email {
     flex-direction: column;
@@ -1214,6 +1270,9 @@ main {
     padding: 16px;
     gap: 14px;
     width: 100%;
+  }
+  .email-indirizzo {
+    font-size: 13px;
   }
   .btn-copia-email {
     width: 100%;
