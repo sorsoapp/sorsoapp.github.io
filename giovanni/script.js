@@ -27,13 +27,13 @@ const DIZIONARIO = {
     "progetti_desc": "Prodotti software reali sviluppati con focus su efficienza, estetica visiva e architetture stabili.",
 
     // LOOT
-    "loot_desc": "Software di monitoraggio continuo sviluppato per intercettare affari e articoli sottocosto in tempo reale. Scansiona costantemente i cataloghi di <strong>Vinted, eBay e Subito.it</strong>, applica filtri personalizzati su parole chiave e soglie di prezzo, e invia alert Telegram immediati con link d'acquisto diretto.",
-    "loot_feat_1_titolo": "Scansione Multi-Piattaforma",
-    "loot_feat_1_desc": "Vinted, eBay & Subito.it",
+    "loot_desc": "Ho curato lo <strong>sviluppo Frontend e l'interfaccia grafica</strong> del software di monitoraggio continuo sviluppato per intercettare affari e articoli sottocosto in tempo reale. Scansiona costantemente i cataloghi di <strong>Vinted, eBay e Subito.it</strong>, applica filtri personalizzati su parole chiave e soglie di prezzo, e invia alert Telegram immediati con link d'acquisto diretto.",
+    "loot_feat_1_titolo": "Sviluppo Frontend & UI",
+    "loot_feat_1_desc": "Interfaccia web, layout & user experience",
     "loot_feat_2_titolo": "Bot Telegram Istantaneo",
     "loot_feat_2_desc": "Notifiche push con link diretto",
-    "loot_feat_3_titolo": "Filtri Intelligenti",
-    "loot_feat_3_desc": "Keywords incluse/escluse & tetti prezzo",
+    "loot_feat_3_titolo": "Scansione Multi-Piattaforma",
+    "loot_feat_3_desc": "Vinted, eBay & Subito.it in tempo reale",
     "btn_visita_loot": "Visita L.O.O.T. (lo-ot.it)",
 
     // Sorso
@@ -110,13 +110,13 @@ const DIZIONARIO = {
     "progetti_desc": "Real software products engineered for high performance, visual polish, and resilient architectures.",
 
     // LOOT
-    "loot_desc": "Continuous monitoring software built to intercept bargains and underpriced deals in real-time. Constantly scans <strong>Vinted, eBay, and Subito.it</strong>, applies custom keyword and price threshold filters, and delivers instant Telegram alerts with direct purchase links.",
-    "loot_feat_1_titolo": "Multi-Platform Cloud Scan",
-    "loot_feat_1_desc": "Vinted, eBay & Subito.it 24/7",
+    "loot_desc": "I developed the <strong>Frontend and user interface</strong> for this continuous monitoring software built to intercept bargains and underpriced deals in real-time. Constantly scans <strong>Vinted, eBay, and Subito.it</strong>, applies custom keyword and price threshold filters, and delivers instant Telegram alerts with direct purchase links.",
+    "loot_feat_1_titolo": "Frontend & UI Development",
+    "loot_feat_1_desc": "Web interface, layout & user experience",
     "loot_feat_2_titolo": "Instant Telegram Bot",
     "loot_feat_2_desc": "Real-time push alerts with direct link",
-    "loot_feat_3_titolo": "Smart Precision Filters",
-    "loot_feat_3_desc": "Include/exclude keywords & price caps",
+    "loot_feat_3_titolo": "Multi-Platform Cloud Scan",
+    "loot_feat_3_desc": "Vinted, eBay & Subito.it real-time alerts",
     "btn_visita_loot": "Visit L.O.O.T. (lo-ot.it)",
 
     // Sorso
