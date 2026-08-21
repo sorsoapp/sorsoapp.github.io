@@ -51,7 +51,7 @@ const DIZIONARIO = {
     "competenze_desc": "Competenze reali, ordinate per area di applicazione e testate su progetti, canali e community live.",
 
     "skill_frontend_titolo": "Sviluppo Software Frontend & Cura Grafica",
-    "skill_frontend_desc": "Massima attenzione al design visivo, all'armonia cromatica, alla fluidità e alla leggibilità. Metto cura meticolosa in ogni singolo dettaglio grafico per creare interfacce pulite ed eleganti, dove ogni elemento è armonioso, intuitivo e sempre a portata di mano dell'utente, unendo bellezza estetica e massima facilità d'uso.",
+    "skill_frontend_desc": "Massima attenzione al design visivo, al rispetto rigoroso delle <strong>linee guida di design</strong> (gerarchia visiva, griglie, spaziature armoniose e coerenza dei componenti), all'armonia cromatica, alla fluidità e alla leggibilità. Metto cura meticolosa in ogni singolo dettaglio grafico per creare interfacce pulite, eleganti e intuitive, dove ogni elemento è armonioso e sempre a portata di mano dell'utente, unendo bellezza estetica e massima praticità d'uso.",
 
     "skill_video_titolo": "Video Editing & Content Creation",
     "skill_video_desc": "Anni di esperienza diretta nel montaggio video e nella gestione di canali YouTube. Padronanza di <strong>Sony Vegas Pro, CapCut e iMovie</strong>, controllo maniacale del ritmo narrativo, tagli dinamici, sound design e strategie di retention per video lunghi e formati verticali (Shorts, Reels, TikTok).",
@@ -133,7 +133,7 @@ const DIZIONARIO = {
     "competenze_desc": "Real, battle-tested capabilities organized by field of application across live code, YouTube channels, and active communities.",
 
     "skill_frontend_titolo": "Frontend Software Development & Visual Polish",
-    "skill_frontend_desc": "Relentless focus on visual design, color harmony, smoothness, and typography legibility. I put meticulous care into every graphic detail to craft clean, elegant interfaces where every element is intuitive, perfectly placed, and effortless for the user to interact with.",
+    "skill_frontend_desc": "Relentless focus on visual design, strict adherence to <strong>design guidelines</strong> (visual hierarchy, grid layouts, harmonious spacing, and component consistency), color harmony, smoothness, and typography legibility. I put meticulous care into every graphic detail to craft clean, elegant interfaces where every element is intuitive, perfectly placed, and effortless for the user to interact with.",
 
     "skill_video_titolo": "Video Editing & Content Creation",
     "skill_video_desc": "Years of video editing background with <strong>Sony Vegas Pro, CapCut, and iMovie</strong>. Narrative pacing, dynamic cuts, sound design, and retention strategies tailored for YouTube long-form, Shorts, TikTok, and Reels.",
