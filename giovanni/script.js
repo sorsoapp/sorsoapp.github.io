@@ -38,12 +38,12 @@ const DIZIONARIO = {
     // Sorso
     "sorso_titolo": "Sorso — L'app per ricordarti di bere acqua",
     "sorso_desc": "Un'applicazione nata da una mia idea e <strong>sviluppata interamente da me da zero</strong>, pensata per aiutarti a bere più acqua durante la giornata in modo semplice e piacevole. Ho curato ogni singolo aspetto: un design pulito e senza distrazioni, animazioni fluide dell'acqua con onde su Canvas a 60/120 fps, privacy totale (funziona al 100% offline), zero pubblicità e notifiche intelligenti.",
-    "sorso_feat_1_titolo": "Zero Librerie Esterne",
-    "sorso_feat_1_desc": "APK leggerissimo < 2 MB",
-    "sorso_feat_2_titolo": "Fisica su Canvas",
-    "sorso_feat_2_desc": "Onde sinusoidali a 120 FPS",
-    "sorso_feat_3_titolo": "Notifiche & Widget",
-    "sorso_feat_3_desc": "Promemoria precisi e widget home",
+    "sorso_feat_1_titolo": "Zero Dati Raccolti & Offline",
+    "sorso_feat_1_desc": "Privacy totale, nessun account o tracciamento",
+    "sorso_feat_2_titolo": "Semplice ed Essenziale",
+    "sorso_feat_2_desc": "Interfaccia pulita e immediata da usare",
+    "sorso_feat_3_titolo": "Jetpack Compose & Canvas 120 FPS",
+    "sorso_feat_3_desc": "Nativa, ultra-leggera (< 2 MB) e fluida",
     "btn_visita_sorso": "Esplora Sorso (sorsoapp.it)",
 
     // Competenze
@@ -121,12 +121,12 @@ const DIZIONARIO = {
     // Sorso
     "sorso_titolo": "Sorso — Smart Water Reminder App",
     "sorso_desc": "An Android application born from my own idea and <strong>developed 100% solely by me from scratch</strong>, designed to help you stay hydrated throughout the day in a simple and enjoyable way. I built every single detail: a clean distraction-free UI, procedural 60/120 fps wave Canvas animations, total offline privacy with zero ads, and smart punctual reminder alerts.",
-    "sorso_feat_1_titolo": "Zero External Libraries",
-    "sorso_feat_1_desc": "Ultra-light APK < 2 MB",
-    "sorso_feat_2_titolo": "Procedural Canvas Physics",
-    "sorso_feat_2_desc": "120 FPS fluid sine waves",
-    "sorso_feat_3_titolo": "Smart Alarms & Widgets",
-    "sorso_feat_3_desc": "Punctual alerts & Home widget",
+    "sorso_feat_1_titolo": "Zero Data Collected & Offline",
+    "sorso_feat_1_desc": "Total privacy, no account or tracking",
+    "sorso_feat_2_titolo": "Simple & Intuitive",
+    "sorso_feat_2_desc": "Clean distraction-free user experience",
+    "sorso_feat_3_titolo": "Jetpack Compose & 120 FPS Canvas",
+    "sorso_feat_3_desc": "Native, ultra-light (< 2 MB) and fluid",
     "btn_visita_sorso": "Explore Sorso (sorsoapp.it)",
 
     // Competenze
